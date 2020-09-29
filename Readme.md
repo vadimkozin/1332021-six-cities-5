@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Ulin Salma](https://up.htmlacademy.ru/react/5/user/1332021).
-* Наставник: `Неизвестно`.
+* Наставник: [Антон Белуженко](https://htmlacademy.ru/profile/id127006).
 
 ---
 
