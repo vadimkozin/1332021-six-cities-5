@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MainPage = ({numberRentalOffer}) => (
   <div className="page page--gray page--main">
@@ -268,5 +269,8 @@ const MainPage = ({numberRentalOffer}) => (
   </div>
 );
 
+MainPage.propTypes = {
+  numberRentalOffer: PropTypes.number.isRequired,
+};
 
 export default MainPage;
