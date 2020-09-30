@@ -1,8 +1,8 @@
 import React from 'react';
 import MainPage from '../main-page/main-page';
 
-const App = () => (
-  <MainPage></MainPage>
+const App = ({numberRentalOffer}) => (
+  <MainPage numberRentalOffer={numberRentalOffer}></MainPage>
 );
 
 export default App;
