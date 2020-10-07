@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {MainPageType} from '../../types/types';
 
-const MainPage = ({numberRentalOffer}) => (
+const MainPage = ({numberOffer}) => (
   <div className="page page--gray page--main">
     <header className="header">
       <div className="container">
@@ -68,7 +68,7 @@ const MainPage = ({numberRentalOffer}) => (
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{numberRentalOffer} places to stay in Amsterdam</b>
+            <b className="places__found">{numberOffer} places to stay in Amsterdam</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex="0">
@@ -269,8 +269,6 @@ const MainPage = ({numberRentalOffer}) => (
   </div>
 );
 
-MainPage.propTypes = {
-  numberRentalOffer: PropTypes.number.isRequired,
-};
+MainPage.propTypes = MainPageType;
 
 export default MainPage;

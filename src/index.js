@@ -10,7 +10,7 @@ const Settings = {
 
 ReactDOM.render(
     <App
-      numberRentalOffer={Settings.NUMBER_RENTAL_OFFER}
+      numberOffer={Settings.NUMBER_RENTAL_OFFER}
       offers={offers}
       reviews={reviews}
     />,
