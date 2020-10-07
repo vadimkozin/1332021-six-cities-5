@@ -1,6 +1,5 @@
 import {AvatarGenerator} from 'random-avatar-generator';
 import {NAMES, DESCRIPTIONS, getRandomFrom, getRandomInteger} from '../mocks/offers';
-import {formatDate} from '../utils';
 
 const generator = new AvatarGenerator();
 
