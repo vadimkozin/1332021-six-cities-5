@@ -8,6 +8,7 @@ const TITLES = [
   `Amazing view from the window`,
   `Gorgeous view of the sunrise`,
   `Everything you need is available in 5 minutes`,
+  `Everything you need`,
 ];
 
 export const DESCRIPTIONS = [
@@ -59,7 +60,7 @@ const getRandomPhoto = () => `${URL_PHOTO}${Math.random()}`;
 // возвращает случайное число из диапазона между min и max (оба включены)
 export const getRandomInteger = (min = 0, max = 0) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-export const getRandomFloat = (min = 0, max = 0, fixed = 2) => ((Math.random() * (max - min)) + min).toFixed(fixed);
+export const getRandomFloat = (min = 0, max = 0, fixed = 2) => Number(((Math.random() * (max - min)) + min).toFixed(fixed));
 
 // добавляет ведущие нули: ( '2' => '02')
 // const addZeros = (number, digitsInNumber = 2) => {
@@ -131,21 +132,4 @@ const getOffers = (count) => {
 const offers = getOffers(4);
 
 export default offers;
-
-// export default [
-//   {
-//     pictures: getRandomPictures(3, 5),
-//     title: getRandomFrom(TITLES),
-//     description: getRandomFrom(DESCRIPTIONS),
-//     isPremium: Boolean(getRandomInteger(0, 1)),
-//     typeHousing: getRandomType(),
-//     rating: getRandomFloat(1, 5),
-//     bedroomsNumber: getRandomInteger(1, 5),
-//     guestsMax: getRandomInteger(1, 3),
-//     price: getRandomInteger(50, 300),
-//     householdItems: getRandomPartArray(HOUSEHOLD_ITEMS),
-//     owner: getRandomOwner,
-//   }
-// ];
-
 

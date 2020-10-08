@@ -19,6 +19,7 @@ class OfferList extends PureComponent {
         key={offer.id}
         offer={offer}
         onHover={(offerActive) => {
+          console.log(`offerActive:`, offerActive);
           this.setState({
             offer: offerActive,
           });

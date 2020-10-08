@@ -10,7 +10,7 @@ const OfferCard = (props) => {
   const ratingStyle = {width: offer.rating / RATING_STAR_MAX * 100 + `%`};
 
   return (
-    <article className="cities__place-card place-card" onHover={onHover(offer)}>
+    <article className="cities__place-card place-card" onMouseOver={onHover(offer)}>
       {offer.isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>

@@ -93,6 +93,7 @@ const MainPage = ({numberOffer}) => (
               --> */}
             </form>
             <div className="cities__places-list places__list tabs__content">
+
               <article className="cities__place-card place-card">
                 <div className="place-card__mark">
                   <span>Premium</span>
