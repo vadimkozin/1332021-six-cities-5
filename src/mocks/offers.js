@@ -1,4 +1,6 @@
+import {nanoid} from 'nanoid';
 import {AvatarGenerator} from 'random-avatar-generator';
+import {TypesHousing} from '../const';
 
 const TITLES = [
   `Beautiful studio at great location`,
@@ -20,13 +22,6 @@ export const DESCRIPTIONS = [
   `Fugiat quia rerum sed minima iusto autem ut maxime molestias libero odio natus temporibus labore tempore magni officiis cumque nemo expedita itaque, possimus et praesentium fuga dicta, pariatur ex? Necessitatibus cum, ipsam quam voluptate, aut perferendis quaerat recusandae amet accusantium assumenda perspiciatis numquam quisquam, animi exercitationem provident fugiat nisi.`,
   `Culpa aliquam cumque modi labore quae est ad illum nobis molestias.`,
 ];
-
-const TYPES = {
-  apartment: `Apartment`,
-  room: `Private Room`,
-  house: `House`,
-  hotel: `Hotel`
-};
 
 const HOUSEHOLD_ITEMS = [
   `WiFi`,
@@ -92,10 +87,10 @@ const getRandomPartArray = (array) => {
 };
 
 const getRandomType = () => {
-  const keys = Object.keys(TYPES);
+  const keys = Object.keys(TypesHousing);
   const index = getRandomInteger(0, keys.length - 1);
 
-  return keys[index];
+  return keys[index].name;
 };
 
 const getRandomPictures = (from = 1, to = 5) => {
@@ -118,6 +113,7 @@ const getRandomOwner = () => {
 
 const getOffers = (count) => {
   return Array(count).fill().map(() => ({
+    id: nanoid(8),
     pictures: getRandomPictures(3, 5),
     title: getRandomFrom(TITLES),
     description: getRandomFrom(DESCRIPTIONS),
