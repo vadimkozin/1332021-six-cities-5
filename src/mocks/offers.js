@@ -123,13 +123,13 @@ const getOffers = (count) => {
     rating: getRandomFloat(1, 5),
     bedroomsNumber: getRandomInteger(1, 5),
     guestsMax: getRandomInteger(1, 3),
-    price: getRandomInteger(50, 300),
+    price: getRandomInteger(50, 700),
     householdItems: getRandomPartArray(HOUSEHOLD_ITEMS),
     owner: getRandomOwner(),
   }));
 };
 
-const offers = getOffers(4);
+const offers = getOffers(5);
 
 export default offers;
 

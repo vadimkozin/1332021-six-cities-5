@@ -4,13 +4,15 @@ import {RATING_STAR_MAX} from '../../const';
 
 const OfferCard = (props) => {
   const {onHover, offer} = props;
-  // const rating = Math.round(offer.rating);
-  // const ratingProc = offer.rating / 5 * 100;
-  // console.log(`offer.rating: `, offer.rating, ` ratingProc: `, ratingProc);
   const ratingStyle = {width: offer.rating / RATING_STAR_MAX * 100 + `%`};
 
+  const handleCardOver = (evt) => {
+    evt.preventDefault();
+    onHover(offer);
+  };
+
   return (
-    <article className="cities__place-card place-card" onMouseOver={onHover(offer)}>
+    <article className="cities__place-card place-card" onMouseOver={handleCardOver}>
       {offer.isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
@@ -19,7 +21,7 @@ const OfferCard = (props) => {
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           {/* <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image" /> */}
-          <img className="place-card__image" src={offer.picture.src} width="260" height="200" alt={offer.picture.alt} />
+          <img className="place-card__image" src={offer.pictures[0].src} width="260" height="200" alt={offer.pictures[0].alt} />
         </a>
       </div>
       <div className="place-card__info">

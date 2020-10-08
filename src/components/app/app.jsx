@@ -9,13 +9,12 @@ import {AppType} from '../../types/types';
 
 const App = (props) => {
   const {offers, reviews, numberOffer} = props;
-  console.log(offers);
 
   return (
     <BrowserRouter>
       <Switch>
         {/* <Route exact path="/" render={(props) => <MainPage numberOffer={numberOffer} {...props} />}></Route> */}
-        <Route>
+        <Route exact path="/">
           <MainPage numberOffer={numberOffer} offers={offers}/>
         </Route>
         <Route exact path='/login' component={LoginPage}></Route>

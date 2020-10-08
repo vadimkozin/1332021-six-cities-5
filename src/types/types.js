@@ -1,12 +1,7 @@
-// import {shape, func, number, bool, string, array, oneOf, arrayOf, objectOf, instanceOf} from 'prop-types';
-import {shape, func, number, bool, string, oneOf, objectOf, instanceOf, arrayOf} from 'prop-types';
+import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
 import {TypesHousing} from '../const';
 
 const NUMBER_RENTAL_OFFER = number.isRequired;
-
-export const MainPageType = {
-  numberOffer: NUMBER_RENTAL_OFFER,
-};
 
 const Picture = {
   src: string.isRequired,
@@ -25,10 +20,10 @@ const OfferCard = {
 
 export const OfferCardType = {
   onHover: func.isRequired,
-  offer: objectOf(shape(OfferCard)).isRequired,
+  offer: shape(OfferCard).isRequired,
 };
 
-export const OffersCardType = {
+export const OfferListType = {
   offers: arrayOf(shape(OfferCard)).isRequired,
 };
 
@@ -44,18 +39,13 @@ export const ReviewsType = {
   reviews: arrayOf(ReviewType).isRequired,
 };
 
-// an array of a particular shape.
-// ReactComponent.propTypes = {
-//   arrayWithShape: arrayOf(shape({
-//     color: string.isRequired,
-//     fontSize: number.isRequired,
-//   })).isRequired,
-// };
-
 export const AppType = {
   numberOffer: NUMBER_RENTAL_OFFER,
   offers: arrayOf(shape(OfferCard)).isRequired,
   reviews: arrayOf(shape(ReviewType)).isRequired,
 };
 
-
+export const MainPageType = {
+  numberOffer: NUMBER_RENTAL_OFFER,
+  offers: arrayOf(shape(OfferCard)).isRequired,
+};
