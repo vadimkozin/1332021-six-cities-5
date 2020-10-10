@@ -55,7 +55,7 @@ export const OfferListType = {
   onOfferClick: func.isRequired,
 };
 
-export const ReviewType = {
+const ReviewType = {
   avatar: string.isRequired,
   name: string.isRequired,
   rating: number.isRequired,
@@ -64,7 +64,7 @@ export const ReviewType = {
 };
 
 export const ReviewsType = {
-  reviews: arrayOf(ReviewType).isRequired,
+  reviews: arrayOf(shape(ReviewType)).isRequired,
 };
 
 export const AppType = {
@@ -83,4 +83,9 @@ export const RoomPageType = {
   offers: arrayOf(shape(OfferCard)).isRequired,
   reviews: arrayOf(shape(ReviewType)).isRequired,
   offerId: string.isRequired,
+};
+
+export const RatingStarsType = {
+  className: string.isRequired,
+  rating: number.isRequired,
 };

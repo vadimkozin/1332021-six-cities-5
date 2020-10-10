@@ -1,6 +1,6 @@
 import {AvatarGenerator} from 'random-avatar-generator';
 import {TypesHousing} from '../const';
-import {UnicId} from '../utils';
+import {UniqId} from '../utils';
 
 const TITLES = [
   `Beautiful studio at great location`,
@@ -62,15 +62,6 @@ export const getRandomInteger = (min = 0, max = 0) => Math.floor(Math.random() *
 
 export const getRandomFloat = (min = 0, max = 0, fixed = 2) => Number(((Math.random() * (max - min)) + min).toFixed(fixed));
 
-// добавляет ведущие нули: ( '2' => '02')
-// const addZeros = (number, digitsInNumber = 2) => {
-//   let n = String(number);
-//   while (n.length < digitsInNumber) {
-//     n = `0` + n;
-//   }
-//   return n;
-// };
-
 export const getRandomFrom = (array) => {
   const index = getRandomInteger(0, array.length - 1);
   return array[index];
@@ -112,7 +103,7 @@ const getRandomOwner = () => {
   };
 };
 
-const uniqId = new UnicId();
+const uniqId = new UniqId();
 
 const getOffers = (count) => {
   return Array(count).fill().map(() => ({
