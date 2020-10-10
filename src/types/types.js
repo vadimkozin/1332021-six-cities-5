@@ -21,10 +21,12 @@ const OfferCard = {
 export const OfferCardType = {
   onHover: func.isRequired,
   offer: shape(OfferCard).isRequired,
+  onOfferClick: func.isRequired,
 };
 
 export const OfferListType = {
   offers: arrayOf(shape(OfferCard)).isRequired,
+  onOfferClick: func.isRequired,
 };
 
 export const ReviewType = {
@@ -48,4 +50,11 @@ export const AppType = {
 export const MainPageType = {
   numberOffer: NUMBER_RENTAL_OFFER,
   offers: arrayOf(shape(OfferCard)).isRequired,
+  onOfferClick: func.isRequired,
+};
+
+export const RoomPageType = {
+  offers: arrayOf(shape(OfferCard)).isRequired,
+  reviews: arrayOf(shape(ReviewType)).isRequired,
+  offerId: string.isRequired,
 };

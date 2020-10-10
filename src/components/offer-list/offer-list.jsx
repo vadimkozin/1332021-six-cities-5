@@ -12,15 +12,14 @@ class OfferList extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
-    // console.log(`offerList:`, offers);
+    const {offers, onOfferClick} = this.props;
 
     const offerList = offers.map((offer) => (
       <OfferCard
         key={offer.id}
         offer={offer}
+        onOfferClick={onOfferClick}
         onHover={(offerActive) => {
-          console.log(`::`, offerActive.id);
           this.setState({
             offer: offerActive,
           });

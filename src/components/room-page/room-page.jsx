@@ -1,6 +1,10 @@
 import React from 'react';
+import {RoomPageType} from '../../types/types';
 
-const RoomPage = () => {
+const RoomPage = (props) => {
+  const {offers, reviews, offerId} = props;
+  console.log(`props:`, props);
+
   return (
     <div className="page">
       <header className="header">
@@ -282,5 +286,7 @@ const RoomPage = () => {
     </div>
   );
 };
+
+RoomPage.propTypes = RoomPageType;
 
 export default RoomPage;

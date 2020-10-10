@@ -3,7 +3,7 @@ import {MainPageType} from '../../types/types';
 import OfferList from '../offer-list/offer-list';
 
 const MainPage = (props) => {
-  const {numberOffer, offers} = props;
+  const {numberOffer, offers, onOfferClick} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -98,7 +98,7 @@ const MainPage = (props) => {
               </form>
               <div className="cities__places-list places__list tabs__content">
 
-                <OfferList offers={offers}></OfferList>
+                <OfferList offers={offers} onOfferClick={onOfferClick}></OfferList>
 
                 {/* <article className="cities__place-card place-card">
                   <div className="place-card__mark">

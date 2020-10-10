@@ -120,7 +120,7 @@ const getOffers = (count) => {
     description: getRandomFrom(DESCRIPTIONS),
     isPremium: Boolean(getRandomInteger(0, 1)),
     typeHousing: getRandomType(),
-    rating: getRandomFloat(1, 5),
+    rating: getRandomFloat(0, 5),
     bedroomsNumber: getRandomInteger(1, 5),
     guestsMax: getRandomInteger(1, 3),
     price: getRandomInteger(50, 700),
