@@ -9,7 +9,7 @@ const Picture = {
 };
 
 const OfferCard = {
-  id: string.isRequired,
+  id: number.isRequired,
   pictures: arrayOf(shape(Picture)).isRequired,
   title: string.isRequired,
   isPremium: bool.isRequired,

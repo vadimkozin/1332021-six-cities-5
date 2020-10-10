@@ -1,6 +1,6 @@
-import {nanoid} from 'nanoid';
 import {AvatarGenerator} from 'random-avatar-generator';
 import {TypesHousing} from '../const';
+import {UnicId} from '../utils';
 
 const TITLES = [
   `Beautiful studio at great location`,
@@ -112,9 +112,12 @@ const getRandomOwner = () => {
   };
 };
 
+const uniqId = new UnicId();
+
 const getOffers = (count) => {
   return Array(count).fill().map(() => ({
-    id: nanoid(8),
+    // id: nanoid(8),
+    id: uniqId.next,
     pictures: getRandomPictures(3, 5),
     title: getRandomFrom(TITLES),
     description: getRandomFrom(DESCRIPTIONS),
