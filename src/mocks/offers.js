@@ -91,7 +91,7 @@ const getRandomType = () => {
   const keys = Object.keys(TypesHousing);
   const index = getRandomInteger(0, keys.length - 1);
 
-  return keys[index].name;
+  return TypesHousing[keys[index]].name;
 };
 
 const getRandomPictures = (from = 1, to = 5) => {
@@ -116,9 +116,8 @@ const uniqId = new UnicId();
 
 const getOffers = (count) => {
   return Array(count).fill().map(() => ({
-    // id: nanoid(8),
     id: uniqId.next,
-    pictures: getRandomPictures(3, 5),
+    pictures: getRandomPictures(3, 10),
     title: getRandomFrom(TITLES),
     description: getRandomFrom(DESCRIPTIONS),
     isPremium: Boolean(getRandomInteger(0, 1)),

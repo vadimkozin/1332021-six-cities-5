@@ -2,16 +2,14 @@ export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `
 
 export const RATING_STAR_MAX = 5;
 
-// export const TypesHousing = {
-//   APARTMENT: `Apartment`,
-//   ROOM: `Private Room`,
-//   HOUSE: `House`,
-//   HOTEL: `Hotel`
-// };
+export const OFFER_PICTUTE_MAX = 6;
+
+export const REVIEW_OUTPUT_MAX = 10;
+
 
 export const TypesHousing = {
   APARTMENT: {name: `apartment`, view: `Apartment`},
-  ROOM: {name: `room`, view: `Private Roo`},
+  ROOM: {name: `room`, view: `Private Room`},
   HOUSE: {name: `house`, view: `House`},
   HOTEL: {name: `hotel`, view: `Hotel`}
 };

@@ -8,14 +8,40 @@ const Picture = {
   alt: string.isRequired,
 };
 
+export const HomeOwner = {
+  avatar: string.isRequired,
+  name: string.isRequired,
+  isSuper: bool.isRequired,
+};
+
+export const HomeOwnerType = {
+  owner: shape(HomeOwner).isRequired,
+  description: string.isRequired,
+};
+
 const OfferCard = {
   id: number.isRequired,
   pictures: arrayOf(shape(Picture)).isRequired,
   title: string.isRequired,
   isPremium: bool.isRequired,
-  typeHousing: oneOf([...Object.keys(TypesHousing).map((key) => key.name)]),
+  typeHousing: oneOf([...Object.keys(TypesHousing).map((key) => TypesHousing[key].name)]),
   rating: number.isRequired,
   price: number.isRequired,
+
+  description: string.isRequired,
+  bedroomsNumber: number.isRequired,
+  guestsMax: number.isRequired,
+  householdItems: arrayOf(string).isRequired,
+  owner: shape(HomeOwner).isRequired,
+};
+
+export const OfferFullType__ = {
+  offer: shape(OfferCard).isRequired,
+  description: string.isRequired,
+  bedroomsNumber: number.isRequired,
+  guestsMax: number.isRequired,
+  householdItems: arrayOf(string).isRequired,
+  owner: shape(HomeOwner).isRequired,
 };
 
 export const OfferCardType = {
