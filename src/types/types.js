@@ -38,15 +38,6 @@ const OfferCard = {
   owner: shape(HomeOwner).isRequired,
 };
 
-export const OfferFullType__ = {
-  offer: shape(OfferCard).isRequired,
-  description: string.isRequired,
-  bedroomsNumber: number.isRequired,
-  guestsMax: number.isRequired,
-  householdItems: arrayOf(string).isRequired,
-  owner: shape(HomeOwner).isRequired,
-};
-
 export const OfferCardType = {
   onHover: func.isRequired,
   offer: shape(OfferCard).isRequired,
