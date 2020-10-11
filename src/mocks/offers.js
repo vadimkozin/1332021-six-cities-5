@@ -1,5 +1,5 @@
 import {AvatarGenerator} from 'random-avatar-generator';
-import {TypesHousing} from '../const';
+import {TOWNS, TypesHousing} from '../const';
 import {UniqId} from '../utils';
 
 const TITLES = [
@@ -119,6 +119,7 @@ const getOffers = (count) => {
     price: getRandomInteger(50, 700),
     householdItems: getRandomPartArray(HOUSEHOLD_ITEMS),
     owner: getRandomOwner(),
+    town: getRandomFrom(TOWNS),
   }));
 };
 

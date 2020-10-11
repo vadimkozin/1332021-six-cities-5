@@ -1,5 +1,5 @@
 import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
-import {TypesHousing} from '../const';
+import {TOWNS, TypesHousing} from '../const';
 
 const NUMBER_RENTAL_OFFER = number.isRequired;
 
@@ -27,6 +27,8 @@ const OfferCard = {
   typeHousing: oneOf([...Object.keys(TypesHousing).map((key) => TypesHousing[key].name)]),
   rating: number.isRequired,
   price: number.isRequired,
+
+  town: oneOf(TOWNS).isRequired,
 
   description: string.isRequired,
   bedroomsNumber: number.isRequired,
