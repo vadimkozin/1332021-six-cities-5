@@ -29,6 +29,7 @@ const OfferCard = {
   price: number.isRequired,
 
   town: oneOf(TOWNS).isRequired,
+  isFavorite: bool.isRequired,
 
   description: string.isRequired,
   bedroomsNumber: number.isRequired,
@@ -88,6 +89,10 @@ export const RoomPageType = {
 };
 
 export const RatingStarsType = {
-  className: string.isRequired,
+  className: string,
   rating: number.isRequired,
+};
+
+export const FavoritesPageType = {
+  offers: arrayOf(shape(OfferCard)).isRequired,
 };

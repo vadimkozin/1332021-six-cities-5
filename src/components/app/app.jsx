@@ -24,7 +24,15 @@ const App = (props) => {
           )}
         />
         <Route exact path='/login' component={LoginPage}></Route>
-        <Route exact path='/favorites' component={FavoritesPage}></Route>
+
+        {/* <Route exact path='/favorites' component={FavoritesPage}></Route> */}
+
+        <Route exact path='/favorites'>
+          <FavoritesPage
+            offers={offers}
+          />
+        </Route>
+
         <Route exact path='/offer/:id'
           render={({match}) => (
             <RoomPage

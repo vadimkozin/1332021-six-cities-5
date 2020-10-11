@@ -29,6 +29,11 @@ export class UniqId {
   }
 }
 
+// уникальные элементы массива
+export const uniqArray = (array) => {
+  return Array.from(new Set(array));
+};
+
 // форматривание дат: my:'October 2020' ymd:'2020-10-25'
 export const formatDate = {
   my: (date) => `${MONTHS[date.getMonth()]} ${date.getFullYear()}`,
@@ -48,3 +53,6 @@ export const sortTown = (a, b) => {
   }
   return 0;
 };
+
+// фильтры
+export const filterByTown = (offers, town) => offers.filter((offer) => offer.town === town);
