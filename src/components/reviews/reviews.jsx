@@ -1,4 +1,5 @@
 import React from 'react';
+import SendCommentForm from '../send-comment-form/send-comment-form';
 import RatingStars from '../rating-stars/rating-stars';
 import {ReviewsType} from '../../types/types';
 import {REVIEW_OUTPUT_MAX} from '../../const';
@@ -40,6 +41,7 @@ const Reviews = (props) => {
       <ul className="reviews__list">
         {reviewsList}
       </ul>
+      <SendCommentForm />
     </section>
   );
 };

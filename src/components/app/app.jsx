@@ -13,7 +13,6 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        {/* <Route exact path="/" render={(props) => <MainPage numberOffer={numberOffer} {...props} />}></Route> */}
         <Route exact path="/"
           render={({history}) => (
             <MainPage
@@ -24,15 +23,11 @@ const App = (props) => {
           )}
         />
         <Route exact path='/login' component={LoginPage}></Route>
-
-        {/* <Route exact path='/favorites' component={FavoritesPage}></Route> */}
-
         <Route exact path='/favorites'>
           <FavoritesPage
             offers={offers}
           />
         </Route>
-
         <Route exact path='/offer/:id'
           render={({match}) => (
             <RoomPage
@@ -42,7 +37,6 @@ const App = (props) => {
             />
           )}
         />
-
         <Route component={NotFound}></Route>
       </Switch>
     </BrowserRouter>
