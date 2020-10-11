@@ -1,16 +1,15 @@
 import React from 'react';
 import HomeOwner from '../home-owner/home-owner';
 import Reviews from '../reviews/reviews';
+import RatingStars from '../rating-stars/rating-stars';
 import {RoomPageType} from '../../types/types';
 import {OFFER_PICTUTE_MAX} from '../../const';
-import {getRatingProc, getHousingView} from '../../utils';
+import {getHousingView} from '../../utils';
 
 const RoomPage = (props) => {
   const {offers, reviews, offerId} = props;
 
   const offer = offers.find((offerCurrent) => offerCurrent.id === Number(offerId));
-
-  const ratingStyle = {width: getRatingProc(offer.rating) + `%`};
 
   const photoList = offer.pictures
     .slice(0, Math.min(offer.pictures.length, OFFER_PICTUTE_MAX))
@@ -82,14 +81,8 @@ const RoomPage = (props) => {
                 </button>
               </div>
               <div className="property__rating rating">
-                <div className="property__stars rating__stars">
-                  {/* <span style={{width: `80%`}}></span> */}
-                  <span style={ratingStyle}></span>
-                  <span className="visually-hidden">Rating</span>
-                </div>
-                {/* <span className="property__rating-value rating__value">4.8</span> */}
+                <RatingStars className={`property__stars rating__stars`} rating={offer.rating}/>
                 <span className="property__rating-value rating__value">{offer.rating.toFixed(1)}</span>
-
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">

@@ -1,11 +1,9 @@
 import React from 'react';
+import RatingStars from '../rating-stars/rating-stars';
 import {OfferCardType} from '../../types/types';
-import {RATING_STAR_MAX} from '../../const';
 
 const OfferCard = (props) => {
   const {onHover, offer, onOfferClick} = props;
-  const ratingProc = Math.round(offer.rating / RATING_STAR_MAX * 100);
-  const ratingStyle = {width: ratingProc + `%`};
 
   const _handleCardOver = (evt) => {
     evt.preventDefault();
@@ -45,11 +43,11 @@ const OfferCard = (props) => {
           </button>
         </div>
         <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            {/* <span style={{width: `80%`}}></span> */}
+          {/* <div className="place-card__stars rating__stars">
             <span style={ratingStyle}></span>
             <span className="visually-hidden">Rating</span>
-          </div>
+          </div> */}
+          <RatingStars rating={offer.rating}/>
         </div>
         <h2 className="place-card__name">
           {/* <a href="#">Beautiful &amp; luxurious apartment at great location</a> */}
