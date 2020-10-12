@@ -2,11 +2,7 @@ import {MONTHS, RATING_STARS_MAX, TypesHousing} from './const';
 
 // добавляет ведущие нули: ( '2' => '02')
 const addZeros = (number, digitsInNumber = 2) => {
-  let n = String(number);
-  while (n.length < digitsInNumber) {
-    n = `0` + n;
-  }
-  return n;
+  return `${number}`.padStart(digitsInNumber, `0`);
 };
 
 // рейтинг в процентах
@@ -21,14 +17,13 @@ export const getHousingView = (name) => {
 };
 
 // уникальные id (пока нет сервера)
-export class UniqId {
-  constructor(start = 0) {
-    this.start = start;
-  }
-  get next() {
-    return this.start++;
-  }
-}
+export const getUUIDGenerator = (start = 0) => {
+  let id = start;
+
+  return () => id++;
+};
+
+export const uuid = getUUIDGenerator();
 
 // уникальные элементы массива
 export const uniqArray = (array) => {
@@ -42,18 +37,11 @@ export const formatDate = {
 };
 
 // сортировка
-export const sortPriceLowToHight = (a, b) => a.price - b.price;
-export const sortPriceHightToLow = (a, b) => b.price - a.price;
-export const sortRatedHightToLow = (a, b) => b.rating - a.rating;
-export const sortTown = (a, b) => {
-  if (a.town > b.town) {
-    return 1;
-  }
-  if (a.town < b.town) {
-    return -1;
-  }
-  return 0;
+export const getSorter = (fieldName, order = `asc`) => {
+  return (order === `asc`)
+    ? (a, b) => a[fieldName] - b[fieldName]
+    : (a, b) => b[fieldName] - a[fieldName];
 };
 
-// фильтры
-export const filterByTown = (offers, town) => offers.filter((offer) => offer.town === town);
+// фильтр
+export const filter = (collection, fieldName, value) => collection.filter((it) => it[fieldName] === value);

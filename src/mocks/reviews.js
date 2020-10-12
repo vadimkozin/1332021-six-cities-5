@@ -1,18 +1,18 @@
 import {AvatarGenerator} from 'random-avatar-generator';
-import {NAMES, DESCRIPTIONS, getRandomFrom, getRandomFloat} from '../mocks/offers';
-import {UniqId} from '../utils';
+import {NAMES, DESCRIPTIONS, getRandomFrom, getRandomFloat, getRandomDate} from '../mocks/offers';
+import {getUUIDGenerator} from '../utils';
 
 const generator = new AvatarGenerator();
 
-const uniqId = new UniqId();
+const uuid = getUUIDGenerator();
 
 const getReviews = (count) => {
   return Array(count).fill().map(() => ({
-    id: uniqId.next,
+    id: uuid(),
     avatar: generator.generateRandomAvatar(),
     name: getRandomFrom(NAMES),
     rating: getRandomFloat(1, 5),
-    date: new Date(),
+    date: getRandomDate(),
     text: getRandomFrom(DESCRIPTIONS),
   }));
 };

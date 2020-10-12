@@ -3,7 +3,7 @@ import SendCommentForm from '../send-comment-form/send-comment-form';
 import RatingStars from '../rating-stars/rating-stars';
 import {REVIEWS_TYPE} from '../../types/types';
 import {REVIEW_OUTPUT_MAX} from '../../const';
-import {formatDate} from '../../utils';
+import {formatDate, getSorter} from '../../utils';
 
 const Reviews = (props) => {
   const {reviews} = props;
@@ -11,6 +11,7 @@ const Reviews = (props) => {
 
   const reviewsList = reviews
     .slice(0, Math.min(reviews.length, REVIEW_OUTPUT_MAX))
+    .sort(getSorter(`date`, `des`))
     .map((review) => {
       return (
         <li key={`${review.id}`} className="reviews__item">

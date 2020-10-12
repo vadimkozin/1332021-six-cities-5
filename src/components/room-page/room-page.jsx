@@ -3,7 +3,7 @@ import HomeOwner from '../home-owner/home-owner';
 import Reviews from '../reviews/reviews';
 import RatingStars from '../rating-stars/rating-stars';
 import {ROOM_PAGE_TYPE} from '../../types/types';
-import {OFFER_PICTUTE_MAX} from '../../const';
+import {OFFER_PICTURE_MAX} from '../../const';
 import {getHousingView} from '../../utils';
 
 const RoomPage = (props) => {
@@ -12,7 +12,7 @@ const RoomPage = (props) => {
   const offer = offers.find((offerCurrent) => offerCurrent.id === Number(offerId));
 
   const photoList = offer.pictures
-    .slice(0, Math.min(offer.pictures.length, OFFER_PICTUTE_MAX))
+    .slice(0, Math.min(offer.pictures.length, OFFER_PICTURE_MAX))
     .map((picture, i) => {
       return (
         <div key={`${i}-${picture.src}`} className="property__image-wrapper">

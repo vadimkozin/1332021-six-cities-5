@@ -4,7 +4,7 @@ export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `
 
 export const RATING_STARS_MAX = 5;
 
-export const OFFER_PICTUTE_MAX = 6;
+export const OFFER_PICTURE_MAX = 6;
 
 export const REVIEW_OUTPUT_MAX = 10;
 

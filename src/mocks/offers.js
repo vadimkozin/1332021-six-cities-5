@@ -1,6 +1,6 @@
 import {AvatarGenerator} from 'random-avatar-generator';
 import {TOWNS, TypesHousing} from '../const';
-import {UniqId} from '../utils';
+import {getUUIDGenerator} from '../utils';
 
 const TITLES = [
   `Beautiful studio at great location`,
@@ -42,7 +42,7 @@ export const NAMES = [
   `ivan`,
   `petr`,
   `alex`,
-  `angelina`,
+  `angela`,
   `maksim`,
   `vadim`,
   `anton`,
@@ -65,6 +65,12 @@ export const getRandomFloat = (min = 0, max = 0, fixed = 2) => Number(((Math.ran
 export const getRandomFrom = (array) => {
   const index = getRandomInteger(0, array.length - 1);
   return array[index];
+};
+
+export const getRandomDate = (daysBeforeMax = 31) => {
+  const hours = getRandomInteger(1, 24 * daysBeforeMax);
+
+  return new Date(Date.now() - 1000 * 3600 * hours);
 };
 
 const getRandomPartArray = (array) => {
@@ -103,11 +109,11 @@ const getRandomOwner = () => {
   };
 };
 
-const uniqId = new UniqId();
+const uuid = getUUIDGenerator();
 
 const getOffers = (count) => {
   return Array(count).fill().map(() => ({
-    id: uniqId.next,
+    id: uuid(),
     pictures: getRandomPictures(3, 10),
     title: getRandomFrom(TITLES),
     description: getRandomFrom(DESCRIPTIONS),
