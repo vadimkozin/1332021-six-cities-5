@@ -1,6 +1,6 @@
 import React from 'react';
 import RatingStars from '../rating-stars/rating-stars';
-import {FavoritesPageType} from '../../types/types';
+import {FAVORITES_PAGE_TYPE} from '../../types/types';
 import {uniqArray, getHousingView} from '../../utils';
 
 const FavoritesPage = (props) => {
@@ -8,16 +8,16 @@ const FavoritesPage = (props) => {
 
   const offersFavorite = offers.filter((offer) => offer.isFavorite);
   const towns = uniqArray(offersFavorite.map((offer) => offer.town));
-  towns.sort();
+  const sortedTowns = [...towns].sort();
 
-  const favoriteListByTown = (town) => {
+  const getFavoriteList = (town) => {
     const offersByTown = offersFavorite.filter((offer) => offer.town === town);
 
     return offersByTown.map((offer) => (
       <article key={`${offer.id}`} className="favorites__card place-card">
         <div className="favorites__image-wrapper place-card__image-wrapper">
           <a href="#">
-            <img className="place-card__image" src={offer.pictures[0].src} width="150" height="110" alt={offer.pictures[0].alt} />
+            <img className="place-card__image" {...offer.pictures[0]} width="150" height="110"/>
           </a>
         </div>
         <div className="favorites__card-info place-card__info">
@@ -45,7 +45,7 @@ const FavoritesPage = (props) => {
     ));
   };
 
-  const favoriteList = towns.map((town, i) => {
+  const favoriteList = sortedTowns.map((town, i) => {
     return (
       <li key={`${i}-${town}`} className="favorites__locations-items">
         <div className="favorites__locations locations locations--current">
@@ -56,7 +56,7 @@ const FavoritesPage = (props) => {
           </div>
         </div>
         <div className="favorites__places">
-          {favoriteListByTown(town)}
+          {getFavoriteList(town)}
         </div>
       </li>
     );
@@ -106,6 +106,6 @@ const FavoritesPage = (props) => {
   );
 };
 
-FavoritesPage.propTypes = FavoritesPageType;
+FavoritesPage.propTypes = FAVORITES_PAGE_TYPE;
 
 export default FavoritesPage;

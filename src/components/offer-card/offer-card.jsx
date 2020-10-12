@@ -1,6 +1,6 @@
 import React from 'react';
 import RatingStars from '../rating-stars/rating-stars';
-import {OfferCardType} from '../../types/types';
+import {OFFER_CARD_TYPE} from '../../types/types';
 
 const OfferCard = (props) => {
   const {onHover, offer, onOfferClick} = props;
@@ -60,6 +60,6 @@ const OfferCard = (props) => {
   );
 };
 
-OfferCard.propTypes = OfferCardType;
+OfferCard.propTypes = OFFER_CARD_TYPE;
 
 export default OfferCard;

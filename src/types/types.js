@@ -3,25 +3,25 @@ import {TOWNS, TypesHousing} from '../const';
 
 const NUMBER_RENTAL_OFFER = number.isRequired;
 
-const Picture = {
+const PICTURE = {
   src: string.isRequired,
   alt: string.isRequired,
 };
 
-export const HomeOwner = {
+export const HOME_OWNER = {
   avatar: string.isRequired,
   name: string.isRequired,
   isSuper: bool.isRequired,
 };
 
-export const HomeOwnerType = {
-  owner: shape(HomeOwner).isRequired,
+export const HOME_OWNER_TYPE = {
+  owner: shape(HOME_OWNER).isRequired,
   description: string.isRequired,
 };
 
-const OfferCard = {
+const OFFER_CARD = {
   id: number.isRequired,
-  pictures: arrayOf(shape(Picture)).isRequired,
+  pictures: arrayOf(shape(PICTURE)).isRequired,
   title: string.isRequired,
   isPremium: bool.isRequired,
   typeHousing: oneOf([...Object.keys(TypesHousing).map((key) => TypesHousing[key].name)]),
@@ -35,21 +35,21 @@ const OfferCard = {
   bedroomsNumber: number.isRequired,
   guestsMax: number.isRequired,
   householdItems: arrayOf(string).isRequired,
-  owner: shape(HomeOwner).isRequired,
+  owner: shape(HOME_OWNER).isRequired,
 };
 
-export const OfferCardType = {
+export const OFFER_CARD_TYPE = {
   onHover: func.isRequired,
-  offer: shape(OfferCard).isRequired,
+  offer: shape(OFFER_CARD).isRequired,
   onOfferClick: func.isRequired,
 };
 
-export const OfferListType = {
-  offers: arrayOf(shape(OfferCard)).isRequired,
+export const OFFER_LIST_TYPE = {
+  offers: arrayOf(shape(OFFER_CARD)).isRequired,
   onOfferClick: func.isRequired,
 };
 
-const ReviewType = {
+const REVIEW_TYPE = {
   avatar: string.isRequired,
   name: string.isRequired,
   rating: number.isRequired,
@@ -57,33 +57,33 @@ const ReviewType = {
   text: string.isRequired,
 };
 
-export const ReviewsType = {
-  reviews: arrayOf(shape(ReviewType)).isRequired,
+export const REVIEWS_TYPE = {
+  reviews: arrayOf(shape(REVIEW_TYPE)).isRequired,
 };
 
-export const AppType = {
+export const APP_TYPE = {
   numberOffer: NUMBER_RENTAL_OFFER,
-  offers: arrayOf(shape(OfferCard)).isRequired,
-  reviews: arrayOf(shape(ReviewType)).isRequired,
+  offers: arrayOf(shape(OFFER_CARD)).isRequired,
+  reviews: arrayOf(shape(REVIEW_TYPE)).isRequired,
 };
 
-export const MainPageType = {
+export const MAIN_PAGE_TYPE = {
   numberOffer: NUMBER_RENTAL_OFFER,
-  offers: arrayOf(shape(OfferCard)).isRequired,
+  offers: arrayOf(shape(OFFER_CARD)).isRequired,
   onOfferClick: func.isRequired,
 };
 
-export const RoomPageType = {
-  offers: arrayOf(shape(OfferCard)).isRequired,
-  reviews: arrayOf(shape(ReviewType)).isRequired,
+export const ROOM_PAGE_TYPE = {
+  offers: arrayOf(shape(OFFER_CARD)).isRequired,
+  reviews: arrayOf(shape(REVIEW_TYPE)).isRequired,
   offerId: string.isRequired,
 };
 
-export const RatingStarsType = {
+export const RATING_STARS_TYPE = {
   className: string,
   rating: number.isRequired,
 };
 
-export const FavoritesPageType = {
-  offers: arrayOf(shape(OfferCard)).isRequired,
+export const FAVORITES_PAGE_TYPE = {
+  offers: arrayOf(shape(OFFER_CARD)).isRequired,
 };

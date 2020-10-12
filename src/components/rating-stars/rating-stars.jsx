@@ -1,13 +1,10 @@
 import React from 'react';
-import {RATING_STAR_MAX} from '../../const';
-import {RatingStarsType} from '../../types/types';
+import {RATING_STARS_TYPE} from '../../types/types';
+import {getRatingProc} from '../../utils';
 
 const RatingStars = (props) => {
   const {className = `place-card__stars rating__stars`, rating} = props;
-
-  // const ratingProc = Math.round(rating / RATING_STAR_MAX * 100); // 0, 1, 2, ... 100
-  const ratingProc = Math.round(rating) / RATING_STAR_MAX * 100; // 0, 20, 40, 60, 80, 100
-  const ratingStyle = {width: ratingProc + `%`};
+  const ratingStyle = {width: getRatingProc(rating) + `%`};
 
   return (
     <div className={className}>
@@ -17,7 +14,6 @@ const RatingStars = (props) => {
   );
 };
 
-
-RatingStars.propTypes = RatingStarsType;
+RatingStars.propTypes = RATING_STARS_TYPE;
 
 export default RatingStars;

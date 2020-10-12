@@ -2,7 +2,7 @@ export const TOWNS = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `D
 
 export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
 
-export const RATING_STAR_MAX = 5;
+export const RATING_STARS_MAX = 5;
 
 export const OFFER_PICTUTE_MAX = 6;
 

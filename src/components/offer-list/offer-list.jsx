@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
-import {OfferListType} from '../../types/types';
 import OfferCard from '../offer-card/offer-card';
+import {OFFER_LIST_TYPE} from '../../types/types';
 
 class OfferList extends PureComponent {
   constructor(props) {
@@ -35,6 +35,6 @@ class OfferList extends PureComponent {
   }
 }
 
-OfferList.propTypes = OfferListType;
+OfferList.propTypes = OFFER_LIST_TYPE;
 
 export default OfferList;

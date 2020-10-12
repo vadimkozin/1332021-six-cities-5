@@ -1,5 +1,5 @@
 import React from 'react';
-import {HomeOwnerType} from '../../types/types';
+import {HOME_OWNER_TYPE} from '../../types/types';
 
 const HomeOwner = (props) => {
   const {owner, description} = props;
@@ -33,6 +33,6 @@ const HomeOwner = (props) => {
   );
 };
 
-HomeOwner.propTypes = HomeOwnerType;
+HomeOwner.propTypes = HOME_OWNER_TYPE;
 
 export default HomeOwner;

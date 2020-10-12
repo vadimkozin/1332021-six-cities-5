@@ -2,7 +2,7 @@ import React from 'react';
 import HomeOwner from '../home-owner/home-owner';
 import Reviews from '../reviews/reviews';
 import RatingStars from '../rating-stars/rating-stars';
-import {RoomPageType} from '../../types/types';
+import {ROOM_PAGE_TYPE} from '../../types/types';
 import {OFFER_PICTUTE_MAX} from '../../const';
 import {getHousingView} from '../../utils';
 
@@ -70,7 +70,6 @@ const RoomPage = (props) => {
               }
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  {/* Beautiful &amp; luxurious studio at great location */}
                   {offer.title}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
@@ -86,20 +85,16 @@ const RoomPage = (props) => {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {/* Apartment */}
                   {getHousingView(offer.typeHousing)}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  {/* 3 Bedrooms */}
                   {offer.bedroomsNumber} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  {/* Max 4 adults */}
                   Max {offer.guestsMax} adults
                 </li>
               </ul>
               <div className="property__price">
-                {/* <b className="property__price-value">&euro;120</b> */}
                 <b className="property__price-value">&euro;{offer.price}</b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
@@ -224,6 +219,6 @@ const RoomPage = (props) => {
   );
 };
 
-RoomPage.propTypes = RoomPageType;
+RoomPage.propTypes = ROOM_PAGE_TYPE;
 
 export default RoomPage;

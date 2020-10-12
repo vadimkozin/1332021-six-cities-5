@@ -1,7 +1,7 @@
 import React from 'react';
 import SendCommentForm from '../send-comment-form/send-comment-form';
 import RatingStars from '../rating-stars/rating-stars';
-import {ReviewsType} from '../../types/types';
+import {REVIEWS_TYPE} from '../../types/types';
 import {REVIEW_OUTPUT_MAX} from '../../const';
 import {formatDate} from '../../utils';
 
@@ -46,6 +46,6 @@ const Reviews = (props) => {
   );
 };
 
-Reviews.propTypes = ReviewsType;
+Reviews.propTypes = REVIEWS_TYPE;
 
 export default Reviews;

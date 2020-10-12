@@ -5,7 +5,7 @@ import FavoritesPage from '../favorites-page/favorites-page';
 import LoginPage from '../login-page/login-page';
 import RoomPage from '../room-page/room-page';
 import NotFound from '../not-found/not-found';
-import {AppType} from '../../types/types';
+import {APP_TYPE} from '../../types/types';
 
 const App = (props) => {
   const {offers, reviews, numberOffer} = props;
@@ -43,6 +43,6 @@ const App = (props) => {
   );
 };
 
-App.propTypes = AppType;
+App.propTypes = APP_TYPE;
 
 export default App;
