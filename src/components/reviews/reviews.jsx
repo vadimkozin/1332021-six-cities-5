@@ -10,7 +10,7 @@ const Reviews = (props) => {
   const reviewsCount = reviews.length;
 
   const reviewsList = reviews
-    .slice(0, Math.min(reviews.length, REVIEW_OUTPUT_MAX))
+    .slice(0, Math.min(reviewsCount, REVIEW_OUTPUT_MAX))
     .sort(getSorter(`date`, `des`))
     .map((review) => {
       return (

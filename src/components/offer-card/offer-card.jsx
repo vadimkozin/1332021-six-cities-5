@@ -5,18 +5,18 @@ import {OFFER_CARD_TYPE} from '../../types/types';
 const OfferCard = (props) => {
   const {onHover, offer, onOfferClick} = props;
 
-  const _handleCardOver = (evt) => {
+  const handleCardOver = (evt) => {
     evt.preventDefault();
     onHover(offer);
   };
 
-  const _handleCardNameClick = (evt) => {
+  const handleCardNameClick = (evt) => {
     evt.preventDefault();
     onOfferClick(offer.id);
   };
 
   return (
-    <article className="cities__place-card place-card" onMouseOver={_handleCardOver}>
+    <article className="cities__place-card place-card" onMouseOver={handleCardOver}>
       {offer.isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
@@ -44,7 +44,7 @@ const OfferCard = (props) => {
           <RatingStars rating={offer.rating}/>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={_handleCardNameClick}>{offer.title}</a>
+          <a href="#" onClick={handleCardNameClick}>{offer.title}</a>
         </h2>
         <p className="place-card__type">{offer.typeHousing}</p>
       </div>

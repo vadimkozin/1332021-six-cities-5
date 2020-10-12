@@ -8,6 +8,11 @@ export const OFFER_PICTURE_MAX = 6;
 
 export const REVIEW_OUTPUT_MAX = 10;
 
+export const CommentSettings = {
+  TEXT_LENGTH_MIN: 50,
+  TEXT_LENGTH_MAX: 300,
+};
+
 export const TypesHousing = {
   APARTMENT: {name: `apartment`, view: `Apartment`},
   ROOM: {name: `room`, view: `Private Room`},

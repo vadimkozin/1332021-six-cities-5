@@ -1,6 +1,6 @@
 import {AvatarGenerator} from 'random-avatar-generator';
 import {TOWNS, TypesHousing} from '../const';
-import {getUUIDGenerator} from '../utils';
+import {getUUIDGenerator, uniqArray} from '../utils';
 
 const TITLES = [
   `Beautiful studio at great location`,
@@ -74,14 +74,10 @@ export const getRandomDate = (daysBeforeMax = 31) => {
 };
 
 const getRandomPartArray = (array) => {
-  const items = getRandomInteger(0, array.length - 1);
-  const indexes = [];
+  const itemsCount = getRandomInteger(0, array.length - 1);
 
-  for (let i = 0; i < items; i++) {
-    indexes[i] = getRandomInteger(0, array.length - 1);
-  }
-
-  return Array.from(new Set(indexes)).map((index) => array[index]);
+  return uniqArray(Array(itemsCount).fill()
+    .map(() => array[getRandomInteger(0, array.length - 1)]));
 };
 
 const getRandomType = () => {

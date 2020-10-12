@@ -38,10 +38,8 @@ export const formatDate = {
 
 // сортировка
 export const getSorter = (fieldName, order = `asc`) => {
-  return (order === `asc`)
-    ? (a, b) => a[fieldName] - b[fieldName]
-    : (a, b) => b[fieldName] - a[fieldName];
+  return (a, b) => (a[fieldName] - b[fieldName]) * (order === `asc` ? 1 : -1);
 };
 
 // фильтр
-export const filter = (collection, fieldName, value) => collection.filter((it) => it[fieldName] === value);
+export const filterBy = (collection, fieldName, value) => collection.filter((it) => it[fieldName] === value);
