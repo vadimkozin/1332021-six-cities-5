@@ -1,6 +1,22 @@
 import {AvatarGenerator} from 'random-avatar-generator';
-import {TOWNS, TypesHousing} from '../const';
+import {TypesHousing} from '../const';
 import {getUUIDGenerator, uniqArray} from '../utils';
+
+const COORDINATES_CITY_CENTERS = {
+  Paris: [48.856614, 2.3522219],
+  Cologne: [50.937531, 6.960278600000038],
+  Brussels: [50.8503396, 4.3517103],
+  Amsterdam: [52.3702157, 4.8951679],
+  Hamburg: [53.5510846, 9.99368179999999],
+  Dusseldorf: [51.2277411, 6.773455600000034],
+};
+
+const COORDINATES = [ // Amsterdam
+  [52.3909553943508, 4.85309666406198],
+  [52.369553943508, 4.85309666406198],
+  [52.3909553943508, 4.929309666406198],
+  [52.3809553943508, 4.939309666406198]
+];
 
 const TITLES = [
   `Beautiful studio at great location`,
@@ -105,6 +121,10 @@ const getRandomOwner = () => {
   };
 };
 
+export const getCityCenter = (cityName) => COORDINATES_CITY_CENTERS[cityName];
+
+let index = 0;
+
 const uuid = getUUIDGenerator();
 
 const getOffers = (count) => {
@@ -121,12 +141,13 @@ const getOffers = (count) => {
     price: getRandomInteger(50, 700),
     householdItems: getRandomPartArray(HOUSEHOLD_ITEMS),
     owner: getRandomOwner(),
-    town: getRandomFrom(TOWNS),
+    city: `Amsterdam`, // getRandomFrom(CITIES),
+    coordinates: COORDINATES[index++],
     isFavorite: Boolean(getRandomInteger(0, 1)),
   }));
 };
 
-const offers = getOffers(5);
+const offers = getOffers(COORDINATES.length);
 
 export default offers;
 
