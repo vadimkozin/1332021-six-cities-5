@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react';
 import leaflet from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import {MAP_TYPE} from '../../types/types';
 import {MAP_ZOOM_DEFAULT} from '../../const';
+import 'leaflet/dist/leaflet.css';
+import '../../../public/css/add.css';
 
 class Map extends PureComponent {
   constructor(props) {
@@ -43,7 +44,8 @@ class Map extends PureComponent {
   }
 
   render() {
-    return <div id="map" style={{height: `100vh`}} />;
+    // return <div id="map" style={{height: `100%`}} />;
+    return <div id="map" className={this.props.className} />;
   }
 }
 

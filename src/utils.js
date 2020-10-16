@@ -43,3 +43,12 @@ export const getSorter = (fieldName, order = `asc`) => {
 
 // фильтр
 export const filterBy = (collection, fieldName, value) => collection.filter((it) => it[fieldName] === value);
+
+// разделение пропсов на имя класа и остальное
+export const splitPropsOnClassNameAndRest = (props) => {
+  const {className = ``} = props;
+  const restProps = Object.assign({}, props);
+  delete restProps.className;
+
+  return [className, restProps];
+};

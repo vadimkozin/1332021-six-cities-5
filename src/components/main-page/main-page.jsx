@@ -1,6 +1,6 @@
 import React from 'react';
 import OfferList from '../offer-list/offer-list';
-import Map from '../map/map';
+import MapVertical from '../map-vertical/map-vertical';
 import {MAIN_PAGE_TYPE} from '../../types/types';
 import {filterBy} from '../../utils';
 import {getCityCenter} from '../../mocks/offers';
@@ -108,7 +108,7 @@ const MainPage = (props) => {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map
+                <MapVertical
                   center={getCityCenter(city)}
                   offerCoords={offersByCity.map((offer) => offer.coordinates)}
                 />
