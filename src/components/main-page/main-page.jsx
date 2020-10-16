@@ -110,7 +110,6 @@ const MainPage = (props) => {
               <section className="cities__map map">
                 <Map
                   center={getCityCenter(city)}
-                  zoom={12}
                   offerCoords={offersByCity.map((offer) => offer.coordinates)}
                 />
               </section>

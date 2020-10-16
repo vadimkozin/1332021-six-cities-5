@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {MAP_TYPE} from '../../types/types';
+import {MAP_ZOOM_DEFAULT} from '../../const';
 
 class Map extends PureComponent {
   constructor(props) {
@@ -9,7 +10,7 @@ class Map extends PureComponent {
 
     this.mapSetting = {
       center: props.center,
-      zoom: props.zoom || 12,
+      zoom: props.zoom || MAP_ZOOM_DEFAULT,
       zoomControl: props.zoomControl || false,
       marker: props.marker || true
     };

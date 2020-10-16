@@ -141,7 +141,7 @@ const getOffers = (count) => {
     price: getRandomInteger(50, 700),
     householdItems: getRandomPartArray(HOUSEHOLD_ITEMS),
     owner: getRandomOwner(),
-    city: `Amsterdam`, // getRandomFrom(CITIES),
+    city: `Amsterdam`,
     coordinates: COORDINATES[index++],
     isFavorite: Boolean(getRandomInteger(0, 1)),
   }));
