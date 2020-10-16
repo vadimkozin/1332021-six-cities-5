@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeOwner from '../home-owner/home-owner';
-import Reviews from '../reviews/reviews';
+import ReviewList from '../review-list/review-list';
 import RatingStars from '../rating-stars/rating-stars';
 import {ROOM_PAGE_TYPE} from '../../types/types';
 import {OFFER_PICTURE_MAX} from '../../const';
@@ -106,7 +106,7 @@ const RoomPage = (props) => {
               </div>
 
               <HomeOwner owner={offer.owner} description={offer.description}/>
-              <Reviews reviews={reviews} />
+              <ReviewList reviews={reviews} />
 
             </div>
           </div>
