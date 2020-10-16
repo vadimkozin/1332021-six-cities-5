@@ -2,14 +2,17 @@ import React from 'react';
 import HomeOwner from '../home-owner/home-owner';
 import ReviewList from '../review-list/review-list';
 import RatingStars from '../rating-stars/rating-stars';
+import MapHorizontal from '../map-horizontal/map-horizontal';
 import {ROOM_PAGE_TYPE} from '../../types/types';
 import {OFFER_PICTURE_MAX} from '../../const';
-import {getHousingView} from '../../utils';
+import {getHousingView, filterBy} from '../../utils';
+import {getCityCenter} from '../../mocks/offers';
 
 const RoomPage = (props) => {
   const {offers, reviews, offerId} = props;
 
   const offer = offers.find((offerCurrent) => offerCurrent.id === Number(offerId));
+  const offersByCity = filterBy(offers, `city`, offer.city);
 
   const photoList = offer.pictures
     .slice(0, Math.min(offer.pictures.length, OFFER_PICTURE_MAX))
@@ -110,7 +113,13 @@ const RoomPage = (props) => {
 
             </div>
           </div>
-          <section className="property__map map"></section>
+          <section className="property__map map">
+            <MapHorizontal
+              center={getCityCenter(offer.city)}
+              offerCoords={offersByCity.map((it) => it.coordinates)}
+              offerActiveCoords={offer.coordinates}
+            />
+          </section>
         </section>
         <div className="container">
           <section className="near-places places">

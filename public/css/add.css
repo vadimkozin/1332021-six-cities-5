@@ -3,6 +3,7 @@
 }
 
 .map--horizontal {
-  height: 50%;
-  width: 50%;
+  height: 100%;
+  width: 1144px;
+  margin: 0 auto;
 }

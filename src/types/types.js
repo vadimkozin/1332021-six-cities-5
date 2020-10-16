@@ -105,6 +105,7 @@ export const FAVORITES_PAGE_TYPE = {
 
 export const MAP_TYPE = {
   offerCoords: arrayOf(arrayOf(number)).isRequired,
+  offerActiveCoords: arrayOf(number),
   center: arrayOf(number).isRequired,
   zoom: number,
   zoomControl: bool,

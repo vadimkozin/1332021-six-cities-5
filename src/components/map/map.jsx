@@ -24,10 +24,21 @@ class Map extends PureComponent {
     });
   }
 
-  addMarkers(map, coordinates) {
-    coordinates.forEach((coord) => {
+  get iconActive() {
+    return leaflet.icon({
+      iconUrl: `img/pin-active.svg`,
+      iconSize: [30, 30]
+    });
+  }
+
+  addMarkers(map) {
+    this.props.offerCoords.forEach((coord) => {
       leaflet.marker(coord, {icon: this.icon}).addTo(map);
     });
+
+    if (this.props.offerActiveCoords) {
+      leaflet.marker(this.props.offerActiveCoords, {icon: this.iconActive}).addTo(map);
+    }
   }
 
   componentDidMount() {
@@ -40,11 +51,10 @@ class Map extends PureComponent {
       })
       .addTo(map);
 
-    this.addMarkers(map, this.props.offerCoords);
+    this.addMarkers(map);
   }
 
   render() {
-    // return <div id="map" style={{height: `100%`}} />;
     return <div id="map" className={this.props.className} />;
   }
 }
