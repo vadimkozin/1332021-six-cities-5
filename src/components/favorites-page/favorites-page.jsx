@@ -7,11 +7,11 @@ const FavoritesPage = (props) => {
   const {offers} = props;
 
   const offersFavorite = offers.filter((offer) => offer.isFavorite);
-  const towns = uniqArray(offersFavorite.map((offer) => offer.town));
-  const sortedTowns = [...towns].sort();
+  const cities = uniqArray(offersFavorite.map((offer) => offer.city));
+  const sortedCities = [...cities].sort();
 
-  const getFavoriteList = (town) => {
-    const offersByTown = offersFavorite.filter((offer) => offer.town === town);
+  const getFavoriteList = (city) => {
+    const offersByTown = offersFavorite.filter((offer) => offer.city === city);
 
     return offersByTown.map((offer) => (
       <article key={`${offer.id}`} className="favorites__card place-card">
@@ -45,18 +45,18 @@ const FavoritesPage = (props) => {
     ));
   };
 
-  const favoriteList = sortedTowns.map((town, i) => {
+  const favoriteList = sortedCities.map((city, i) => {
     return (
-      <li key={`${i}-${town}`} className="favorites__locations-items">
+      <li key={`${i}-${city}`} className="favorites__locations-items">
         <div className="favorites__locations locations locations--current">
           <div className="locations__item">
             <a className="locations__item-link" href="#">
-              <span>{town}</span>
+              <span>{city}</span>
             </a>
           </div>
         </div>
         <div className="favorites__places">
-          {getFavoriteList(town)}
+          {getFavoriteList(city)}
         </div>
       </li>
     );

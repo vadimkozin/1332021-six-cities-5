@@ -1,15 +1,25 @@
 import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
-import {TOWNS, TypesHousing} from '../const';
+import {CITIES, TypesHousing} from '../const';
 
 const NUMBER_RENTAL_OFFER = number.isRequired;
 
+const isUrl = (props, propName, componentName) => {
+  const regex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+
+  if (!regex.test(props[propName])) {
+    return new Error(`Invalid prop '${propName}' passed to '${componentName}'. Expected a valid URL.`);
+  }
+
+  return null;
+};
+
 const PICTURE = {
-  src: string.isRequired,
+  src: isUrl,
   alt: string.isRequired,
 };
 
 export const HOME_OWNER = {
-  avatar: string.isRequired,
+  avatar: isUrl,
   name: string.isRequired,
   isSuper: bool.isRequired,
 };
@@ -28,7 +38,8 @@ const OFFER_CARD = {
   rating: number.isRequired,
   price: number.isRequired,
 
-  town: oneOf(TOWNS).isRequired,
+  city: oneOf(CITIES).isRequired,
+  coordinates: arrayOf(number).isRequired,
   isFavorite: bool.isRequired,
 
   description: string.isRequired,
@@ -50,7 +61,7 @@ export const OFFER_LIST_TYPE = {
 };
 
 const REVIEW_TYPE = {
-  avatar: string.isRequired,
+  avatar: isUrl,
   name: string.isRequired,
   rating: number.isRequired,
   date: instanceOf(Date).isRequired,
@@ -86,4 +97,12 @@ export const RATING_STARS_TYPE = {
 
 export const FAVORITES_PAGE_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
+};
+
+export const MAP_TYPE = {
+  offerCoords: arrayOf(arrayOf(number)).isRequired,
+  center: arrayOf(number).isRequired,
+  zoom: number,
+  zoomControl: bool,
+  marker: bool,
 };

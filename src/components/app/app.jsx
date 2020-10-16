@@ -19,6 +19,7 @@ const App = (props) => {
               onOfferClick ={(id) => history.push(`/offer/${id}`)}
               numberOffer={numberOffer}
               offers={offers}
+              city={`Amsterdam`}
             />
           )}
         />

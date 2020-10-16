@@ -1,9 +1,13 @@
 import React from 'react';
-import {MAIN_PAGE_TYPE} from '../../types/types';
 import OfferList from '../offer-list/offer-list';
+import Map from '../map/map';
+import {MAIN_PAGE_TYPE} from '../../types/types';
+import {filterBy} from '../../utils';
+import {getCityCenter} from '../../mocks/offers';
 
 const MainPage = (props) => {
-  const {numberOffer, offers, onOfferClick} = props;
+  const {numberOffer, offers, onOfferClick, city} = props;
+  const offersByCity = filterBy(offers, `city`, city);
 
   return (
     <div className="page page--gray page--main">
@@ -98,12 +102,17 @@ const MainPage = (props) => {
               </form>
               <div className="cities__places-list places__list tabs__content">
 
-                <OfferList offers={offers} onOfferClick={onOfferClick}></OfferList>
+                <OfferList offers={offersByCity} onOfferClick={onOfferClick}></OfferList>
 
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map
+                  center={getCityCenter(city)}
+                  offerCoords={offersByCity.map((offer) => offer.coordinates)}
+                />
+              </section>
             </div>
           </div>
         </div>
