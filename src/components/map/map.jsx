@@ -3,7 +3,7 @@ import leaflet from 'leaflet';
 import {MAP_TYPE} from '../../types/types';
 import {MAP_ZOOM_DEFAULT} from '../../const';
 import 'leaflet/dist/leaflet.css';
-import '../../../public/css/add.css';
+import './map.css';
 
 class Map extends PureComponent {
   constructor(props) {

@@ -52,3 +52,38 @@ export const splitPropsOnClassNameAndRest = (props) => {
 
   return [className, restProps];
 };
+
+// generateClassNames(`button`, {active: true, more: false}, {favorite: true}, [`one`, `two`, {yes: true}]);
+//                --> 'button active favorite one two yes'
+export const generateClassNames = (...items) => {
+  const array = [];
+
+  items.forEach((it) => {
+    if (Array.isArray(it)) {
+      return array.push(generateClassNames(...it));
+    }
+
+    switch (typeof it) {
+      case `string`:
+        array.push(it);
+        break;
+      case `object`:
+        Object.entries(it).forEach(([key, value]) => {
+          if (value) {
+            array.push(key);
+          }
+        });
+        break;
+      case `number`:
+        array.push(String(it));
+        break;
+      default:
+        array.push(it);
+        break;
+    }
+
+    return true; // чтобы ESLint не ругался
+  });
+
+  return array.join(` `);
+};
