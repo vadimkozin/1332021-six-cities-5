@@ -14,6 +14,7 @@ class OfferList extends PureComponent {
 
   getPropsByType(type) {
     let param = null;
+
     switch (type) {
       case TypesOfferCard.CityPlace:
         param = {
@@ -24,7 +25,7 @@ class OfferList extends PureComponent {
         break;
       case TypesOfferCard.NearPlace:
         param = {
-          classNameMain: `near-places-card`,
+          classNameMain: `near-places__card`,
           classNameImage: `near-places__image-wrapper`,
           nameBookmark: `In bookmarks`,
         };
@@ -50,9 +51,6 @@ class OfferList extends PureComponent {
         {...this.getPropsByType(type)}
       />
     ));
-
-    // <div className="cities__places-list places__list tabs__content abc1234567">
-    // </div>
 
     return (
       <>

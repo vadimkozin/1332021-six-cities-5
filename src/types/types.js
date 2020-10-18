@@ -52,7 +52,7 @@ const OFFER_CARD = {
 export const OFFER_CARD_TYPE = {
   onHover: func.isRequired,
   offer: shape(OFFER_CARD).isRequired,
-  onOfferClick: func.isRequired,
+  onOfferClick: func,
   classNameMain: string.isRequired,
   classNameImage: string.isRequired,
   nameBookmark: string.isRequired,
@@ -60,7 +60,7 @@ export const OFFER_CARD_TYPE = {
 
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  onOfferClick: func.isRequired,
+  onOfferClick: func,
   type: oneOf([...Object.values(TypesOfferCard)]),
 };
 

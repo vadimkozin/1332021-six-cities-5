@@ -4,8 +4,7 @@ import {OFFER_CARD_TYPE} from '../../types/types';
 import {generateClassNames as gcn} from '../../utils';
 
 const OfferCard = (props) => {
-  const {onHover, offer, onOfferClick, classNameMain, classNameImage, nameBookmark} = props;
-  console.log(props);
+  const {onHover, offer, onOfferClick = null, classNameMain, classNameImage, nameBookmark} = props;
 
   const handleCardOver = (evt) => {
     evt.preventDefault();
@@ -14,19 +13,18 @@ const OfferCard = (props) => {
 
   const handleCardNameClick = (evt) => {
     evt.preventDefault();
-    onOfferClick(offer.id);
+    if (onOfferClick) {
+      onOfferClick(offer.id);
+    }
   };
 
   return (
-    // <article className="cities__place-card place-card" onMouseOver={handleCardOver}>
     <article className={gcn(classNameMain, `place-card`)} onMouseOver={handleCardOver}>
-
       {offer.isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
       }
-      {/* <div className="cities__image-wrapper place-card__image-wrapper"> */}
       <div className={gcn(classNameImage, `place-card__image-wrapper`)}>
         <a href="#">
           <img className="place-card__image" {...offer.pictures[0]} width="260" height="200" />
@@ -42,8 +40,7 @@ const OfferCard = (props) => {
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
-            {/* <span className="visually-hidden">To bookmarks</span> */}
-            <span className="visually-hidden--">{nameBookmark}</span>
+            <span className="visually-hidden">{nameBookmark}</span>
           </button>
         </div>
         <div className="place-card__rating rating">
