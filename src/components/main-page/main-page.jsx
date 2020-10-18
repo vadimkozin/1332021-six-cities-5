@@ -4,6 +4,7 @@ import MapVertical from '../map-vertical/map-vertical';
 import {MAIN_PAGE_TYPE} from '../../types/types';
 import {filterBy} from '../../utils';
 import {getCityCenter} from '../../mocks/offers';
+import {TypesOfferCard} from '../../const';
 
 const MainPage = (props) => {
   const {numberOffer, offers, onOfferClick, city} = props;
@@ -102,7 +103,11 @@ const MainPage = (props) => {
               </form>
               <div className="cities__places-list places__list tabs__content">
 
-                <OfferList offers={offersByCity} onOfferClick={onOfferClick}></OfferList>
+                <OfferList
+                  offers={offersByCity}
+                  onOfferClick={onOfferClick}
+                  type={TypesOfferCard.CityPlace}
+                />
 
               </div>
             </section>

@@ -21,3 +21,8 @@ export const TypesHousing = {
   HOUSE: {name: `house`, view: `House`},
   HOTEL: {name: `hotel`, view: `Hotel`}
 };
+
+export const TypesOfferCard = {
+  CityPlace: 1,
+  NearPlace: 2,
+};

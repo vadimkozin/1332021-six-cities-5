@@ -1,5 +1,5 @@
 import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
-import {CITIES, TypesHousing} from '../const';
+import {CITIES, TypesHousing, TypesOfferCard} from '../const';
 
 const NUMBER_RENTAL_OFFER = number.isRequired;
 
@@ -53,11 +53,15 @@ export const OFFER_CARD_TYPE = {
   onHover: func.isRequired,
   offer: shape(OFFER_CARD).isRequired,
   onOfferClick: func.isRequired,
+  classNameMain: string.isRequired,
+  classNameImage: string.isRequired,
+  nameBookmark: string.isRequired,
 };
 
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   onOfferClick: func.isRequired,
+  type: oneOf([...Object.values(TypesOfferCard)]),
 };
 
 const REVIEW = {
