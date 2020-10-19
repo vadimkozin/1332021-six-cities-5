@@ -13,26 +13,22 @@ class OfferList extends PureComponent {
   }
 
   getPropsByType(type) {
-    let param = null;
-
     switch (type) {
       case TypesOfferCard.CityPlace:
-        param = {
+        return {
           classNameMain: `cities__place-card`,
           classNameImage: `cities__image-wrapper`,
           nameBookmark: `To bookmarks`,
         };
-        break;
       case TypesOfferCard.NearPlace:
-        param = {
+        return {
           classNameMain: `near-places__card`,
           classNameImage: `near-places__image-wrapper`,
           nameBookmark: `In bookmarks`,
         };
-        break;
+      default:
+        return {};
     }
-
-    return param;
   }
 
   render() {

@@ -4,7 +4,7 @@ import {OFFER_CARD_TYPE} from '../../types/types';
 import {generateClassNames as gcn} from '../../utils';
 
 const OfferCard = (props) => {
-  const {onHover, offer, onOfferClick = null, classNameMain, classNameImage, nameBookmark} = props;
+  const {onHover, offer, onOfferClick, classNameMain, classNameImage, nameBookmark} = props;
 
   const handleCardOver = (evt) => {
     evt.preventDefault();
