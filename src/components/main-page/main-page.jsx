@@ -1,10 +1,10 @@
 import React from 'react';
 import OfferList from '../offer-list/offer-list';
-import MapVertical from '../map-vertical/map-vertical';
+import Map from '../map/map';
 import {MAIN_PAGE_TYPE} from '../../types/types';
 import {filterBy} from '../../utils';
 import {getCityCenter} from '../../mocks/offers';
-import {TypesOfferCard} from '../../const';
+import {TypesOfferCard, TypesMap} from '../../const';
 
 const MainPage = (props) => {
   const {numberOffer, offers, onOfferClick, city} = props;
@@ -113,9 +113,10 @@ const MainPage = (props) => {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <MapVertical
+                <Map
                   center={getCityCenter(city)}
                   offerCoords={offersByCity.map((offer) => offer.coordinates)}
+                  layoutType={TypesMap.Vertical}
                 />
               </section>
             </div>

@@ -115,4 +115,5 @@ export const MAP_TYPE = {
   zoomControl: bool,
   marker: bool,
   className: string,
+  layoutType: number.isRequired,
 };

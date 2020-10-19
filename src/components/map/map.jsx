@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import leaflet from 'leaflet';
 import {MAP_TYPE} from '../../types/types';
-import {MAP_ZOOM_DEFAULT} from '../../const';
+import {MAP_ZOOM_DEFAULT, TypesMap} from '../../const';
 import 'leaflet/dist/leaflet.css';
 import './map.css';
 
@@ -31,13 +31,24 @@ class Map extends PureComponent {
     });
   }
 
-  addMarkers(map) {
-    this.props.offerCoords.forEach((coord) => {
+  getClassName(type) {
+    switch (type) {
+      case TypesMap.Vertical:
+        return `map--vertical`;
+      case TypesMap.Horizontal:
+        return `map--horizontal`;
+      default:
+        return ``;
+    }
+  }
+
+  addMarkers(map, offerCoords, offerActiveCoords) {
+    offerCoords.forEach((coord) => {
       leaflet.marker(coord, {icon: this.icon}).addTo(map);
     });
 
-    if (this.props.offerActiveCoords) {
-      leaflet.marker(this.props.offerActiveCoords, {icon: this.iconActive}).addTo(map);
+    if (offerActiveCoords) {
+      leaflet.marker(offerActiveCoords, {icon: this.iconActive}).addTo(map);
     }
   }
 
@@ -51,11 +62,11 @@ class Map extends PureComponent {
       })
       .addTo(map);
 
-    this.addMarkers(map);
+    this.addMarkers(map, this.props.offerCoords, this.props.offerActiveCoords);
   }
 
   render() {
-    return <div id="map" className={this.props.className} />;
+    return <div id="map" className={this.getClassName(this.props.layoutType)} />;
   }
 }
 

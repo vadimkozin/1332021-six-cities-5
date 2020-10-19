@@ -26,3 +26,8 @@ export const TypesOfferCard = {
   CityPlace: 1,
   NearPlace: 2,
 };
+
+export const TypesMap = {
+  Vertical: 1,
+  Horizontal: 2,
+};
