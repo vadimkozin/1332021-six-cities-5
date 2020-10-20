@@ -1,5 +1,5 @@
 import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
-import {CITIES, TypesHousing} from '../const';
+import {CITIES, TypesHousing, TypesOfferCard} from '../const';
 
 const NUMBER_RENTAL_OFFER = number.isRequired;
 
@@ -52,15 +52,19 @@ const OFFER_CARD = {
 export const OFFER_CARD_TYPE = {
   onHover: func.isRequired,
   offer: shape(OFFER_CARD).isRequired,
-  onOfferClick: func.isRequired,
+  onOfferClick: func,
+  classNameMain: string.isRequired,
+  classNameImage: string.isRequired,
+  nameBookmark: string.isRequired,
 };
 
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  onOfferClick: func.isRequired,
+  onOfferClick: func,
+  type: oneOf([...Object.values(TypesOfferCard)]),
 };
 
-const REVIEW_TYPE = {
+const REVIEW = {
   avatar: isUrl,
   name: string.isRequired,
   rating: number.isRequired,
@@ -68,14 +72,18 @@ const REVIEW_TYPE = {
   text: string.isRequired,
 };
 
-export const REVIEWS_TYPE = {
-  reviews: arrayOf(shape(REVIEW_TYPE)).isRequired,
+export const REVIEW_TYPE = {
+  review: shape(REVIEW).isRequired,
+};
+
+export const REVIEW_LIST_TYPE = {
+  reviews: arrayOf(shape(REVIEW)).isRequired,
 };
 
 export const APP_TYPE = {
   numberOffer: NUMBER_RENTAL_OFFER,
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  reviews: arrayOf(shape(REVIEW_TYPE)).isRequired,
+  reviews: arrayOf(shape(REVIEW)).isRequired,
 };
 
 export const MAIN_PAGE_TYPE = {
@@ -86,7 +94,7 @@ export const MAIN_PAGE_TYPE = {
 
 export const ROOM_PAGE_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  reviews: arrayOf(shape(REVIEW_TYPE)).isRequired,
+  reviews: arrayOf(shape(REVIEW)).isRequired,
   offerId: string.isRequired,
 };
 
@@ -101,8 +109,11 @@ export const FAVORITES_PAGE_TYPE = {
 
 export const MAP_TYPE = {
   offerCoords: arrayOf(arrayOf(number)).isRequired,
+  offerActiveCoords: arrayOf(number),
   center: arrayOf(number).isRequired,
   zoom: number,
   zoomControl: bool,
   marker: bool,
+  className: string,
+  layoutType: number.isRequired,
 };

@@ -1,0 +1,9 @@
+.map--vertical {
+  height: 100%;
+}
+
+.map--horizontal {
+  height: 100%;
+  width: 1144px;
+  margin: 0 auto;
+}
