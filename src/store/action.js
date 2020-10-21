@@ -1,4 +1,4 @@
-// изменение города и получение списка предложений.
+// нужно: изменение города и получение списка предложений.
 export const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   GET_OFFERS: `GET_OFFERS`,
