@@ -1,6 +1,6 @@
 import {extend} from "../utils";
 import {ActionType} from "./action";
-import {offers} from '../mocks/offers';
+import offers from '../mocks/offers';
 
 const initialState = {
   city: `Amsterdam`,
