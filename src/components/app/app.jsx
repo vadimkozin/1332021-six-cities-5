@@ -8,7 +8,7 @@ import NotFound from '../not-found/not-found';
 import {APP_TYPE} from '../../types/types';
 
 const App = (props) => {
-  const {offers, reviews, numberOffer} = props;
+  const {offers, reviews} = props;
 
   return (
     <BrowserRouter>
@@ -17,9 +17,6 @@ const App = (props) => {
           render={({history}) => (
             <MainPage
               onOfferClick ={(id) => history.push(`/offer/${id}`)}
-              numberOffer={numberOffer}
-              offers={offers}
-              city={`Amsterdam`}
             />
           )}
         />

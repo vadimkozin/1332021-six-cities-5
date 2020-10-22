@@ -1,14 +1,15 @@
 import React from 'react';
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 import OfferList from '../offer-list/offer-list';
 import Map from '../map/map';
+import CityList from '../city-list/city-list';
 import {MAIN_PAGE_TYPE} from '../../types/types';
-import {filterBy} from '../../utils';
 import {getCityCenter} from '../../mocks/offers';
 import {TypesOfferCard, TypesMap} from '../../const';
 
 const MainPage = (props) => {
-  const {numberOffer, offers, onOfferClick, city} = props;
-  const offersByCity = filterBy(offers, `city`, city);
+  const {offers, city, cities, onCityChange, onOfferClick} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -38,46 +39,19 @@ const MainPage = (props) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
-          </section>
+
+          <CityList
+            city={city}
+            cities={cities}
+            onCityChange={onCityChange}
+          />
+
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{numberOffer} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in {city}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -104,7 +78,7 @@ const MainPage = (props) => {
               <div className="cities__places-list places__list tabs__content">
 
                 <OfferList
-                  offers={offersByCity}
+                  offers={offers}
                   onOfferClick={onOfferClick}
                   type={TypesOfferCard.CityPlace}
                 />
@@ -114,8 +88,9 @@ const MainPage = (props) => {
             <div className="cities__right-section">
               <section className="cities__map map">
                 <Map
+                  key={city}
                   center={getCityCenter(city)}
-                  offerCoords={offersByCity.map((offer) => offer.coordinates)}
+                  offerCoords={offers.map((offer) => offer.coordinates)}
                   layoutType={TypesMap.Vertical}
                 />
               </section>
@@ -129,4 +104,18 @@ const MainPage = (props) => {
 
 MainPage.propTypes = MAIN_PAGE_TYPE;
 
-export default MainPage;
+const mapStateToProps = (state) => ({
+  city: state.city,
+  cities: state.cities,
+  offers: state.offers,
+});
+
+const mapDispatchToProps = (dispath) => ({
+  onCityChange(city) {
+    dispath(ActionCreator.changeCity(city));
+    dispath(ActionCreator.getOffers(city));
+  }
+});
+
+export {MainPage};
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

@@ -11,12 +11,45 @@ const COORDINATES_CITY_CENTERS = {
   Dusseldorf: [51.2277411, 6.773455600000034],
 };
 
-const COORDINATES = [ // Amsterdam
-  [52.3909553943508, 4.85309666406198],
-  [52.369553943508, 4.85309666406198],
-  [52.3909553943508, 4.929309666406198],
-  [52.3809553943508, 4.939309666406198]
-];
+const COORDINATES = {
+  Paris: [
+    [48.868301, 2.330252],
+    [48.874972, 2.349492],
+    [48.860344, 2.362512],
+    [48.839131, 2.353358],
+    [48.856142, 2.344428],
+  ],
+  Cologne: [
+    [50.949766, 6.926761],
+    [50.947304, 6.979569],
+    [50.925052, 6.973129],
+    [50.916534, 6.940401],
+  ],
+  Brussels: [
+    [50.872109, 4.334683],
+    [50.869932, 4.368515],
+    [50.824259, 4.346382],
+  ],
+  Amsterdam: [
+    [52.3909553943508, 4.85309666406198],
+    [52.369553943508, 4.85309666406198],
+    [52.3909553943508, 4.929309666406198],
+    [52.3809553943508, 4.939309666406198]
+  ],
+  Hamburg: [
+    [53.585595, 9.955669],
+    [53.582164, 10.033189],
+    [53.548601, 10.038955],
+    [53.531046, 10.002438],
+    [53.560891, 9.967397],
+  ],
+  Dusseldorf: [
+    [51.241174, 6.758089],
+    [51.245209, 6.806090],
+    [51.212649, 6.819805],
+    [51.203226, 6.772661],
+  ],
+};
 
 const TITLES = [
   `Beautiful studio at great location`,
@@ -123,12 +156,10 @@ const getRandomOwner = () => {
 
 export const getCityCenter = (cityName) => COORDINATES_CITY_CENTERS[cityName];
 
-let index = 0;
-
 const uuid = getUUIDGenerator();
 
-const getOffers = (count) => {
-  return Array(count).fill().map(() => ({
+const getOffer = (city, coordinates) => {
+  return ({
     id: uuid(),
     pictures: getRandomPictures(3, 10),
     title: getRandomFrom(TITLES),
@@ -141,13 +172,15 @@ const getOffers = (count) => {
     price: getRandomInteger(50, 700),
     householdItems: getRandomPartArray(HOUSEHOLD_ITEMS),
     owner: getRandomOwner(),
-    city: `Amsterdam`,
-    coordinates: COORDINATES[index++],
+    city,
+    coordinates,
     isFavorite: Boolean(getRandomInteger(0, 1)),
-  }));
+  });
 };
 
-const offers = getOffers(COORDINATES.length);
+const offers = Object.entries(COORDINATES).map(([city, coordinates]) =>
+  coordinates.map((coords) => getOffer(city, coords))
+).flat();
 
 export default offers;
 

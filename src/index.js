@@ -7,10 +7,6 @@ import offers from './mocks/offers';
 import reviews from './mocks/reviews';
 import {reducer} from "./store/reducer";
 
-const Settings = {
-  NUMBER_RENTAL_OFFER: 312
-};
-
 const store = createStore(
     reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
@@ -19,7 +15,6 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
       <App
-        numberOffer={Settings.NUMBER_RENTAL_OFFER}
         offers={offers}
         reviews={reviews}
       />
