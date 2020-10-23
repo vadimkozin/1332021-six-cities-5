@@ -6,12 +6,12 @@ import offers from '../mocks/offers';
 const cities = uniqArray(offers.map((offer) => offer.city));
 const initCity = cities[0];
 
-const offersByCity = (offersAll, city) => offersAll.filter((offer) => offer.city === city);
+const getOffersByCity = (offersAll, city) => offersAll.filter((offer) => offer.city === city);
 
 const initialState = {
   city: initCity,
   cities,
-  offers: offersByCity(offers, initCity),
+  offers: getOffersByCity(offers, initCity),
   offersAll: offers,
 };
 
@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.GET_OFFERS:
       const city = action.payload;
-      return extend(state, {offers: offersByCity(offers, city)});
+      return extend(state, {offers: getOffersByCity(offers, city)});
 
     default:
       return state;

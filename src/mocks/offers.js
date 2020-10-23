@@ -178,9 +178,9 @@ const getOffer = (city, coordinates) => {
   });
 };
 
-const offers = Object.entries(COORDINATES).map(([city, coordinates]) =>
+const offers = Object.entries(COORDINATES).flatMap(([city, coordinates]) =>
   coordinates.map((coords) => getOffer(city, coords))
-).flat();
+);
 
 export default offers;
 
