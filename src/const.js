@@ -31,3 +31,10 @@ export const TypesMap = {
   Vertical: 1,
   Horizontal: 2,
 };
+
+export const SortingType = {
+  POPULAR: `popular`, // в порядке, полученном с сервера
+  LOW_TO_HIGH: `to-high`, // От дешёвых к дорогим.
+  HIGH_TO_LOW: `to-low`, // От дорогих к дешёвым.
+  TOP_RATED_FIRST: `top-rated` // От высокого рейтинга к низкому
+};
