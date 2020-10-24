@@ -1,8 +1,6 @@
 import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
 import {CITIES, TypesHousing, TypesOfferCard} from '../const';
 
-const NUMBER_RENTAL_OFFER = number.isRequired;
-
 const isUrl = (props, propName, componentName) => {
   const regex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
@@ -81,15 +79,15 @@ export const REVIEW_LIST_TYPE = {
 };
 
 export const APP_TYPE = {
-  numberOffer: NUMBER_RENTAL_OFFER,
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   reviews: arrayOf(shape(REVIEW)).isRequired,
 };
 
 export const MAIN_PAGE_TYPE = {
-  numberOffer: NUMBER_RENTAL_OFFER,
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   onOfferClick: func.isRequired,
+  cities: arrayOf(string.isRequired).isRequired,
+  onCityChange: func.isRequired,
 };
 
 export const ROOM_PAGE_TYPE = {
@@ -116,4 +114,10 @@ export const MAP_TYPE = {
   marker: bool,
   className: string,
   layoutType: number.isRequired,
+};
+
+export const CITY_LIST_TYPE = {
+  city: string.isRequired,
+  cities: arrayOf(string.isRequired).isRequired,
+  onCityChange: func.isRequired,
 };
