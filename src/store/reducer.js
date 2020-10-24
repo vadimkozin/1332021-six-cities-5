@@ -13,6 +13,7 @@ const initialState = {
   cities,
   offers: getOffersByCity(offers, initCity),
   offersAll: offers,
+  activeOfferId: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +24,14 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_OFFERS:
       const city = action.payload;
       return extend(state, {offers: getOffersByCity(offers, city)});
+
+    case ActionType.CHANGE_OFFER:
+      const activeOfferId = action.payload;
+      return extend(state, {activeOfferId});
+
+    case ActionType.RESET_ACTIVE_OFFER_ID:
+      const value = action.payload;
+      return extend(state, {activeOfferId: value});
 
     default:
       return state;

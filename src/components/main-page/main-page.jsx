@@ -9,7 +9,7 @@ import {getCityCenter} from '../../mocks/offers';
 import {TypesOfferCard, TypesMap} from '../../const';
 
 const MainPage = (props) => {
-  const {offers, city, cities, onCityChange, onOfferClick} = props;
+  const {offers, city, cities, onCityChange, onOfferClick, onHoverCard, activeOfferId} = props;
 
   return (
     <div className="page page--gray page--main">
@@ -81,6 +81,8 @@ const MainPage = (props) => {
                   offers={offers}
                   onOfferClick={onOfferClick}
                   type={TypesOfferCard.CityPlace}
+
+                  onHoverCard={onHoverCard}
                 />
 
               </div>
@@ -88,9 +90,12 @@ const MainPage = (props) => {
             <div className="cities__right-section">
               <section className="cities__map map">
                 <Map
-                  key={city}
+                  key={`${city}-${activeOfferId}`}
                   center={getCityCenter(city)}
                   offerCoords={offers.map((offer) => offer.coordinates)}
+                  // offerActiveCoords={offer.coordinates}
+                  // offerActiveCoords={offers.find((offer) => offer.id === activeOfferId).coordinates}
+                  offerActiveCoords={activeOfferId !== null ? offers.find((offer) => offer.id === activeOfferId).coordinates : null}
                   layoutType={TypesMap.Vertical}
                 />
               </section>
@@ -108,13 +113,19 @@ const mapStateToProps = (state) => ({
   city: state.city,
   cities: state.cities,
   offers: state.offers,
+  activeOfferId: state.activeOfferId,
+
 });
 
 const mapDispatchToProps = (dispath) => ({
   onCityChange(city) {
     dispath(ActionCreator.changeCity(city));
     dispath(ActionCreator.getOffers(city));
-  }
+    dispath(ActionCreator.resetActiveOfferId());
+  },
+  onHoverCard(offer) {
+    dispath(ActionCreator.changeOffer(offer.id));
+  },
 });
 
 export {MainPage};
