@@ -41,7 +41,6 @@ export const getSorter = (fieldName, order = `asc`) => {
   return (a, b) => (a[fieldName] - b[fieldName]) * (order === `asc` ? 1 : -1);
 };
 
-// offers.sort(sorting[type]());
 export const sorting = {
   [SortingType.POPULAR]: () => getSorter(`id`),
   [SortingType.LOW_TO_HIGH]: () => getSorter(`price`),

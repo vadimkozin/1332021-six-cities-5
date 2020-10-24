@@ -1,6 +1,5 @@
 import React from 'react';
 import {SORT_TYPE} from '../../types/types';
-// import {sorting} from '@utils';
 import {SortingType} from '@const';
 
 const sortValues = {
@@ -11,23 +10,26 @@ const sortValues = {
 };
 
 const Sort = (props) => {
-  const {sortActive = SortingType.POPULAR, onSortChange} = props;
-  // const {offers, sortType} = props;
-  // const offersSort = offers.slice().sort(sorting[sortType]());
+  const {sortActive, onSortChange} = props;
 
   const onClick = (evt) => {
     evt.preventDefault();
-    const newSortActive = evt.target.dataset.sort; // popular ... top-rated
-    //  console.log(newSortActive);
+
+    const newSortActive = evt.target.dataset.sort;
+
     if (newSortActive !== sortActive) {
-      // onSortChange(newSortActive);
+      onSortChange(newSortActive);
     }
   };
 
   const list = Object.entries(sortValues).map(([key, value]) => {
-    // return <li key={`${key}`} className="places__option places__option--active" data-sort={key} tabIndex="0">{value}</li>;
-    return <li key={`${key}`} className={`places__option ${key === sortActive && `places__option--active`}`} data-sort={key} tabIndex="0">{value}</li>;
-
+    return <li
+      key={`${key}`}
+      className={`places__option ${key === sortActive && `places__option--active`}`}
+      data-sort={key}
+      tabIndex="0">
+      {value}
+    </li>;
   });
 
   return (
@@ -49,9 +51,4 @@ const Sort = (props) => {
 Sort.propTypes = SORT_TYPE;
 
 export default Sort;
-
-// {/* <li className="places__option places__option--active" data-sort="popular" tabIndex="0">Popular</li>
-// <li className="places__option" data-sort="to-high" tabIndex="0">Price: low to high</li>
-// <li className="places__option" data-sort="to-low" tabIndex="0">Price: high to low</li>
-// <li className="places__option" data-sort="top-rated" tabIndex="0">Top rated first</li> */}
 

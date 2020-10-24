@@ -3,6 +3,7 @@ export const ActionType = {
   GET_OFFERS: `GET_OFFERS`,
   CHANGE_OFFER: `CHANGE_OFFER`,
   RESET_ACTIVE_OFFER_ID: `RESET_ACTIVE_OFFER_ID`,
+  CHANGE_SORT: `CHANGE_SORT`,
 };
 
 export const ActionCreator = {
@@ -21,6 +22,10 @@ export const ActionCreator = {
   resetActiveOfferId: () => ({
     type: ActionType.RESET_ACTIVE_OFFER_ID,
     payload: null,
+  }),
+  changeSort: (sortActive) => ({
+    type: ActionType.CHANGE_SORT,
+    payload: sortActive,
   }),
 
 };

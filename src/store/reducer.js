@@ -1,7 +1,7 @@
-import {extend} from "../utils";
+import {extend, uniqArray} from "@utils";
 import {ActionType} from "./action";
-import {uniqArray} from '../utils';
 import offers from '../mocks/offers';
+import {SortingType} from '@const';
 
 const cities = uniqArray(offers.map((offer) => offer.city));
 const initCity = cities[0];
@@ -14,6 +14,7 @@ const initialState = {
   offers: getOffersByCity(offers, initCity),
   offersAll: offers,
   activeOfferId: null,
+  sortActive: SortingType.POPULAR,
 };
 
 const reducer = (state = initialState, action) => {
@@ -32,6 +33,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.RESET_ACTIVE_OFFER_ID:
       const value = action.payload;
       return extend(state, {activeOfferId: value});
+
+    case ActionType.CHANGE_SORT:
+      const sortActive = action.payload;
+      return extend(state, {sortActive});
 
     default:
       return state;
