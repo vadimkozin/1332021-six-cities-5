@@ -1,17 +1,17 @@
 import React from 'react';
 import OfferCard from '../offer-card/offer-card';
 import {OFFER_LIST_TYPE} from '../../types/types';
-import {TypesOfferCard} from '../../const';
+import {OfferCardType} from '../../const';
 
 const getPropsByType = (type) => {
   switch (type) {
-    case TypesOfferCard.CityPlace:
+    case OfferCardType.CITY_PLACE:
       return {
         classNameMain: `cities__place-card`,
         classNameImage: `cities__image-wrapper`,
         nameBookmark: `To bookmarks`,
       };
-    case TypesOfferCard.NearPlace:
+    case OfferCardType.NEAR_PLACE:
       return {
         classNameMain: `near-places__card`,
         classNameImage: `near-places__image-wrapper`,

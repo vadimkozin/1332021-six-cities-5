@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import leaflet from 'leaflet';
 import {MAP_TYPE} from '../../types/types';
-import {MAP_ZOOM_DEFAULT, TypesMap} from '../../const';
+import {MAP_ZOOM_DEFAULT, MapType} from '../../const';
 import 'leaflet/dist/leaflet.css';
 import './map.css';
 
@@ -33,9 +33,9 @@ class Map extends PureComponent {
 
   getClassName(type) {
     switch (type) {
-      case TypesMap.Vertical:
+      case MapType.VERTICAL:
         return `map--vertical`;
-      case TypesMap.Horizontal:
+      case MapType.HORIZONTAL:
         return `map--horizontal`;
       default:
         return ``;

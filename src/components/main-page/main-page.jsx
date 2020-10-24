@@ -7,7 +7,7 @@ import CityList from '../city-list/city-list';
 import Sort from '../sort/sort';
 import {getCityCenter} from '../../mocks/offers';
 import {MAIN_PAGE_TYPE} from '@types';
-import {TypesOfferCard, TypesMap, SortingType} from '@const';
+import {OfferCardType, MapType, SortingType} from '@const';
 import {sorting} from '@utils';
 
 const MainPage = (props) => {
@@ -69,7 +69,7 @@ const MainPage = (props) => {
                 <OfferList
                   offers={offersSort}
                   onOfferClick={onOfferClick}
-                  type={TypesOfferCard.CityPlace}
+                  type={OfferCardType.CITY_PLACE}
                   onHoverCard={onHoverCard}
                 />
 
@@ -84,7 +84,7 @@ const MainPage = (props) => {
                   // offerActiveCoords={offer.coordinates}
                   // offerActiveCoords={offers.find((offer) => offer.id === activeOfferId).coordinates}
                   offerActiveCoords={activeOfferId !== null ? offers.find((offer) => offer.id === activeOfferId).coordinates : null}
-                  layoutType={TypesMap.Vertical}
+                  layoutType={MapType.VERTICAL}
                 />
               </section>
             </div>

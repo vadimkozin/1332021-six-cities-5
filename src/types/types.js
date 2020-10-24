@@ -1,5 +1,5 @@
 import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
-import {CITIES, TypesHousing, TypesOfferCard} from '../const';
+import {CITIES, TypesHousing, OfferCardType} from '../const';
 
 const isUrl = (props, propName, componentName) => {
   const regex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
@@ -60,7 +60,7 @@ export const OFFER_CARD_TYPE = {
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   onOfferClick: func,
-  type: oneOf([...Object.values(TypesOfferCard)]),
+  type: oneOf([...Object.values(OfferCardType)]),
 };
 
 const REVIEW = {

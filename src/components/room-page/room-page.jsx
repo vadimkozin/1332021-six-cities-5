@@ -5,7 +5,7 @@ import RatingStars from '../rating-stars/rating-stars';
 import Map from '../map/map';
 import OfferList from '../offer-list/offer-list';
 import {ROOM_PAGE_TYPE} from '../../types/types';
-import {OFFER_PICTURE_MAX, TypesOfferCard, TypesMap} from '../../const';
+import {OFFER_PICTURE_MAX, OfferCardType, MapType} from '../../const';
 import {getHousingView, filterBy} from '../../utils';
 import {getCityCenter} from '../../mocks/offers';
 
@@ -123,7 +123,7 @@ const RoomPage = (props) => {
               center={getCityCenter(offer.city)}
               offerCoords={offersByCity.map((it) => it.coordinates)}
               offerActiveCoords={offer.coordinates}
-              layoutType={TypesMap.Horizontal}
+              layoutType={MapType.HORIZONTAL}
             />
           </section>
         </section>
@@ -134,7 +134,7 @@ const RoomPage = (props) => {
 
               <OfferList
                 offers={offersByCity}
-                type={TypesOfferCard.NearPlace}
+                type={OfferCardType.NEAR_PLACE}
               />
 
             </div>
