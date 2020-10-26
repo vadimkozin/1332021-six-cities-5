@@ -22,12 +22,19 @@ export const TypesHousing = {
   HOTEL: {name: `hotel`, view: `Hotel`}
 };
 
-export const TypesOfferCard = {
-  CityPlace: 1,
-  NearPlace: 2,
+export const OfferCardType = {
+  CITY_PLACE: 1,
+  NEAR_PLACE: 2,
 };
 
-export const TypesMap = {
-  Vertical: 1,
-  Horizontal: 2,
+export const MapType = {
+  VERTICAL: 1,
+  HORIZONTAL: 2,
+};
+
+export const SortingType = {
+  POPULAR: `popular`, // в порядке, полученном с сервера
+  LOW_TO_HIGH: `to-high`, // От дешёвых к дорогим.
+  HIGH_TO_LOW: `to-low`, // От дорогих к дешёвым.
+  TOP_RATED_FIRST: `top-rated` // От высокого рейтинга к низкому
 };

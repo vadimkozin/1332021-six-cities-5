@@ -1,4 +1,4 @@
-import {MONTHS, RATING_STARS_MAX, TypesHousing} from './const';
+import {MONTHS, RATING_STARS_MAX, TypesHousing, SortingType} from './const';
 
 // добавляет ведущие нули: ( '2' => '02')
 const addZeros = (number, digitsInNumber = 2) => {
@@ -39,6 +39,13 @@ export const formatDate = {
 // сортировка
 export const getSorter = (fieldName, order = `asc`) => {
   return (a, b) => (a[fieldName] - b[fieldName]) * (order === `asc` ? 1 : -1);
+};
+
+export const FROM_SORTINGTYPE_TO_FUNC_MAP = {
+  [SortingType.POPULAR]: () => getSorter(`id`),
+  [SortingType.LOW_TO_HIGH]: () => getSorter(`price`),
+  [SortingType.HIGH_TO_LOW]: () => getSorter(`price`, `des`),
+  [SortingType.TOP_RATED_FIRST]: () => getSorter(`rating`, `des`),
 };
 
 // фильтр

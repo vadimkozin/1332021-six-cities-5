@@ -36,7 +36,14 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        alias: {
+          '@': path.resolve(__dirname, './src/'),
+          '@utils': path.resolve(__dirname, './src/utils'),
+          '@const': path.resolve(__dirname, './src/const'),
+          '@types': path.resolve(__dirname, './src/types/types'),
+
+        }
     },
     devtool: 'source-map',
 };

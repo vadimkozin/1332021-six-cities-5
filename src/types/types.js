@@ -1,5 +1,5 @@
 import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
-import {CITIES, TypesHousing, TypesOfferCard} from '../const';
+import {CITIES, TypesHousing, OfferCardType} from '../const';
 
 const isUrl = (props, propName, componentName) => {
   const regex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
@@ -48,18 +48,18 @@ const OFFER_CARD = {
 };
 
 export const OFFER_CARD_TYPE = {
-  onHover: func.isRequired,
   offer: shape(OFFER_CARD).isRequired,
   onOfferClick: func,
   classNameMain: string.isRequired,
   classNameImage: string.isRequired,
   nameBookmark: string.isRequired,
+  onHoverCard: func,
 };
 
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   onOfferClick: func,
-  type: oneOf([...Object.values(TypesOfferCard)]),
+  type: oneOf([...Object.values(OfferCardType)]),
 };
 
 const REVIEW = {
@@ -120,4 +120,9 @@ export const CITY_LIST_TYPE = {
   city: string.isRequired,
   cities: arrayOf(string.isRequired).isRequired,
   onCityChange: func.isRequired,
+};
+
+export const SORT_TYPE = {
+  sortActive: string.isRequired,
+  onSortChange: func.isRequired,
 };
