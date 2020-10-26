@@ -41,7 +41,7 @@ export const getSorter = (fieldName, order = `asc`) => {
   return (a, b) => (a[fieldName] - b[fieldName]) * (order === `asc` ? 1 : -1);
 };
 
-export const sorting = {
+export const FROM_SORTINGTYPE_TO_FUNC_MAP = {
   [SortingType.POPULAR]: () => getSorter(`id`),
   [SortingType.LOW_TO_HIGH]: () => getSorter(`price`),
   [SortingType.HIGH_TO_LOW]: () => getSorter(`price`, `des`),

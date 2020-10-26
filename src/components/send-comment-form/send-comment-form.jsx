@@ -17,7 +17,6 @@ class SendCommentForm extends PureComponent {
 
   handleFormSubmit(evt) {
     evt.preventDefault();
-    // console.log(`state:`, this.state);
   }
 
   handleStarChange(evt) {

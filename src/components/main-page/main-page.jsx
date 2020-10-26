@@ -8,14 +8,14 @@ import Sort from '../sort/sort';
 import {getCityCenter} from '../../mocks/offers';
 import {MAIN_PAGE_TYPE} from '@types';
 import {OfferCardType, MapType, SortingType} from '@const';
-import {sorting} from '@utils';
+import {FROM_SORTINGTYPE_TO_FUNC_MAP} from '@utils';
 
 const MainPage = (props) => {
   const {offers, city, cities, onCityChange, onOfferClick, onHoverCard, activeOfferId,
     sortActive = SortingType.POPULAR,
     onSortChange} = props;
 
-  const offersSort = offers.slice().sort(sorting[sortActive]());
+  const offersSort = offers.slice().sort(FROM_SORTINGTYPE_TO_FUNC_MAP[sortActive]());
 
   return (
     <div className="page page--gray page--main">
@@ -81,8 +81,6 @@ const MainPage = (props) => {
                   key={`${city}-${activeOfferId}`}
                   center={getCityCenter(city)}
                   offerCoords={offers.map((offer) => offer.coordinates)}
-                  // offerActiveCoords={offer.coordinates}
-                  // offerActiveCoords={offers.find((offer) => offer.id === activeOfferId).coordinates}
                   offerActiveCoords={activeOfferId !== null ? offers.find((offer) => offer.id === activeOfferId).coordinates : null}
                   layoutType={MapType.VERTICAL}
                 />
