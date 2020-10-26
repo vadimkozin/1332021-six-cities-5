@@ -41,7 +41,7 @@ const Sort = (props) => {
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul onClick = {onClick} className="places__options places__options--custom places__options--opened">
+      <ul onClick={onClick} className="places__options places__options--custom places__options--opened">
         {list}
       </ul>
     </form>
