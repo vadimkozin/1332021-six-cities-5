@@ -133,3 +133,7 @@ export const ADD_COMMENT_TYPE = {
   onTextChange: func.isRequired,
   isDisabledSubmit: bool.isRequired,
 };
+
+export const HEADER_TYPE = {
+  isAuthorized: bool,
+};

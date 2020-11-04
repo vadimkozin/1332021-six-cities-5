@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop';
+import {HEADER_TYPE} from '@types';
 
-const Header = ({isAuthorized}) => {
+const Header = ({isAuthorized = false}) => {
   const profile = isAuthorized
     ? <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
     : <span className="header__login">Sign in</span>;
@@ -18,7 +18,7 @@ const Header = ({isAuthorized}) => {
           <nav className="header__nav">
             <ul className="header__nav-list">
               <li className="header__nav-item user">
-                <a className="header__nav-link header__nav-link--profile" href="#">
+                <a className="header__nav-link header__nav-link--profile" href="/login">
                   <div className="header__avatar-wrapper user__avatar-wrapper">
                   </div>
                   {profile}
@@ -32,8 +32,6 @@ const Header = ({isAuthorized}) => {
   );
 };
 
-Header.propTypes = {
-  isAuthorized: PropTypes.bool.isRequired,
-};
+Header.propTypes = HEADER_TYPE;
 
 export default Header;
