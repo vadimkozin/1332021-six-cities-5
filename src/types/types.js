@@ -126,3 +126,10 @@ export const SORT_TYPE = {
   sortActive: string.isRequired,
   onSortChange: func.isRequired,
 };
+
+export const ADD_COMMENT_TYPE = {
+  onFormSubmit: func.isRequired,
+  onStarChange: func.isRequired,
+  onTextChange: func.isRequired,
+  isDisabledSubmit: bool.isRequired,
+};
