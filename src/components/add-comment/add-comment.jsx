@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {CommentSettings} from '../../const';
 
-class SendCommentForm extends PureComponent {
+class AddComment extends PureComponent {
   constructor() {
     super();
 
@@ -99,4 +99,4 @@ class SendCommentForm extends PureComponent {
   }
 }
 
-export default SendCommentForm;
+export default AddComment;
