@@ -1,61 +1,45 @@
-import React, {PureComponent} from 'react';
+import React, {useState} from 'react';
 import {CommentSettings} from '@const';
 
-const withAddComment = (Component) => {
-  class WithAddComment extends PureComponent {
-    constructor(props) {
-      super(props);
+const withAddComment = (Component) => (props) => {
+  const [text, setText] = useState(``);
+  const [starsCount, setStarsCount] = useState(0);
+  const [isDisabledSubmit, setDisabledSubmit] = useState(true);
 
-      this.state = {
-        text: ``,
-        starsCount: 0,
-        isDisabledSubmit: true,
-      };
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault();
+    // ...
+  };
 
-      this.handleFormSubmit = this.handleFormSubmit.bind(this);
-      this.handleStarChange = this.handleStarChange.bind(this);
-      this.handleTextChange = this.handleTextChange.bind(this);
-    }
+  const handleStarChange = (value) => {
+    const numberStars = Number(value);
+    setStarsCount(numberStars);
+    setStateButtonSubmit(text.length, numberStars);
+  };
 
-    handleFormSubmit(evt) {
-      evt.preventDefault();
-    }
+  const handleTextChange = (value) => {
+    setText(value);
+    setStateButtonSubmit(value.length, starsCount);
+  };
 
-    handleStarChange(value) {
-      const starsCount = Number(value);
+  const setStateButtonSubmit = (textLength, numberStars) => {
+    const flag = numberStars === 0
+      || textLength < CommentSettings.TEXT_LENGTH_MIN
+      || textLength > CommentSettings.TEXT_LENGTH_MAX
+      ? true : false;
 
-      this.setState({starsCount});
-      this.setStateButtonSubmit(this.state.text.length, starsCount);
-    }
+    setDisabledSubmit(flag);
+  };
 
-    handleTextChange(value) {
-      this.setState({text: value});
-      this.setStateButtonSubmit(value.length, this.state.starsCount);
-    }
-
-    setStateButtonSubmit(textLength, starsCount) {
-      const isDisabledSubmit = starsCount === 0
-        || textLength < CommentSettings.TEXT_LENGTH_MIN
-        || textLength > CommentSettings.TEXT_LENGTH_MAX
-        ? true : false;
-
-      this.setState({isDisabledSubmit});
-    }
-
-    render() {
-      return <Component
-        onFormSubmit={this.handleFormSubmit}
-        onStarChange={this.handleStarChange}
-        onTextChange={this.handleTextChange}
-        isDisabledSubmit={this.state.isDisabledSubmit}
-        {...this.props}
-      />;
-    }
-  }
-
-  WithAddComment.propTypes = {};
-
-  return WithAddComment;
+  return (
+    <Component
+      {...props}
+      onFormSubmit={handleFormSubmit}
+      onStarChange={handleStarChange}
+      onTextChange={handleTextChange}
+      isDisabledSubmit={isDisabledSubmit}
+    />
+  );
 };
 
 export default withAddComment;
