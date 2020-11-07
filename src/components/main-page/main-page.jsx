@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 import OfferList from '../offer-list/offer-list';
 import Map from '../map/map';
+import MapNew from '../map/map-new';
 import CityList from '../city-list/city-list';
 import Sort from '../sort/sort';
 import Header from '../header/header';
@@ -56,12 +57,20 @@ const MainPage = (props) => {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map
+                {/* <Map
                   key={`${city}-${activeOfferId}`}
                   center={getCityCenter(city)}
                   offerCoords={offers.map((offer) => offer.coordinates)}
                   offerActiveCoords={activeOfferId !== null ? offers.find((offer) => offer.id === activeOfferId).coordinates : null}
                   layoutType={MapType.VERTICAL}
+                /> */}
+                <MapNew
+                  key={`${city}-${activeOfferId}`}
+                  offers={offers}
+                  city={city}
+                  activeOfferId={activeOfferId}
+                  layoutType={MapType.VERTICAL}
+
                 />
               </section>
             </div>

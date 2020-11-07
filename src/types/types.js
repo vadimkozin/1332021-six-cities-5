@@ -1,4 +1,4 @@
-import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
+import {shape, exact, func, number, bool, string, oneOf, oneOfType, instanceOf, arrayOf, any} from 'prop-types';
 import {CITIES, TypesHousing, OfferCardType} from '../const';
 
 const isUrl = (props, propName, componentName) => {
@@ -27,6 +27,12 @@ export const HOME_OWNER_TYPE = {
   description: string.isRequired,
 };
 
+const POSITION_TYPE = {
+  latitude: number,
+  longitude: number,
+  zoom: number
+};
+
 const OFFER_CARD = {
   id: number.isRequired,
   pictures: arrayOf(shape(PICTURE)).isRequired,
@@ -38,6 +44,7 @@ const OFFER_CARD = {
 
   city: oneOf(CITIES).isRequired,
   coordinates: arrayOf(number).isRequired,
+  position: exact(POSITION_TYPE),
   isFavorite: bool.isRequired,
 
   description: string.isRequired,
@@ -112,8 +119,17 @@ export const MAP_TYPE = {
   zoom: number,
   zoomControl: bool,
   marker: bool,
-  className: string,
   layoutType: number.isRequired,
+};
+
+export const MAP_TYPE_NEW = {
+  offers: arrayOf(shape(OFFER_CARD)).isRequired,
+  city: string.isRequired,
+  activeOfferId: oneOfType([number.isRequired, any]),
+  layoutType: number.isRequired,
+  zoom: number,
+  zoomControl: bool,
+  marker: bool,
 };
 
 export const CITY_LIST_TYPE = {

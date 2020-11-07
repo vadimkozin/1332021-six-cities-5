@@ -12,7 +12,6 @@ const initialState = {
   city: initCity,
   cities,
   offers: getOffersByCity(offers, initCity),
-  offersAll: offers,
   activeOfferId: null,
   sortActive: SortingType.POPULAR,
 };
