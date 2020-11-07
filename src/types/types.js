@@ -94,7 +94,7 @@ export const MAIN_PAGE_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   onOfferClick: func.isRequired,
   cities: arrayOf(string.isRequired).isRequired,
-  onCityChange: func.isRequired,
+  // onCityChange: func.isRequired,
 };
 
 export const ROOM_PAGE_TYPE = {
@@ -121,7 +121,6 @@ export const MAP_TYPE = {
   marker: bool,
   layoutType: number.isRequired,
 };
-
 export const MAP_TYPE_NEW = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   city: string.isRequired,
@@ -146,6 +145,9 @@ export const CITY_LIST_NEW_TYPE = {
 
 export const SORT_TYPE = {
   sortActive: string.isRequired,
+  onSortChange: func.isRequired,
+};
+export const SORT_NEW_TYPE = {
   onSortChange: func.isRequired,
 };
 

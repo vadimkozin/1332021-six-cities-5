@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
-const withActiveItem = (Component) => (props) => {
-  const [activeItem, setActiveItem] = useState(null);
+const withActiveItem = (Component, initActiveItem = null) => (props) => {
+  const [activeItem, setActiveItem] = useState(initActiveItem);
 
   const handleActiveItemChange = (item) => setActiveItem(item);
 
