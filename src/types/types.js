@@ -137,6 +137,12 @@ export const CITY_LIST_TYPE = {
   cities: arrayOf(string.isRequired).isRequired,
   onCityChange: func.isRequired,
 };
+export const CITY_LIST_NEW_TYPE = {
+  cities: arrayOf(string.isRequired).isRequired,
+  onCityChange: func.isRequired,
+  activeItem: string,
+  onActiveItemChange: func.isRequired,
+};
 
 export const SORT_TYPE = {
   sortActive: string.isRequired,
