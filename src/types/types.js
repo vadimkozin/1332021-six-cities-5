@@ -1,4 +1,4 @@
-import {shape, exact, func, number, bool, string, oneOf, oneOfType, instanceOf, arrayOf, any} from 'prop-types';
+import {shape, exact, func, number, bool, string, oneOf, oneOfType, instanceOf, arrayOf} from 'prop-types';
 import {CITIES, TypesHousing, OfferCardType} from '../const';
 
 const isUrl = (props, propName, componentName) => {
@@ -62,11 +62,23 @@ export const OFFER_CARD_TYPE = {
   nameBookmark: string.isRequired,
   onHoverCard: func,
 };
+export const OFFER_CARD_NEW_TYPE = {
+  offer: shape(OFFER_CARD).isRequired,
+  // onOfferClick: func,
+  // onHoverCard: func,
+  type: oneOf([...Object.values(OfferCardType)]),
+  onOfferChange: func,
+};
 
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   onOfferClick: func,
   type: oneOf([...Object.values(OfferCardType)]),
+};
+export const OFFER_LIST_NEW_TYPE = {
+  offers: arrayOf(shape(OFFER_CARD)).isRequired,
+  type: oneOf([...Object.values(OfferCardType)]),
+  // onOfferClick: func,
 };
 
 const REVIEW = {
@@ -92,7 +104,7 @@ export const APP_TYPE = {
 
 export const MAIN_PAGE_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  onOfferClick: func.isRequired,
+  // onOfferClick: func.isRequired,
   cities: arrayOf(string.isRequired).isRequired,
   // onCityChange: func.isRequired,
 };
@@ -124,8 +136,10 @@ export const MAP_TYPE = {
 export const MAP_TYPE_NEW = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   city: string.isRequired,
-  activeOfferId: oneOfType([number.isRequired, any]),
+  offer: oneOfType([shape(OFFER_CARD).isRequired, () => null]),
   layoutType: number.isRequired,
+  // activeOfferId: oneOfType([number.isRequired, any]),
+
   zoom: number,
   zoomControl: bool,
   marker: bool,

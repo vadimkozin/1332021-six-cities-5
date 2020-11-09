@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
-import OfferList from '../offer-list/offer-list';
+
+// import OfferList from '../offer-list/offer-list';
+import OfferListNew from '../offer-list/offer-list-new';
 
 // import Map from '../map/map';
 import MapNew from '../map/map-new';
@@ -19,11 +21,12 @@ import {OfferCardType, MapType, SortingType} from '@const';
 import {FROM_SORTINGTYPE_TO_FUNC_MAP} from '@utils';
 
 const MainPage = (props) => {
-  const {offers, city, cities, onCityChange, onOfferClick, onHoverCard, activeOfferId,
-    sortActive = SortingType.POPULAR,
-    onSortChange} = props;
+  const {offers, city, sort,
+    // cities, onCityChange, onOfferClick, onHoverCard, activeOfferId,
+    // onSortChange
+  } = props;
 
-  const offersSort = offers.slice().sort(FROM_SORTINGTYPE_TO_FUNC_MAP[sortActive]());
+  const offersSort = offers.slice().sort(FROM_SORTINGTYPE_TO_FUNC_MAP[sort]());
 
   return (
     <div className="page page--gray page--main">
@@ -56,31 +59,29 @@ const MainPage = (props) => {
 
               <div className="cities__places-list places__list tabs__content">
 
-                <OfferList
+                {/* <OfferList
                   offers={offersSort}
                   onOfferClick={onOfferClick}
                   type={OfferCardType.CITY_PLACE}
                   onHoverCard={onHoverCard}
+                /> */}
+
+                <OfferListNew
+                  offers={offersSort}
+                  type={OfferCardType.CITY_PLACE}
+                  // onOfferClick={onOfferClick}
+                  // onHoverCard={onHoverCard}
                 />
 
               </div>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                {/* <Map
-                  key={`${city}-${activeOfferId}`}
-                  center={getCityCenter(city)}
-                  offerCoords={offers.map((offer) => offer.coordinates)}
-                  offerActiveCoords={activeOfferId !== null ? offers.find((offer) => offer.id === activeOfferId).coordinates : null}
-                  layoutType={MapType.VERTICAL}
-                /> */}
                 <MapNew
-                  key={`${city}-${activeOfferId}`}
+                  key={city}
                   offers={offers}
                   city={city}
-                  activeOfferId={activeOfferId}
                   layoutType={MapType.VERTICAL}
-
                 />
               </section>
             </div>
@@ -98,8 +99,9 @@ const mapStateToProps = (state) => ({
   cities: state.cities,
   offers: state.offers,
   activeOfferId: state.activeOfferId,
-  sortActive: state.sortActive,
 
+  offer: state.offer,
+  sort: state.sort,
 });
 
 const mapDispatchToProps = (dispath) => ({
@@ -111,8 +113,11 @@ const mapDispatchToProps = (dispath) => ({
   onHoverCard(offer) {
     dispath(ActionCreator.changeOffer(offer.id));
   },
-  onSortChange(sortActive) {
-    dispath(ActionCreator.changeSort(sortActive));
+  // onSortChange(sortActive) {
+  //   dispath(ActionCreator.changeSort(sortActive));
+  // },
+  onSortChange(sort) {
+    dispath(ActionCreator.changeSortNew(sort));
   },
 });
 

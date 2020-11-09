@@ -4,7 +4,9 @@ export const ActionType = {
   CHANGE_OFFER: `CHANGE_OFFER`,
   RESET_ACTIVE_OFFER_ID: `RESET_ACTIVE_OFFER_ID`,
   CHANGE_SORT: `CHANGE_SORT`,
+
   CHANGE_SORT_NEW: `CHANGE_SORT_NEW`,
+  CHANGE_OFFER_NEW: `CHANGE_OFFER_NEW`,
 };
 
 export const ActionCreator = {
@@ -24,13 +26,13 @@ export const ActionCreator = {
     type: ActionType.RESET_ACTIVE_OFFER_ID,
     payload: null,
   }),
-  changeSort: (sortActive) => ({
-    type: ActionType.CHANGE_SORT,
-    payload: sortActive,
-  }),
+
   changeSortNew: (sort) => ({
-    type: ActionType.CHANGE_SORT,
+    type: ActionType.CHANGE_SORT_NEW,
     payload: sort,
   }),
-
+  changeOfferNew: (offer) => ({
+    type: ActionType.CHANGE_OFFER_NEW,
+    payload: offer,
+  }),
 };

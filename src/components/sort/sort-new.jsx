@@ -13,17 +13,17 @@ const sortValues = {
 
 const SortNew = (props) => {
   const {onSortChange} = props;
-  const [sortActive, setSortActive] = useState(SortingType.POPULAR);
+  const [sort, setSort] = useState(SortingType.POPULAR);
   const [isMenuOpen, toggleMenuOpen] = useState(true);
 
   const handleSortChange = (evt) => {
     evt.preventDefault();
 
-    const newSortActive = evt.target.dataset.sort;
+    const newSort = evt.target.dataset.sort;
 
-    if (newSortActive !== sortActive) {
-      setSortActive(newSortActive);
-      onSortChange(newSortActive);
+    if (newSort !== sort) {
+      setSort(newSort);
+      onSortChange(newSort);
     }
   };
 
@@ -35,7 +35,7 @@ const SortNew = (props) => {
   const list = Object.entries(sortValues).map(([key, value]) => {
     return <li
       key={`${key}`}
-      className={`places__option ${key === sortActive && `places__option--active`}`}
+      className={`places__option ${key === sort && `places__option--active`}`}
       data-sort={key}
       tabIndex="0">
       {value}
@@ -46,7 +46,7 @@ const SortNew = (props) => {
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by &nbsp;</span>
       <span className="places__sorting-type" tabIndex="0" onClick={handleMenuToggle}>
-        {sortValues[sortActive]}
+        {sortValues[sort]}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
@@ -62,6 +62,7 @@ SortNew.propTypes = SORT_NEW_TYPE;
 
 const mapDispatchToProps = (dispath) => ({
   onSortChange(sort) {
+    console.log(`::`, sort);
     dispath(ActionCreator.changeSortNew(sort));
   },
 });
