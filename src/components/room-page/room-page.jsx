@@ -2,9 +2,7 @@ import React from 'react';
 import HomeOwner from '../home-owner/home-owner';
 import ReviewList from '../review-list/review-list';
 import RatingStars from '../rating-stars/rating-stars';
-// import Map from '../map/map';
-import MapNew from '../map/map-new';
-
+import Map from '../map/map';
 import OfferList from '../offer-list/offer-list';
 import {ROOM_PAGE_TYPE} from '../../types/types';
 import {OFFER_PICTURE_MAX, OfferCardType, MapType} from '../../const';
@@ -120,7 +118,7 @@ const RoomPage = (props) => {
             </div>
           </div>
           <section className="property__map map">
-            <MapNew
+            <Map
               offers={offersByCity}
               city={offer.city}
               layoutType={MapType.HORIZONTAL}

@@ -1,34 +1,48 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../store/action';
 import RatingStars from '../rating-stars/rating-stars';
 import {OFFER_CARD_TYPE} from '../../types/types';
-import {generateClassNames as gcn} from '../../utils';
+import {OfferCardType} from '../../const';
+
+const getOptionsByType = (type) => {
+  switch (type) {
+    case OfferCardType.CITY_PLACE:
+      return {
+        classNameMain: `cities__place-card`,
+        classNameImage: `cities__image-wrapper`,
+        nameBookmark: `To bookmarks`,
+      };
+    case OfferCardType.NEAR_PLACE:
+      return {
+        classNameMain: `near-places__card`,
+        classNameImage: `near-places__image-wrapper`,
+        nameBookmark: `In bookmarks`,
+      };
+    default:
+      return {};
+  }
+};
 
 const OfferCard = (props) => {
-  const {offer, onOfferClick, classNameMain, classNameImage, nameBookmark, onHoverCard} = props;
+  const {offer, type, onOfferChange} = props;
+
+  const opts = getOptionsByType(type);
 
   const handleCardOver = (evt) => {
     evt.preventDefault();
-    if (onHoverCard) {
-      onHoverCard(offer);
-    }
-  };
-
-
-  const handleCardNameClick = (evt) => {
-    evt.preventDefault();
-    if (onOfferClick) {
-      onOfferClick(offer.id);
-    }
+    onOfferChange(offer);
   };
 
   return (
-    <article className={gcn(classNameMain, `place-card`)} onMouseOver={handleCardOver}>
+    <article className={`${opts.classNameMain} place-card`} onMouseOver={handleCardOver}>
       {offer.isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
       }
-      <div className={gcn(classNameImage, `place-card__image-wrapper`)}>
+      <div className={`${opts.classNameImage} place-card__image-wrapper`}>
         <a href="#">
           <img className="place-card__image" {...offer.pictures[0]} width="260" height="200" />
         </a>
@@ -43,14 +57,14 @@ const OfferCard = (props) => {
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
-            <span className="visually-hidden">{nameBookmark}</span>
+            <span className="visually-hidden">{opts.nameBookmark}</span>
           </button>
         </div>
         <div className="place-card__rating rating">
           <RatingStars rating={offer.rating}/>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={handleCardNameClick}>{offer.title}</a>
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.typeHousing}</p>
       </div>
@@ -60,4 +74,11 @@ const OfferCard = (props) => {
 
 OfferCard.propTypes = OFFER_CARD_TYPE;
 
-export default OfferCard;
+const mapDispatchToProps = (dispath) => ({
+  onOfferChange(offer) {
+    dispath(ActionCreator.changeOffer(offer));
+  },
+});
+
+export {OfferCard};
+export default connect(null, mapDispatchToProps)(OfferCard);

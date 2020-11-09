@@ -56,29 +56,13 @@ const OFFER_CARD = {
 
 export const OFFER_CARD_TYPE = {
   offer: shape(OFFER_CARD).isRequired,
-  onOfferClick: func,
-  classNameMain: string.isRequired,
-  classNameImage: string.isRequired,
-  nameBookmark: string.isRequired,
-  onHoverCard: func,
-};
-export const OFFER_CARD_NEW_TYPE = {
-  offer: shape(OFFER_CARD).isRequired,
-  // onOfferClick: func,
-  // onHoverCard: func,
   type: oneOf([...Object.values(OfferCardType)]),
   onOfferChange: func,
 };
 
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  onOfferClick: func,
   type: oneOf([...Object.values(OfferCardType)]),
-};
-export const OFFER_LIST_NEW_TYPE = {
-  offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  type: oneOf([...Object.values(OfferCardType)]),
-  // onOfferClick: func,
 };
 
 const REVIEW = {
@@ -124,20 +108,10 @@ export const FAVORITES_PAGE_TYPE = {
 };
 
 export const MAP_TYPE = {
-  offerCoords: arrayOf(arrayOf(number)).isRequired,
-  offerActiveCoords: arrayOf(number),
-  center: arrayOf(number).isRequired,
-  zoom: number,
-  zoomControl: bool,
-  marker: bool,
-  layoutType: number.isRequired,
-};
-export const MAP_TYPE_NEW = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   city: string.isRequired,
   offer: oneOfType([shape(OFFER_CARD).isRequired, () => null]),
   layoutType: number.isRequired,
-  // activeOfferId: oneOfType([number.isRequired, any]),
 
   zoom: number,
   zoomControl: bool,
@@ -145,11 +119,6 @@ export const MAP_TYPE_NEW = {
 };
 
 export const CITY_LIST_TYPE = {
-  city: string.isRequired,
-  cities: arrayOf(string.isRequired).isRequired,
-  onCityChange: func.isRequired,
-};
-export const CITY_LIST_NEW_TYPE = {
   cities: arrayOf(string.isRequired).isRequired,
   onCityChange: func.isRequired,
   activeItem: string,
@@ -157,10 +126,6 @@ export const CITY_LIST_NEW_TYPE = {
 };
 
 export const SORT_TYPE = {
-  sortActive: string.isRequired,
-  onSortChange: func.isRequired,
-};
-export const SORT_NEW_TYPE = {
   onSortChange: func.isRequired,
 };
 
