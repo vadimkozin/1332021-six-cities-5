@@ -103,10 +103,9 @@ export const APP_TYPE = {
 };
 
 export const MAIN_PAGE_TYPE = {
+  city: string.isRequired,
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  // onOfferClick: func.isRequired,
-  cities: arrayOf(string.isRequired).isRequired,
-  // onCityChange: func.isRequired,
+  sort: string.isRequired,
 };
 
 export const ROOM_PAGE_TYPE = {

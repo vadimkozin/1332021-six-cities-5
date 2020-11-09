@@ -62,7 +62,6 @@ SortNew.propTypes = SORT_NEW_TYPE;
 
 const mapDispatchToProps = (dispath) => ({
   onSortChange(sort) {
-    console.log(`::`, sort);
     dispath(ActionCreator.changeSortNew(sort));
   },
 });

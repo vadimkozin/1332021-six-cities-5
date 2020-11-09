@@ -26,7 +26,6 @@ const getOptionsByType = (type) => {
 };
 
 const OfferCardNew = (props) => {
-  // const {offer, type, onOfferClick, onHoverCard} = props;
   const {offer, type, onOfferChange} = props;
 
   const opts = getOptionsByType(type);
@@ -34,22 +33,7 @@ const OfferCardNew = (props) => {
   const handleCardOver = (evt) => {
     evt.preventDefault();
     onOfferChange(offer);
-    console.log(`offer.id:`, offer.id);
   };
-
-  // const handleCardOver = (evt) => {
-  //   evt.preventDefault();
-  //   if (onHoverCard) {
-  //     onHoverCard(offer);
-  //   }
-  // };
-
-  // const handleCardNameClick = (evt) => {
-  //   evt.preventDefault();
-  //   if (onOfferClick) {
-  //     onOfferClick(offer.id);
-  //   }
-  // };
 
   return (
     <article className={`${opts.classNameMain} place-card`} onMouseOver={handleCardOver}>
@@ -79,9 +63,6 @@ const OfferCardNew = (props) => {
         <div className="place-card__rating rating">
           <RatingStars rating={offer.rating}/>
         </div>
-        {/* <h2 className="place-card__name">
-          <a href="#" onClick={handleCardNameClick}>{offer.title}</a>
-        </h2> */}
         <h2 className="place-card__name">
           <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>

@@ -13,13 +13,14 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/"
+        {/* <Route exact path="/"
           render={({history}) => (
             <MainPage
               onOfferClick ={(id) => history.push(`/offer/${id}`)}
             />
           )}
-        />
+        /> */}
+        <Route exact path="/" component={MainPage}/>
         <Route exact path='/login' component={LoginPage}></Route>
         <Route exact path='/favorites'>
           <FavoritesPage

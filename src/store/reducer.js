@@ -12,10 +12,9 @@ const initialState = {
   city: initCity,
   cities,
   offers: getOffersByCity(offers, initCity),
-  activeOfferId: null,
 
-  sort: SortingType.POPULAR,
   offer: null,
+  sort: SortingType.POPULAR,
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,13 +26,13 @@ const reducer = (state = initialState, action) => {
       const city = action.payload;
       return extend(state, {offers: getOffersByCity(offers, city)});
 
-    case ActionType.CHANGE_OFFER:
-      const activeOfferId = action.payload;
-      return extend(state, {activeOfferId});
+      // case ActionType.CHANGE_OFFER:
+      //   const activeOfferId = action.payload;
+      //   return extend(state, {activeOfferId});
 
-    case ActionType.RESET_ACTIVE_OFFER_ID:
-      const value = action.payload;
-      return extend(state, {activeOfferId: value});
+      // case ActionType.RESET_ACTIVE_OFFER_ID:
+      //   const value = action.payload;
+      //   return extend(state, {activeOfferId: value});
 
     case ActionType.CHANGE_SORT_NEW:
       const sort = action.payload;

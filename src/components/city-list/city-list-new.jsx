@@ -51,7 +51,6 @@ const mapDispatchToProps = (dispath) => ({
   onCityChange(city) {
     dispath(ActionCreator.changeCity(city));
     dispath(ActionCreator.getOffers(city));
-    dispath(ActionCreator.resetActiveOfferId());
   },
 });
 
