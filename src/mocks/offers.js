@@ -156,9 +156,9 @@ const getRandomOwner = () => {
 
 export const getCityCenter = (cityName) => COORDINATES_CITY_CENTERS[cityName];
 
-const getPosition = (coordinates) => ({
-  latitude: coordinates[0],
-  longitude: coordinates[1],
+const getPosition = ([latitude, longitude]) => ({
+  latitude,
+  longitude,
   zoom: 14,
 });
 

@@ -6,7 +6,7 @@ import {CITY_LIST_TYPE} from '@types';
 
 const CityList = (props) => {
   const {cities, onCityChange, activeItem, onActiveItemChange} = props;
-  const activeCity = activeItem ? activeItem : cities[0];
+  const activeCity = activeItem || cities[0];
 
   const handleCityClick = (evt) => {
     evt.preventDefault();

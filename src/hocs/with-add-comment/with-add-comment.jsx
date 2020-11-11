@@ -25,8 +25,7 @@ const withAddComment = (Component) => (props) => {
   const setStateButtonSubmit = (textLength, numberStars) => {
     const flag = numberStars === 0
       || textLength < CommentSettings.TEXT_LENGTH_MIN
-      || textLength > CommentSettings.TEXT_LENGTH_MAX
-      ? true : false;
+      || textLength > CommentSettings.TEXT_LENGTH_MAX;
 
     setDisabledSubmit(flag);
   };

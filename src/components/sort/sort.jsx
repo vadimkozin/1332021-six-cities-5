@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {SORT_TYPE} from '../../types/types';
@@ -14,7 +14,7 @@ const sortValues = {
 const Sort = (props) => {
   const {onSortChange} = props;
   const [sort, setSort] = useState(SortingType.POPULAR);
-  const [isMenuOpen, toggleMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const handleSortChange = (evt) => {
     evt.preventDefault();
@@ -27,10 +27,10 @@ const Sort = (props) => {
     }
   };
 
-  const handleMenuToggle = (evt) => {
+  const handleMenuToggle = useCallback((evt) => {
     evt.preventDefault();
-    toggleMenuOpen(!isMenuOpen);
-  };
+    setIsMenuOpen(!isMenuOpen);
+  }, [isMenuOpen]);
 
   const list = Object.entries(sortValues).map(([key, value]) => {
     return <li
