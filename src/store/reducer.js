@@ -1,7 +1,7 @@
 import {extend} from "@utils";
 import {ActionType} from "./action";
-import offers, {CITIES} from '../mocks/offers';
-import {SortingType} from '@const';
+import offers from '../mocks/offers';
+import {SortingType, CITIES} from '@const';
 
 const cities = Object.keys(CITIES);
 

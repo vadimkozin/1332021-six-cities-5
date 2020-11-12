@@ -1,4 +1,4 @@
-import {MONTHS, RATING_STARS_MAX, TypesHousing, SortingType} from './const';
+import {CITIES, MONTHS, RATING_STARS_MAX, TypesHousing, SortingType} from './const';
 
 // добавляет ведущие нули: ( '2' => '02')
 const addZeros = (number, digitsInNumber = 2) => {
@@ -96,3 +96,5 @@ export const generateClassNames = (...items) => {
 export const extend = (a, b = {}) => {
   return Object.assign({}, a, b);
 };
+
+export const getCityCenter = (cityName) => CITIES[cityName];
