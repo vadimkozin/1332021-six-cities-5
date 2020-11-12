@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
@@ -30,13 +30,22 @@ const OfferCard = (props) => {
 
   const opts = getOptionsByType(type);
 
-  const handleCardOver = (evt) => {
+  const handleCardOver = useCallback((evt) => {
     evt.preventDefault();
     onOfferChange(offer);
-  };
+  });
+
+  const handleCardLeave = useCallback((evt) => {
+    evt.preventDefault();
+    onOfferChange(null);
+  });
 
   return (
-    <article className={`${opts.classNameMain} place-card`} onMouseOver={handleCardOver}>
+    <article
+      className={`${opts.classNameMain} place-card`}
+      onMouseEnter={handleCardOver}
+      onMouseLeave={handleCardLeave}
+    >
       {offer.isPremium &&
       <div className="place-card__mark">
         <span>Premium</span>
