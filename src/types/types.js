@@ -139,3 +139,8 @@ export const ADD_COMMENT_TYPE = {
 export const HEADER_TYPE = {
   isAuthorized: bool,
 };
+
+export const CITY_WITHOUT_OFFERS_TYPE = {
+  city: string.isRequired,
+};
+
