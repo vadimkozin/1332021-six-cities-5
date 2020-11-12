@@ -1,9 +1,10 @@
 import {extend, uniqArray} from "@utils";
 import {ActionType} from "./action";
-import offers, {COORDINATES_CITY_CENTERS} from '../mocks/offers';
+import offers, {CITIES} from '../mocks/offers';
 import {SortingType} from '@const';
 
-const cities = uniqArray(Object.keys(COORDINATES_CITY_CENTERS));
+// const cities = uniqArray(Object.keys(CITIES));
+const cities = Object.keys(CITIES);
 
 const initCity = cities[0];
 

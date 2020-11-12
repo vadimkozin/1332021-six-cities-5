@@ -2,7 +2,7 @@ import {AvatarGenerator} from 'random-avatar-generator';
 import {TypesHousing} from '../const';
 import {getUUIDGenerator, uniqArray} from '../utils';
 
-export const COORDINATES_CITY_CENTERS = {
+export const CITIES = {
   Paris: [48.856614, 2.3522219],
   Cologne: [50.937531, 6.960278600000038],
   Brussels: [50.8503396, 4.3517103],
@@ -154,7 +154,7 @@ const getRandomOwner = () => {
   };
 };
 
-export const getCityCenter = (cityName) => COORDINATES_CITY_CENTERS[cityName];
+export const getCityCenter = (cityName) => CITIES[cityName];
 
 const getPosition = ([latitude, longitude]) => ({
   latitude,
