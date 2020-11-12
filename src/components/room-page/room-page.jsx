@@ -7,7 +7,6 @@ import OfferList from '../offer-list/offer-list';
 import {ROOM_PAGE_TYPE} from '../../types/types';
 import {OFFER_PICTURE_MAX, OfferCardType, MapType} from '../../const';
 import {getHousingView, filterBy} from '../../utils';
-import {getCityCenter} from '../../mocks/offers';
 
 const RoomPage = (props) => {
   const {offers, reviews, offerId} = props;
@@ -120,9 +119,8 @@ const RoomPage = (props) => {
           </div>
           <section className="property__map map">
             <Map
-              center={getCityCenter(offer.city)}
-              offerCoords={offersByCity.map((it) => it.coordinates)}
-              offerActiveCoords={offer.coordinates}
+              offers={offersByCity}
+              city={offer.city}
               layoutType={MapType.HORIZONTAL}
             />
           </section>

@@ -1,9 +1,12 @@
 import React from 'react';
 import Review from '../review/review';
-import SendCommentForm from '../send-comment-form/send-comment-form';
+import AddComment from '../add-comment/add-comment';
+import withAddComment from '@hocs/with-add-comment/with-add-comment';
 import {REVIEW_LIST_TYPE} from '../../types/types';
 import {REVIEW_OUTPUT_MAX} from '../../const';
 import {getSorter} from '../../utils';
+
+const AddCommentWrapped = withAddComment(AddComment);
 
 const ReviewList = (props) => {
   const {reviews} = props;
@@ -20,7 +23,7 @@ const ReviewList = (props) => {
       <ul className="reviews__list">
         {reviewsList}
       </ul>
-      <SendCommentForm />
+      <AddCommentWrapped />
     </section>
   );
 };

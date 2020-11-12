@@ -156,6 +156,12 @@ const getRandomOwner = () => {
 
 export const getCityCenter = (cityName) => COORDINATES_CITY_CENTERS[cityName];
 
+const getPosition = ([latitude, longitude]) => ({
+  latitude,
+  longitude,
+  zoom: 14,
+});
+
 const uuid = getUUIDGenerator();
 
 const getOffer = (city, coordinates) => {
@@ -174,6 +180,7 @@ const getOffer = (city, coordinates) => {
     owner: getRandomOwner(),
     city,
     coordinates,
+    position: getPosition(coordinates),
     isFavorite: Boolean(getRandomInteger(0, 1)),
   });
 };

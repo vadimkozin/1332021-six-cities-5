@@ -1,4 +1,4 @@
-import {shape, func, number, bool, string, oneOf, instanceOf, arrayOf} from 'prop-types';
+import {shape, exact, func, number, bool, string, oneOf, oneOfType, instanceOf, arrayOf} from 'prop-types';
 import {CITIES, TypesHousing, OfferCardType} from '../const';
 
 const isUrl = (props, propName, componentName) => {
@@ -27,6 +27,12 @@ export const HOME_OWNER_TYPE = {
   description: string.isRequired,
 };
 
+const POSITION_TYPE = {
+  latitude: number,
+  longitude: number,
+  zoom: number
+};
+
 const OFFER_CARD = {
   id: number.isRequired,
   pictures: arrayOf(shape(PICTURE)).isRequired,
@@ -38,6 +44,7 @@ const OFFER_CARD = {
 
   city: oneOf(CITIES).isRequired,
   coordinates: arrayOf(number).isRequired,
+  position: exact(POSITION_TYPE),
   isFavorite: bool.isRequired,
 
   description: string.isRequired,
@@ -49,16 +56,12 @@ const OFFER_CARD = {
 
 export const OFFER_CARD_TYPE = {
   offer: shape(OFFER_CARD).isRequired,
-  onOfferClick: func,
-  classNameMain: string.isRequired,
-  classNameImage: string.isRequired,
-  nameBookmark: string.isRequired,
-  onHoverCard: func,
+  type: oneOf([...Object.values(OfferCardType)]),
+  onOfferChange: func,
 };
 
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  onOfferClick: func,
   type: oneOf([...Object.values(OfferCardType)]),
 };
 
@@ -84,10 +87,9 @@ export const APP_TYPE = {
 };
 
 export const MAIN_PAGE_TYPE = {
+  city: string.isRequired,
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  onOfferClick: func.isRequired,
-  cities: arrayOf(string.isRequired).isRequired,
-  onCityChange: func.isRequired,
+  sort: string.isRequired,
 };
 
 export const ROOM_PAGE_TYPE = {
@@ -106,23 +108,34 @@ export const FAVORITES_PAGE_TYPE = {
 };
 
 export const MAP_TYPE = {
-  offerCoords: arrayOf(arrayOf(number)).isRequired,
-  offerActiveCoords: arrayOf(number),
-  center: arrayOf(number).isRequired,
+  offers: arrayOf(shape(OFFER_CARD)).isRequired,
+  city: string.isRequired,
+  offer: oneOfType([shape(OFFER_CARD).isRequired, () => null]),
+  layoutType: number.isRequired,
+
   zoom: number,
   zoomControl: bool,
   marker: bool,
-  className: string,
-  layoutType: number.isRequired,
 };
 
 export const CITY_LIST_TYPE = {
-  city: string.isRequired,
   cities: arrayOf(string.isRequired).isRequired,
   onCityChange: func.isRequired,
+  activeItem: string,
+  onActiveItemChange: func.isRequired,
 };
 
 export const SORT_TYPE = {
-  sortActive: string.isRequired,
   onSortChange: func.isRequired,
+};
+
+export const ADD_COMMENT_TYPE = {
+  onFormSubmit: func.isRequired,
+  onStarChange: func.isRequired,
+  onTextChange: func.isRequired,
+  isDisabledSubmit: bool.isRequired,
+};
+
+export const HEADER_TYPE = {
+  isAuthorized: bool,
 };
