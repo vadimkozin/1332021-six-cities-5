@@ -1,9 +1,8 @@
-import {extend, uniqArray} from "@utils";
+import {extend} from "@utils";
 import {ActionType} from "./action";
 import offers, {CITIES} from '../mocks/offers';
 import {SortingType} from '@const';
 
-// const cities = uniqArray(Object.keys(CITIES));
 const cities = Object.keys(CITIES);
 
 const initCity = cities[0];
