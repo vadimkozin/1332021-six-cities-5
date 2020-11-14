@@ -20,7 +20,7 @@ const AddComment = (props) => {
   const getStarsList = () => {
 
     return starsDisplay.map((star) => {
-      const id = `${star}-stars`; // 1-stars ... 5-stars
+      const id = `${star}-stars`; // 5-stars ... 1-stars
 
       return <React.Fragment key={star}>
         <input

@@ -1,6 +1,8 @@
 import {shape, exact, func, number, bool, string, oneOf, oneOfType, instanceOf, arrayOf} from 'prop-types';
 import {CITIES, TypesHousing, OfferCardType} from '../const';
 
+const citiesName = Object.keys(CITIES);
+
 const isUrl = (props, propName, componentName) => {
   const regex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
@@ -42,7 +44,7 @@ const OFFER_CARD = {
   rating: number.isRequired,
   price: number.isRequired,
 
-  city: oneOf(CITIES).isRequired,
+  city: oneOf(citiesName).isRequired,
   coordinates: arrayOf(number).isRequired,
   position: exact(POSITION_TYPE),
   isFavorite: bool.isRequired,
@@ -119,7 +121,7 @@ export const MAP_TYPE = {
 };
 
 export const CITY_LIST_TYPE = {
-  cities: arrayOf(string.isRequired).isRequired,
+  cities: arrayOf(oneOf(citiesName).isRequired).isRequired,
   onCityChange: func.isRequired,
   activeItem: string,
   onActiveItemChange: func.isRequired,
@@ -139,3 +141,8 @@ export const ADD_COMMENT_TYPE = {
 export const HEADER_TYPE = {
   isAuthorized: bool,
 };
+
+export const CITY_WITHOUT_OFFERS_TYPE = {
+  city: string.isRequired,
+};
+

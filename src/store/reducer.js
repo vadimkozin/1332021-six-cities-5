@@ -1,9 +1,10 @@
-import {extend, uniqArray} from "@utils";
+import {extend} from "@utils";
 import {ActionType} from "./action";
 import offers from '../mocks/offers';
-import {SortingType} from '@const';
+import {SortingType, CITIES} from '@const';
 
-const cities = uniqArray(offers.map((offer) => offer.city));
+const cities = Object.keys(CITIES);
+
 const initCity = cities[0];
 
 const getOffersByCity = (offersAll, city) => offersAll.filter((offer) => offer.city === city);

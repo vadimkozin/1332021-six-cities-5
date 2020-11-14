@@ -1,4 +1,11 @@
-export const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
+export const CITIES = {
+  Paris: [48.856614, 2.3522219],
+  Cologne: [50.937531, 6.960278600000038],
+  Brussels: [50.8503396, 4.3517103],
+  Amsterdam: [52.3702157, 4.8951679],
+  Hamburg: [53.5510846, 9.99368179999999],
+  Dusseldorf: [51.2277411, 6.773455600000034],
+};
 
 export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
 
