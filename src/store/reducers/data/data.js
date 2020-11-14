@@ -1,5 +1,5 @@
 import {extend} from "@utils";
-import {ActionType} from "./action";
+import {ActionType} from "../../action";
 import {CITIES_NAME} from '@const';
 
 const initialState = {

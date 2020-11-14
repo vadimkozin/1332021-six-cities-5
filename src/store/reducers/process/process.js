@@ -1,5 +1,5 @@
 import {extend} from "@utils";
-import {ActionType} from "./action";
+import {ActionType} from "../../action";
 import {SortingType, CITIES_NAME} from '@const';
 
 const initCity = CITIES_NAME[0];

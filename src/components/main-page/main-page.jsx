@@ -62,9 +62,9 @@ const MainPage = ({city, offers, sort}) => {
 MainPage.propTypes = MAIN_PAGE_TYPE;
 
 const mapStateToProps = (state) => ({
-  city: state.city,
-  offers: state.offers,
-  sort: state.sort,
+  city: state.PROCESS.city,
+  offers: state.DATA.offers,
+  sort: state.PROCESS.sort,
 });
 
 export {MainPage};

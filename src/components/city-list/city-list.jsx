@@ -44,8 +44,8 @@ const CityList = (props) => {
 CityList.propTypes = CITY_LIST_TYPE;
 
 const mapStateToProps = (state) => ({
-  city: state.city,
-  cities: state.cities,
+  city: state.PROCESS.city,
+  cities: state.DATA.cities,
 });
 const mapDispatchToProps = (dispath) => ({
   onCityChange(city) {
