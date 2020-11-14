@@ -98,3 +98,4 @@ export const extend = (a, b = {}) => {
 };
 
 export const getCityCenter = (cityName) => CITIES[cityName];
+

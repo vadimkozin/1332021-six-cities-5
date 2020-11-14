@@ -63,7 +63,8 @@ MainPage.propTypes = MAIN_PAGE_TYPE;
 
 const mapStateToProps = (state) => ({
   city: state.PROCESS.city,
-  offers: state.DATA.offers,
+  // offers: state.DATA.offers,
+  offers: state.DATA.offers.filter((offer) => offer.city === state.PROCESS.city),
   sort: state.PROCESS.sort,
 });
 

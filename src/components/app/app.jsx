@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route, BrowserRouter, Switch} from "react-router-dom";
+import {connect} from 'react-redux';
 import MainPage from '../main-page/main-page';
 import FavoritesPage from '../favorites-page/favorites-page';
 import LoginPage from '../login-page/login-page';
@@ -37,4 +38,10 @@ const App = (props) => {
 
 App.propTypes = APP_TYPE;
 
-export default App;
+const mapStateToProps = (state) => ({
+  offers: state.DATA.offers,
+});
+
+
+export {App};
+export default connect(mapStateToProps)(App);
