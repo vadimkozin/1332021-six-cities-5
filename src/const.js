@@ -6,6 +6,7 @@ export const CITIES = {
   Hamburg: [53.5510846, 9.99368179999999],
   Dusseldorf: [51.2277411, 6.773455600000034],
 };
+export const CITIES_NAME = Object.keys(CITIES);
 
 export const MONTHS = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
 
@@ -44,4 +45,9 @@ export const SortingType = {
   LOW_TO_HIGH: `to-high`, // От дешёвых к дорогим.
   HIGH_TO_LOW: `to-low`, // От дорогих к дешёвым.
   TOP_RATED_FIRST: `top-rated` // От высокого рейтинга к низкому
+};
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
 };
