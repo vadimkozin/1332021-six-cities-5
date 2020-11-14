@@ -9,6 +9,7 @@ import CityWithoutOffers from '../city-without-offers/city-without-offers';
 import {MAIN_PAGE_TYPE} from '@types';
 import {OfferCardType, MapType} from '@const';
 import {FROM_SORTINGTYPE_TO_FUNC_MAP} from '@utils';
+import {getCity, getSort, getOffersByCity} from '@selectors/offers';
 
 const MainPage = ({city, offers, sort}) => {
   const isOffersExist = offers.length > 0;
@@ -62,10 +63,9 @@ const MainPage = ({city, offers, sort}) => {
 MainPage.propTypes = MAIN_PAGE_TYPE;
 
 const mapStateToProps = (state) => ({
-  city: state.PROCESS.city,
-  // offers: state.DATA.offers,
-  offers: state.DATA.offers.filter((offer) => offer.city === state.PROCESS.city),
-  sort: state.PROCESS.sort,
+  city: getCity(state),
+  offers: getOffersByCity(state),
+  sort: getSort(state),
 });
 
 export {MainPage};
