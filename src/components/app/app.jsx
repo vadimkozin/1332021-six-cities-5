@@ -7,6 +7,7 @@ import LoginPage from '../login-page/login-page';
 import RoomPage from '../room-page/room-page';
 import NotFound from '../not-found/not-found';
 import {APP_TYPE} from '../../types/types';
+import {getOffers} from '@selectors/offers';
 
 const App = (props) => {
   const {offers, reviews} = props;
@@ -39,7 +40,7 @@ const App = (props) => {
 App.propTypes = APP_TYPE;
 
 const mapStateToProps = (state) => ({
-  offers: state.DATA.offers,
+  offers: getOffers(state),
 });
 
 

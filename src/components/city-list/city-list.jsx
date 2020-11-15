@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import withActiveItem from '@hocs/with-active-item/with-active-item';
 import {CITY_LIST_TYPE} from '@types';
+import {getCity, getCities} from '@selectors/offers';
 
 const CityList = (props) => {
   const {cities, onCityChange, activeItem, onActiveItemChange} = props;
@@ -44,9 +45,10 @@ const CityList = (props) => {
 CityList.propTypes = CITY_LIST_TYPE;
 
 const mapStateToProps = (state) => ({
-  city: state.PROCESS.city,
-  cities: state.DATA.cities,
+  city: getCity(state),
+  cities: getCities(state),
 });
+
 const mapDispatchToProps = (dispath) => ({
   onCityChange(city) {
     dispath(ActionCreator.changeCity(city));

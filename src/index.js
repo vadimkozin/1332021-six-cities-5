@@ -21,12 +21,8 @@ const store = createStore(
     // window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 
-Promise.all([
-  store.dispatch(fetchQffersList()),
-  // store.dispatch(checkAuth()),
-])
+store.dispatch(fetchQffersList())
 .then(() => {
-  // console.log(store.getState());
   ReactDOM.render(
       <Provider store={store}>
         <App
