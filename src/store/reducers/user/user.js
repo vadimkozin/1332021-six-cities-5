@@ -12,6 +12,9 @@ const user = (state = initialState, action) => {
     case ActionType.REQUIRED_AUTHORIZATION:
       return extend(state, {authorizationStatus: action.payload});
 
+    case ActionType.SET_USER:
+      return extend(state, {user: action.payload});
+
     default:
       return state;
   }

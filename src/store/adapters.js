@@ -29,3 +29,15 @@ export class Offers {
     };
   }
 }
+
+export class User {
+  static adaptToClient(user) {
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      isPro: user.is_pro,
+      avatarUrl: user.avatar_url,
+    };
+  }
+}
