@@ -1,9 +1,9 @@
 import {extend} from "@utils";
 import {ActionType} from "../../action";
-import {CITIES_NAME} from '@const';
+import {CITIES_NAMES} from '@const';
 
 const initialState = {
-  cities: CITIES_NAME,
+  cities: CITIES_NAMES,
   offers: [],
 };
 

@@ -1,5 +1,3 @@
-const deleteKeys = (obj, keys) => keys.forEach((key) => delete obj[key]);
-
 export class Offers {
   static getKeysOwnerFrom(host) {
     const {id, name, avatar_url: avatar, is_pro: isSuper} = host;
@@ -11,27 +9,23 @@ export class Offers {
   }
 
   static adaptToClientOffer(offer) {
-
-    const adapted = Object.assign(
-        {},
-        offer,
-        {
-          typeHousing: offer.type,
-          bedroomsNumber: offer.bedrooms,
-          householdItems: offer.goods,
-          pictures: offer.images.map((img, i) => ({src: img, alt: `${offer.title} photo-${i}`})),
-          previewImage: offer.preview_image,
-          isFavorite: offer.is_favorite,
-          isPremium: offer.is_premium,
-          position: offer.location,
-          guestsMax: offer.max_adults,
-          city: offer.city.name,
-          owner: Offers.getKeysOwnerFrom(offer.host),
-        }
-    );
-
-    deleteKeys(adapted, [`type`, `bedrooms`, `goods`, `images`, `preview_image`, `is_favorite`, `is_premium`, `location`, `max_adults`, `host`]);
-
-    return adapted;
+    return {
+      id: offer.id,
+      title: offer.title,
+      description: offer.description,
+      city: offer.city.name,
+      typeHousing: offer.type,
+      bedroomsNumber: offer.bedrooms,
+      householdItems: offer.goods,
+      isPremium: offer.is_premium,
+      isFavorite: offer.is_favorite,
+      rating: offer.rating,
+      guestsMax: offer.max_adults,
+      price: offer.price,
+      position: offer.location,
+      previewImage: offer.preview_image,
+      owner: Offers.getKeysOwnerFrom(offer.host),
+      pictures: offer.images.map((img, i) => ({src: img, alt: `${offer.title} photo-${i}`})),
+    };
   }
 }

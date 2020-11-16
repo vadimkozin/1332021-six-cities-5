@@ -1,8 +1,8 @@
 import {extend} from "@utils";
 import {ActionType} from "../../action";
-import {SortingType, CITIES_NAME} from '@const';
+import {SortingType, CITIES_NAMES} from '@const';
 
-const initCity = CITIES_NAME[0];
+const initCity = CITIES_NAMES[0];
 
 const initialState = {
   city: initCity,
