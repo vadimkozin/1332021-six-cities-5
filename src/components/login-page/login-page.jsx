@@ -13,10 +13,6 @@ const LoginPage = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    const _login = loginRef.current.value;
-    const _password = passwordRef.current.value;
-    console.log(`login/password:`, `${_login}/${_password}`);
-
     onSubmit({
       login: loginRef.current.value,
       password: passwordRef.current.value,
