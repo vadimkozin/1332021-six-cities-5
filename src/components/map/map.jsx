@@ -4,6 +4,7 @@ import leaflet from 'leaflet';
 import {MAP_TYPE} from '@types';
 import {MAP_ZOOM_DEFAULT, MapType} from '@const';
 import {getCityCenter} from '@utils';
+import {getOffer} from '@selectors/offers';
 import 'leaflet/dist/leaflet.css';
 import './map.css';
 
@@ -88,7 +89,7 @@ class Map extends PureComponent {
 Map.propTypes = MAP_TYPE;
 
 const mapStateToProps = (state) => ({
-  offer: state.offer,
+  offer: getOffer(state),
 });
 
 

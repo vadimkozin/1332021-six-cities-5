@@ -45,7 +45,6 @@ const OFFER_CARD = {
   price: number.isRequired,
 
   city: oneOf(citiesName).isRequired,
-  coordinates: arrayOf(number).isRequired,
   position: exact(POSITION_TYPE),
   isFavorite: bool.isRequired,
 
