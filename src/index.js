@@ -27,7 +27,7 @@ const store = createStore(
 
 Promise.all([
   store.dispatch(fetchQffersList()),
-  store.dispatch(checkAuth()).then(() => console.log(store.getState()))
+  store.dispatch(checkAuth())
 ])
 .then(() => {
   ReactDOM.render(
