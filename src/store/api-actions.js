@@ -1,6 +1,6 @@
-import {loadOffers, requireAuthorization, redirectToRoute} from "./action";
+import {loadOffers, requireAuthorization, redirectToRoute, setUser} from "./action";
 import {AuthorizationStatus, AppRoute, APIRoute} from "../const";
-import {Offers} from './adapters';
+import {Offers, User} from './adapters';
 
 export const fetchQffersList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.OFFERS)
@@ -9,11 +9,14 @@ export const fetchQffersList = () => (dispatch, _getState, api) => (
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
+    .then(({data}) => dispatch(setUser(User.adaptToClient(data))))
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .catch(() => {})
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
+    .then(({data}) => dispatch(setUser(User.adaptToClient(data))))
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
 );

@@ -145,3 +145,13 @@ export const CITY_WITHOUT_OFFERS_TYPE = {
   city: string.isRequired,
 };
 
+export const PRIVATE_ROUTE_TYPE = {
+  authorizationStatus: string.isRequired,
+  exact: bool.isRequired,
+  path: string.isRequired,
+  render: func.isRequired,
+};
+
+export const LOGIN_PAGE_TYPE = {
+  onSubmit: func.isRequired,
+};

@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from "redux";
+import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from "react-redux";
 import thunk from 'redux-thunk';
 import {createAPI} from './services/api';
 import App from './components/app/app';
 import rootReducer from './store/reducers/root-reducer';
 import {requireAuthorization} from './store/action';
-import {fetchQffersList} from './store/api-actions';
+import {fetchQffersList, checkAuth} from './store/api-actions';
 import {AuthorizationStatus} from './const';
+import {redirect} from "./store/middlewares/redirect";
 import reviews from './mocks/reviews'; // еще нет в задании api-ссылки для получения отзывов, поэтому моки
 
 const api = createAPI(
@@ -17,10 +19,16 @@ const api = createAPI(
 
 const store = createStore(
     rootReducer,
-    applyMiddleware(thunk.withExtraArgument(api))
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api)),
+        applyMiddleware(redirect)
+    )
 );
 
-store.dispatch(fetchQffersList())
+Promise.all([
+  store.dispatch(fetchQffersList()),
+  store.dispatch(checkAuth())
+])
 .then(() => {
   ReactDOM.render(
       <Provider store={store}>
@@ -31,4 +39,3 @@ store.dispatch(fetchQffersList())
       document.querySelector(`#root`)
   );
 });
-

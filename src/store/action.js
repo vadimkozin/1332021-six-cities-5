@@ -7,6 +7,8 @@ export const ActionType = {
   LOAD_OFFERS: `LOAD_OFFERS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
+
+  SET_USER: `SET_USER`,
 };
 
 export const ActionCreator = {
@@ -42,3 +44,9 @@ export const redirectToRoute = (url) => ({
   type: ActionType.REDIRECT_TO_ROUTE,
   payload: url,
 });
+
+export const setUser = (user) => ({
+  type: ActionType.SET_USER,
+  payload: user,
+});
+
