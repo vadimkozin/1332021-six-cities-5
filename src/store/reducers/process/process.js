@@ -18,9 +18,9 @@ const initialState = {
   offer: null,
   sort: SortingType.POPULAR,
 
-  hotel: init({id: 0}),
-  hotelsNearby: init(),
-  comments: init(),
+  hotelGist: init({id: 0}),
+  hotelsNearbyGist: init(),
+  commentsGist: init(),
 };
 
 const process = (state = initialState, action) => {
@@ -39,36 +39,36 @@ const process = (state = initialState, action) => {
 
 
     case ActionType.SET_HOTEL_ID:
-      return extend(state, {hotel: extend(state.hotel, {id: action.payload})});
+      return extend(state, {hotelGist: extend(state.hotelGist, {id: action.payload})});
 
     case ActionType.LOAD_HOTEL_START:
-      return extend(state, {hotel: extend(state.hotel, {isLoading: true, error: ``})});
+      return extend(state, {hotelGist: extend(state.hotelGist, {isLoading: true, error: ``})});
 
     case ActionType.LOAD_HOTEL_SUCCESS:
-      return extend(state, {hotel: extend(state.hotel, {isLoading: false, data: action.payload})});
+      return extend(state, {hotelGist: extend(state.hotelGist, {isLoading: false, data: action.payload})});
 
     case ActionType.LOAD_HOTEL_FAILURE:
-      return extend(state, {hotel: extend(state.hotel, {isLoading: false, error: action.payload.message})});
+      return extend(state, {hotelGist: extend(state.hotelGist, {isLoading: false, error: action.payload.message})});
 
 
     case ActionType.LOAD_HOTELS_NEARBY_START:
-      return extend(state, {hotelsNearby: extend(state.hotelsNearby, {isLoading: true, error: ``})});
+      return extend(state, {hotelsNearbyGist: extend(state.hotelsNearbyGist, {isLoading: true, error: ``})});
 
     case ActionType.LOAD_HOTELS_NEARBY_SUCCESS:
-      return extend(state, {hotelsNearby: extend(state.hotelsNearby, {isLoading: false, data: action.payload})});
+      return extend(state, {hotelsNearbyGist: extend(state.hotelsNearbyGist, {isLoading: false, data: action.payload})});
 
     case ActionType.LOAD_HOTELS_NEARBY_FAILURE:
-      return extend(state, {hotelsNearby: extend(state.hotelsNearby, {isLoading: false, error: action.payload.message})});
+      return extend(state, {hotelsNearbyGist: extend(state.hotelsNearbyGist, {isLoading: false, error: action.payload.message})});
 
 
     case ActionType.LOAD_COMMENTS_START:
-      return extend(state, {comments: extend(state.comments, {isLoading: true, error: ``})});
+      return extend(state, {commentsGist: extend(state.commentsGist, {isLoading: true, error: ``})});
 
     case ActionType.LOAD_COMMENTS_SUCCESS:
-      return extend(state, {comments: extend(state.comments, {isLoading: false, data: action.payload})});
+      return extend(state, {commentsGist: extend(state.commentsGist, {isLoading: false, data: action.payload})});
 
     case ActionType.LOAD_COMMENTS_FAILURE:
-      return extend(state, {comments: extend(state.comments, {isLoading: false, error: action.payload.message})});
+      return extend(state, {commentsGist: extend(state.commentsGist, {isLoading: false, error: action.payload.message})});
 
     default:
       return state;

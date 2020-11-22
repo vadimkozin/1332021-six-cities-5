@@ -10,11 +10,3 @@ export const getSort = (state) => state[NameSpace.PROCESS].sort || ``;
 export const getOffersByCity = createSelector(getOffers, getCity, (offers, city) =>
   offers.filter((offer) => offer.city === city)
 );
-
-
-export const getIsLoading = (state) => state[NameSpace.PROCESS].hotel.isLoading;
-export const getHotel = (state) => state[NameSpace.PROCESS].hotelGist || {};
-export const getHotelsNearby = (state) => state[NameSpace.PROCESS].hotelsNearbyGist || {};
-// export const getReviews = (state) => state[NameSpace.PROCESS].reviews || [];
-export const getComments = (state) => state[NameSpace.PROCESS].commentsGist || {};
-
