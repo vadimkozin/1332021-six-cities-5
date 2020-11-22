@@ -9,44 +9,48 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 
   SET_USER: `SET_USER`,
+  LOAD_OFFER_BY_ID: `LOAD_OFFER_BY_ID`,
+
+  SET_HOTEL_ID: `hotel/set_id`,
+  LOAD_HOTEL_START: `hotel/load_start`,
+  LOAD_HOTEL_SUCCESS: `hotel/load_success`,
+  LOAD_HOTEL_FAILURE: `hotel/load_failure`,
+
+  LOAD_HOTELS_NEARBY_START: `hotels_nearby/load_start`,
+  LOAD_HOTELS_NEARBY_SUCCESS: `hotels_nearby/load_success`,
+  LOAD_HOTELS_NEARBY_FAILURE: `hotels_nearby/load_failure`,
+
+  LOAD_COMMENTS_START: `comments/load_start`,
+  LOAD_COMMENTS_SUCCESS: `comments/load_success`,
+  LOAD_COMMENTS_FAILURE: `comments/load_failure`,
+
+
 };
+
+const createAction = (type) => (payload) => ({type, payload});
 
 export const ActionCreator = {
-  changeCity: (city) => ({
-    type: ActionType.CHANGE_CITY,
-    payload: city,
-  }),
-  getOffers: (city) => ({
-    type: ActionType.GET_OFFERS,
-    payload: city,
-  }),
-  changeSort: (sort) => ({
-    type: ActionType.CHANGE_SORT,
-    payload: sort,
-  }),
-  changeOffer: (offer) => ({
-    type: ActionType.CHANGE_OFFER,
-    payload: offer,
-  })
+  changeCity: createAction(ActionType.CHANGE_CITY),
+  getOffers: createAction(ActionType.GET_OFFERS),
+  changeSort: createAction(ActionType.CHANGE_SORT),
+  changeOffer: createAction(ActionType.CHANGE_OFFER),
 };
-//
-export const loadOffers = (offers) => ({
-  type: ActionType.LOAD_OFFERS,
-  payload: offers,
-});
 
-export const requireAuthorization = (status) => ({
-  type: ActionType.REQUIRED_AUTHORIZATION,
-  payload: status,
-});
+export const loadOffers = createAction(ActionType.LOAD_OFFERS);
+export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION);
+export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE);
+export const setUser = createAction(ActionType.SET_USER);
+export const loadOffer = createAction(ActionType.LOAD_OFFER_BY_ID);
 
-export const redirectToRoute = (url) => ({
-  type: ActionType.REDIRECT_TO_ROUTE,
-  payload: url,
-});
+export const setHotelId = createAction(ActionType.SET_HOTEL_ID);
+export const loadHotelStart = createAction(ActionType.LOAD_HOTEL_START);
+export const loadHotelSuccess = createAction(ActionType.LOAD_HOTEL_SUCCESS);
+export const loadHotelFailure = createAction(ActionType.LOAD_HOTEL_FAILURE);
 
-export const setUser = (user) => ({
-  type: ActionType.SET_USER,
-  payload: user,
-});
+export const loadHotelsNearbyStart = createAction(ActionType.LOAD_HOTELS_NEARBY_START);
+export const loadHotelsNearbySuccess = createAction(ActionType.LOAD_HOTELS_NEARBY_SUCCESS);
+export const loadHotelsNearbyFailure = createAction(ActionType.LOAD_HOTELS_NEARBY_FAILURE);
 
+export const loadCommentsStart = createAction(ActionType.LOAD_COMMENTS_START);
+export const loadCommentsSuccess = createAction(ActionType.LOAD_COMMENTS_SUCCESS);
+export const loadCommentsFailure = createAction(ActionType.LOAD_COMMENTS_FAILURE);
