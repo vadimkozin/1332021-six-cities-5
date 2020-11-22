@@ -4,15 +4,16 @@ import OfferCard from '../offer-card/offer-card';
 import {OFFER_LIST_TYPE} from '../../types/types';
 
 const OfferList = (props) => {
-  const {offers, type} = props;
+  const {offers, type, isTrackChangeCard} = props;
 
   return (
     <>
-      {offers.map((offer) => (
+      {offers.map((offer, i) => (
         <OfferCard
-          key={offer.id}
+          key={`${offer.id}-${i}`}
           offer={offer}
           type={type}
+          isTrackChangeCard={isTrackChangeCard}
         />)
       )}
     </>

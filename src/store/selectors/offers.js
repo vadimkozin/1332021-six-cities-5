@@ -13,8 +13,9 @@ export const getOffersByCity = createSelector(getOffers, getCity, (offers, city)
 
 
 export const getIsLoading = (state) => state[NameSpace.PROCESS].hotel.isLoading;
-export const getHotel = (state) => state[NameSpace.PROCESS].hotelGist || {};
-export const getHotelsNearby = (state) => state[NameSpace.PROCESS].hotelsNearbyGist || {};
+export const getHotelGist = (state) => state[NameSpace.PROCESS].hotelGist || {};
+export const getHotel = (state) => state[NameSpace.PROCESS].hotelGist.data || ``;
+export const getHotelsNearbyGist = (state) => state[NameSpace.PROCESS].hotelsNearbyGist || {};
 // export const getReviews = (state) => state[NameSpace.PROCESS].reviews || [];
-export const getComments = (state) => state[NameSpace.PROCESS].commentsGist || {};
+export const getCommentsGist = (state) => state[NameSpace.PROCESS].commentsGist || {};
 

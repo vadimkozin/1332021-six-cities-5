@@ -4,8 +4,8 @@ import {useSelector} from 'react-redux';
 import MainPage from '../main-page/main-page';
 import FavoritesPage from '../favorites-page/favorites-page';
 import LoginPage from '../login-page/login-page';
-import RoomPage from '../room-page/room-page';
-// import RoomPageContainer from '../../containers/room-page-conainer/room-page-container';
+// import RoomPage from '../room-page/room-page';
+import RoomPageContainer from '../../containers/room-page-conainer/room-page-container';
 
 import NotFound from '../not-found/not-found';
 import {APP_TYPE} from '../../types/types';
@@ -34,7 +34,7 @@ const App = (props) => {
           render={() => (<FavoritesPage offers={offers}/>)}
         />
 
-        <Route exact path={AppRoute.OFFER_ID}
+        {/* <Route exact path={AppRoute.OFFER_ID}
           render={({match}) => (
             <RoomPage
               offerId={match.params.id}
@@ -42,9 +42,9 @@ const App = (props) => {
               reviews={reviews}
             />
           )}
-        />
+        /> */}
 
-        {/* <Route exact path={AppRoute.OFFER_ID}
+        <Route exact path={AppRoute.OFFER_ID}
           render={({match}) => (
             <RoomPageContainer
               offerId={match.params.id}
@@ -52,7 +52,7 @@ const App = (props) => {
               reviews={reviews}
             />
           )}
-        /> */}
+        />
 
         <Route component={NotFound} />
       </Switch>

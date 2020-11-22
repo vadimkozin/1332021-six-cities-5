@@ -58,12 +58,14 @@ const OFFER_CARD = {
 export const OFFER_CARD_TYPE = {
   offer: shape(OFFER_CARD).isRequired,
   type: oneOf([...Object.values(OfferCardType)]),
+  isTrackChangeCard: bool.isRequired,
   onOfferChange: func,
 };
 
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   type: oneOf([...Object.values(OfferCardType)]),
+  isTrackChangeCard: bool.isRequired,
 };
 
 const REVIEW_USER = {
@@ -101,9 +103,9 @@ export const MAIN_PAGE_TYPE = {
 };
 
 export const ROOM_PAGE_TYPE = {
-  offers: arrayOf(shape(OFFER_CARD)).isRequired,
+  offer: shape(OFFER_CARD).isRequired,
+  offersNearby: arrayOf(shape(OFFER_CARD)).isRequired,
   reviews: arrayOf(shape(REVIEW)).isRequired,
-  offerId: string.isRequired,
 };
 
 export const RATING_STARS_TYPE = {

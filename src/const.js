@@ -18,6 +18,8 @@ export const REVIEW_OUTPUT_MAX = 10;
 
 export const MAP_ZOOM_DEFAULT = 12;
 
+export const HOTELS_NEARBY_MAX = 3;
+
 export const CommentSettings = {
   TEXT_LENGTH_MIN: 50,
   TEXT_LENGTH_MAX: 300,
@@ -63,4 +65,11 @@ export const APIRoute = {
   OFFERS: `/hotels`,
   LOGIN: `/login`,
   OFFER_ID: `/hotels/`,
+};
+
+export const StatusType = {
+  IDLE: `idle`,
+  LOADING: `loading`,
+  SUCCESS: `succes`,
+  FAILED: `failed`,
 };

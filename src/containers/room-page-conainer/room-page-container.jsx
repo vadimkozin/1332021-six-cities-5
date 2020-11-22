@@ -1,19 +1,29 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
-// import RoomPage from '../../components/room-page/room-page';
+import RoomPage from '../../components/room-page/room-page';
 import {fetchHotel, fetchHotelsNearby, fetchComments} from '../../store/api-actions';
-import {getHotel, getHotelsNearby, getComments} from '../../store/selectors/offers';
+import {getHotelGist, getHotelsNearbyGist, getCommentsGist} from '../../store/selectors/offers';
 import {getIsAuth} from '../../store/selectors/user';
+import {HOTELS_NEARBY_MAX, StatusType} from '@const';
 
-const print = (obj) => {
-  return Object.entries(obj).map(([key, value]) => `${key}: ${value} `).join(`,`);
+const isWaitData = (gistsList) => gistsList.some((gist) => {
+  return gist.status === StatusType.IDLE || gist.status === StatusType.LOADING;
+});
+
+const getError = (gistsList) => {
+  const isError = gistsList.some((gist) => gist.error);
+
+  if (!isError) {
+    return ``;
+  }
+
+  const content = gistsList
+    .map((gist) => gist.error ? gist.error : ``)
+    .map((err, i) => <li key={i}>{err}</li>);
+
+  return <ul>{content}</ul>;
 };
-
-const getError = (gistsList) => gistsList.map((gist) => {
-  return gist.error ? gist.error : ``;
-}).join();
-
 
 const RoomPageContainer = ({offerId}) => {
   const dispath = useDispatch();
@@ -26,47 +36,40 @@ const RoomPageContainer = ({offerId}) => {
   }, []);
 
   const isAuth = useSelector(getIsAuth);
-  const hotelGist = useSelector(getHotel);
-  const nearbyGist = useSelector(getHotelsNearby);
-  const commentsGist = useSelector(getComments);
+  const hotelGist = useSelector(getHotelGist);
+  const nearbyGist = useSelector(getHotelsNearbyGist);
+  const commentsGist = useSelector(getCommentsGist);
 
-  if (hotelGist.isLoading || nearbyGist.isLoading || commentsGist.isLoading) {
-    return <h3>Loading ...</h3>;
+  const gists = [hotelGist, nearbyGist, commentsGist];
+
+  if (isWaitData(gists)) {
+    return <h4>LOADING ..................................</h4>;
   }
 
-  // if (hotelGist.error) {
-  //   return <h3>ERROR_LOAD_HOTEL: {hotelGist.error}</h3>;
-  // }
-  // if (nearbyGist.error) {
-  //   return <h3>ERROR_LOAD_NEARBY: {nearbyGist.error}</h3>;
-  // }
-  // if (commentsGist.error) {
-  //   return <h3>ERROR_LOAD_COMMENTS: {commentsGist.error}</h3>;
-  // }
+  const error = getError(gists);
 
-  const error = getError([hotelGist, nearbyGist, commentsGist]);
   if (error) {
-    return <h2>Error: {error}</h2>;
+    return <h4>Error:{error}</h4>;
   }
 
-  const hotelsNearby = nearbyGist.data;
+  const hotelsNearby = Array.isArray(nearbyGist.data) ? nearbyGist.data.slice(0, HOTELS_NEARBY_MAX) : [];
   const comments = commentsGist.data;
   const hotel = hotelGist.data;
 
-  console.log(`isAuth:`, isAuth);
-  console.log(`hotel:`, hotel);
-  console.log(`hotelsNearby:`, hotelsNearby);
-  console.log(`comments:`, comments);
-
   return (
     <>
-    {hotelGist.data && (<p>{`${hotel.id} : ${hotel.title}`}</p>) }
-    {nearbyGist.data && (<p>Nearby: {nearbyGist.data.length} offers</p>)}
-    {commentsGist.data && (<p>comments: {commentsGist.data.length} all</p>)}
+      {<p>isAuth: {isAuth.toString()}</p>}
+      {hotelGist.data && (<p>{`${hotel.id} : ${hotel.title}`}</p>) }
+      {nearbyGist.data && (<p>Nearby: {nearbyGist.data.length} offers</p>)}
+      {commentsGist.data && (<p>comments: {commentsGist.data.length} all</p>)}
+      <RoomPage
+        offer={hotel}
+        offers={hotelsNearby}
+        offersNearby={hotelsNearby}
+        reviews={comments}
+      />
     </>
   );
-
-  // return <RoomPage {...props} />;
 };
 
 RoomPageContainer.propTypes = {

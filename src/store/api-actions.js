@@ -1,5 +1,5 @@
-import {loadOffer, loadOffers, requireAuthorization, redirectToRoute, setUser} from "./action";
-import {setHotelId, loadHotelStart, loadHotelSuccess, loadHotelFailure} from "./action";
+import {loadOffers, requireAuthorization, redirectToRoute, setUser} from "./action";
+import {loadHotelStart, loadHotelSuccess, loadHotelFailure} from "./action";
 import {loadHotelsNearbyStart, loadHotelsNearbySuccess, loadHotelsNearbyFailure} from "./action";
 import {loadCommentsStart, loadCommentsSuccess, loadCommentsFailure} from "./action";
 import {AuthorizationStatus, AppRoute, APIRoute} from "../const";
@@ -25,34 +25,26 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
 );
 
 //
-/*
-export const fetchOffer = (id) => (dispatch, _getState, api) => (
-  api.get(`${APIRoute.OFFER_ID}${id}`)
-  .then(({data}) => {console.log(`fetch:`, Offers.adaptToClientOffer(data)); return {data}; })
-  .then(({data}) => dispatch(loadOffer(Offers.adaptToClientOffer(data))))
-  // .then(({data}) => dispatch(loadOffer(Offers.adaptToClientOffer(data))))
-);
-*/
 export const fetchHotel = (id) => (dispatch, _getState, api) => {
-  dispatch(setHotelId(id));
+  // dispatch(setHotelId(id));
   dispatch(loadHotelStart(id));
 
   api.get(`${APIRoute.OFFER_ID}${id}`)
-  .then(({data}) => {console.log(`fetch:`, Offers.adaptToClientOffer(data)); return {data};})
+  // .then(({data}) => {console.log(`fetch:`, Offers.adaptToClientOffer(data)); return {data};})
   .then(({data}) =>
     dispatch(loadHotelSuccess(Offers.adaptToClientOffer(data)))
   ).catch((error) => {
-    console.log(`ОШИБКА:`, error.toString());
+    // console.log(`ОШИБКА:`, error.toString());
     dispatch(loadHotelFailure(error));
   });
 };
 
 export const fetchHotelsNearby = (id) => (dispatch, _getState, api) => {
-  dispatch(setHotelId(id));
+  // dispatch(setHotelId(id));
   dispatch(loadHotelsNearbyStart(id));
 
   api.get(`/hotels/${id}/nearby`)
-  .then(({data}) => {console.log(`Nearby:`, Offers.adaptToClient(data)); return {data};})
+  // .then(({data}) => {console.log(`Nearby:`, Offers.adaptToClient(data)); return {data};})
   .then(({data}) =>
     dispatch(loadHotelsNearbySuccess(Offers.adaptToClient(data)))
   ).catch((error) => {

@@ -7,11 +7,17 @@ import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import {ROOM_PAGE_TYPE} from '../../types/types';
 import {OFFER_PICTURE_MAX, OfferCardType, MapType} from '../../const';
-import {getHousingView} from '../../utils';
+import {getHousingView, filterBy} from '../../utils';
 
 const RoomPage = (props) => {
-  const {offer, offersNearby, reviews} = props;
-  const offersByCity = [...offersNearby, offer];
+  const {offers, reviews, offerId} = props;
+
+  const offer = offers.find((offerCurrent) => offerCurrent.id === Number(offerId));
+
+  // задание: 12. Личный проект: больше подробностей (часть 2):
+  // "Отрисуйте на карте маркеры 3-х объявлений расположенных неподалёку."
+  // "Функцию поиска объявлений неподалеку реализовывать не нужно. Используйте моки.
+  const offersByCity = filterBy(offers, `city`, offer.city).slice(0, 3);
 
   const photoList = offer.pictures
     .slice(0, Math.min(offer.pictures.length, OFFER_PICTURE_MAX))
@@ -106,7 +112,6 @@ const RoomPage = (props) => {
               <OfferList
                 offers={offersByCity}
                 type={OfferCardType.NEAR_PLACE}
-                isTrackChangeCard={false}
               />
 
             </div>

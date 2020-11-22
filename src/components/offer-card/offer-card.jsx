@@ -26,18 +26,22 @@ const getOptionsByType = (type) => {
 };
 
 const OfferCard = (props) => {
-  const {offer, type, onOfferChange} = props;
+  const {offer, type, isTrackChangeCard, onOfferChange} = props;
 
   const opts = getOptionsByType(type);
 
   const handleCardOver = useCallback((evt) => {
     evt.preventDefault();
-    onOfferChange(offer);
+    if (isTrackChangeCard) {
+      onOfferChange(offer);
+    }
   });
 
   const handleCardLeave = useCallback((evt) => {
     evt.preventDefault();
-    onOfferChange(null);
+    if (isTrackChangeCard) {
+      onOfferChange(null);
+    }
   });
 
   return (

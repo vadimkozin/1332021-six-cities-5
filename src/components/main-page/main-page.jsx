@@ -37,6 +37,7 @@ const MainPage = ({city, offers, sort}) => {
                   <OfferList
                     offers={offersSort}
                     type={OfferCardType.CITY_PLACE}
+                    isTrackChangeCard={true}
                   />
                 </div>
               </section>
