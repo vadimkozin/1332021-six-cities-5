@@ -66,12 +66,19 @@ export const OFFER_LIST_TYPE = {
   type: oneOf([...Object.values(OfferCardType)]),
 };
 
-const REVIEW = {
-  avatar: isUrl,
+const REVIEW_USER = {
+  id: number.isRequired,
+  avatarUrl: isUrl,
   name: string.isRequired,
-  rating: number.isRequired,
-  date: instanceOf(Date).isRequired,
+  isPro: bool.isRequired,
+};
+
+const REVIEW = {
+  id: number.isRequired,
   text: string.isRequired,
+  date: instanceOf(Date).isRequired,
+  rating: number.isRequired,
+  user: shape(REVIEW_USER).isRequired
 };
 
 export const REVIEW_TYPE = {
