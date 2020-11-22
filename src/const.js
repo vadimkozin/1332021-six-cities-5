@@ -52,14 +52,15 @@ export const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
-
 export const AppRoute = {
   ROOT: `/`,
   LOGIN: `/login`,
   FAVORITES: `/favorites`,
+  OFFER_ID: `/offer/:id`,
 };
 
 export const APIRoute = {
   OFFERS: `/hotels`,
   LOGIN: `/login`,
+  OFFER_ID: `/hotels/`,
 };

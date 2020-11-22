@@ -90,7 +90,7 @@ export const REVIEW_LIST_TYPE = {
 };
 
 export const APP_TYPE = {
-  offers: arrayOf(shape(OFFER_CARD)).isRequired,
+  // offers: arrayOf(shape(OFFER_CARD)).isRequired,
   reviews: arrayOf(shape(REVIEW)).isRequired,
 };
 
@@ -161,4 +161,12 @@ export const PRIVATE_ROUTE_TYPE = {
 
 export const LOGIN_PAGE_TYPE = {
   onSubmit: func.isRequired,
+};
+
+export const SMART_ROUTE_TYPE = {
+  exact: bool.isRequired,
+  path: string.isRequired,
+  render: func.isRequired,
+  isRedirect: bool.isRequired,
+  redirectTo: string.isRequired,
 };
