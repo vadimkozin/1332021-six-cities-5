@@ -35,7 +35,8 @@ const Header = () => {
                   className="header__nav-link header__nav-link--profile"
                   to={isAuth ? AppRoute.FAVORITES : AppRoute.LOGIN}
                 >
-                  <div className="header__avatar-wrapper user__avatar-wrapper"
+                  <div
+                    className="header__avatar-wrapper user__avatar-wrapper"
                     style={avatarStyle}
                   >
                   </div>
