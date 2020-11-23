@@ -61,11 +61,12 @@ export const AppRoute = {
   OFFER_ID: `/offer/:id`,
 };
 
-export const APIRoute = {
-  OFFERS: `/hotels`,
-  LOGIN: `/login`,
-  OFFER_ID: `/hotels/`,
-};
+// export const APIRoute = {
+//   OFFERS: `/hotels`,
+//   LOGIN: `/login`,
+//   FAVORITE: `/favorite`,
+//   COMMENTS: `/comments`
+// };
 
 export const StatusType = {
   IDLE: `idle`,

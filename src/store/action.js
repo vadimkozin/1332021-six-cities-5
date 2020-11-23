@@ -11,7 +11,6 @@ export const ActionType = {
   SET_USER: `SET_USER`,
   LOAD_OFFER_BY_ID: `LOAD_OFFER_BY_ID`,
 
-  SET_HOTEL_ID: `hotel/set_id`,
   LOAD_HOTEL_START: `hotel/load_start`,
   LOAD_HOTEL_SUCCESS: `hotel/load_success`,
   LOAD_HOTEL_FAILURE: `hotel/load_failure`,
