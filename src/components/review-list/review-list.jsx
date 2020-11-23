@@ -28,7 +28,6 @@ const ReviewList = (props) => {
         {reviewsList}
       </ul>
       {isAuth && (<AddCommentWrapped />)}
-      {/* <AddCommentWrapped /> */}
     </section>
   );
 };

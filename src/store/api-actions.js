@@ -1,8 +1,9 @@
-import {loadOffers, requireAuthorization, redirectToRoute, setUser} from "./action";
-import {loadHotelStart, loadHotelSuccess, loadHotelFailure} from "./action";
-import {loadHotelsNearbyStart, loadHotelsNearbySuccess, loadHotelsNearbyFailure} from "./action";
-import {loadCommentsStart, loadCommentsSuccess, loadCommentsFailure} from "./action";
-import {AuthorizationStatus, AppRoute} from "../const";
+import {loadOffers, requireAuthorization, redirectToRoute, setUser} from './action';
+import {loadHotelStart, loadHotelSuccess, loadHotelFailure} from './action';
+import {loadHotelsNearbyStart, loadHotelsNearbySuccess, loadHotelsNearbyFailure} from './action';
+import {loadCommentsStart, loadCommentsSuccess, loadCommentsFailure} from './action';
+import {sendCommentStart, sendCommentSuccess, sendCommentFailure} from './action';
+import {AuthorizationStatus, AppRoute} from '../const';
 import {Offers, User, Comments} from './adapters';
 import {route} from './api-config';
 
@@ -30,25 +31,25 @@ export const fetchHotel = (id) => (dispatch, _getState, api) => {
   dispatch(loadHotelStart(id));
 
   api.get(route.get.hotel(id))
-  // .then(({data}) => {console.log(`fetch:`, Offers.adaptToClientOffer(data)); return {data};})
-  .then(({data}) =>
-    dispatch(loadHotelSuccess(Offers.adaptToClientOffer(data)))
-  ).catch((error) => {
-    // console.log(`ОШИБКА:`, error.toString());
-    dispatch(loadHotelFailure(error));
-  });
+    // .then(({data}) => {console.log(`fetch:`, Offers.adaptToClientOffer(data)); return {data};})
+    .then(({data}) =>
+      dispatch(loadHotelSuccess(Offers.adaptToClientOffer(data)))
+    ).catch((error) => {
+      // console.log(`ОШИБКА:`, error.toString());
+      dispatch(loadHotelFailure(error));
+    });
 };
 
 export const fetchHotelsNearby = (id) => (dispatch, _getState, api) => {
   dispatch(loadHotelsNearbyStart(id));
 
   api.get(route.get.hotelsNearby(id))
-  // .then(({data}) => {console.log(`Nearby:`, Offers.adaptToClient(data)); return {data};})
-  .then(({data}) =>
-    dispatch(loadHotelsNearbySuccess(Offers.adaptToClient(data)))
-  ).catch((error) => {
-    dispatch(loadHotelsNearbyFailure(error));
-  });
+    // .then(({data}) => {console.log(`Nearby:`, Offers.adaptToClient(data)); return {data};})
+    .then(({data}) =>
+      dispatch(loadHotelsNearbySuccess(Offers.adaptToClient(data)))
+    ).catch((error) => {
+      dispatch(loadHotelsNearbyFailure(error));
+    });
 };
 
 export const fetchComments = (id) => (dispatch, _getState, api) => {
@@ -56,18 +57,18 @@ export const fetchComments = (id) => (dispatch, _getState, api) => {
 
   api.get(route.get.comments(id))
   // .then(({data}) => {console.log(`Comments:`, Comments.adaptToClient(data)); return {data};})
-  .then(({data}) =>
-    dispatch(loadCommentsSuccess(Comments.adaptToClients(data)))
-  ).catch((error) => {
-    dispatch(loadCommentsFailure(error));
-  });
+    .then(({data}) =>
+      dispatch(loadCommentsSuccess(Comments.adaptToClients(data))))
+    .catch((error) => {
+      dispatch(loadCommentsFailure(error));
+    });
 };
 
 export const sendComment = ({hotelId, comment, rating}) => (dispatch, _getState, api) => {
-  console.log(`hotelId, comment, rating:`, hotelId, comment, rating);
+  dispatch(sendCommentStart(hotelId));
+  // console.log(`hotelId, comment, rating:`, hotelId, comment, rating);
 
-  api.post(route.post.comments(hotelId), {comment, rating})
-    .then(({data}) => console.log(`data:`, data))
-    .catch((error) => console.log(`ошибка:`, error));
+  return api.post(route.post.comments(hotelId), {comment, rating})
+    .then(({data}) => dispatch(sendCommentSuccess(Comments.adaptToClients(data))))
+    .catch((error) => dispatch(sendCommentFailure(error)));
 };
-

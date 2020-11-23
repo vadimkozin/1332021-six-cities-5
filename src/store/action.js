@@ -23,6 +23,10 @@ export const ActionType = {
   LOAD_COMMENTS_SUCCESS: `comments/load_success`,
   LOAD_COMMENTS_FAILURE: `comments/load_failure`,
 
+  SEND_COMMENT_START: `comment/send_start`,
+  SEND_COMMENT_SUCCESS: `comment/send_success`,
+  SEND_COMMENT_FAILURE: `comment/send_failure`,
+
 
 };
 
@@ -53,3 +57,7 @@ export const loadHotelsNearbyFailure = createAction(ActionType.LOAD_HOTELS_NEARB
 export const loadCommentsStart = createAction(ActionType.LOAD_COMMENTS_START);
 export const loadCommentsSuccess = createAction(ActionType.LOAD_COMMENTS_SUCCESS);
 export const loadCommentsFailure = createAction(ActionType.LOAD_COMMENTS_FAILURE);
+
+export const sendCommentStart = createAction(ActionType.SEND_COMMENT_START);
+export const sendCommentSuccess = createAction(ActionType.SEND_COMMENT_SUCCESS);
+export const sendCommentFailure = createAction(ActionType.SEND_COMMENT_FAILURE);

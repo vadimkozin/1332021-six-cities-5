@@ -23,15 +23,19 @@ const makeFailed = (state, key, action) => (
   extend(state, {[key]: extend(state[key], {status: StatusType.FAILED, error: action.payload.message})})
 );
 
+const Data = {
+  HOTEL: `hotelGist`,
+  HOTELS_NEARBY: `hotelsNearbyGist`,
+  COMMENTS: `commentsGist`,
+};
 
 const initialState = {
   city: initCity,
   offer: null,
   sort: SortingType.POPULAR,
-
-  hotelGist: init({id: 0}),
-  hotelsNearbyGist: init(),
-  commentsGist: init(),
+  [Data.HOTEL]: init({id: 0}),
+  [Data.HOTELS_NEARBY]: init(),
+  [Data.COMMENTS]: init(),
 };
 
 const process = (state = initialState, action) => {
@@ -50,31 +54,33 @@ const process = (state = initialState, action) => {
       return extend(state, {hotelGist: extend(state.hotelGist, {data: action.payload})});
 
     case ActionType.LOAD_HOTEL_START:
-      return makeLoading(state, `hotelGist`);
-
+      return makeLoading(state, Data.HOTEL);
     case ActionType.LOAD_HOTEL_SUCCESS:
-      return makeSuccess(state, `hotelGist`, action);
-
+      return makeSuccess(state, Data.HOTEL, action);
     case ActionType.LOAD_HOTEL_FAILURE:
-      return makeFailed(state, `hotelGist`, action);
+      return makeFailed(state, Data.HOTEL, action);
 
     case ActionType.LOAD_HOTELS_NEARBY_START:
-      return makeLoading(state, `hotelsNearbyGist`);
-
+      return makeLoading(state, Data.HOTELS_NEARBY);
     case ActionType.LOAD_HOTELS_NEARBY_SUCCESS:
-      return makeSuccess(state, `hotelsNearbyGist`, action);
-
+      return makeSuccess(state, Data.HOTELS_NEARBY, action);
     case ActionType.LOAD_HOTELS_NEARBY_FAILURE:
-      return makeFailed(state, `hotelsNearbyGist`, action);
+      return makeFailed(state, Data.HOTELS_NEARBY, action);
 
     case ActionType.LOAD_COMMENTS_START:
-      return makeLoading(state, `commentsGist`);
-
+      return makeLoading(state, Data.COMMENTS);
     case ActionType.LOAD_COMMENTS_SUCCESS:
-      return makeSuccess(state, `commentsGist`, action);
-
+      return makeSuccess(state, Data.COMMENTS, action);
     case ActionType.LOAD_COMMENTS_FAILURE:
-      return makeFailed(state, `commentsGist`, action);
+      return makeFailed(state, Data.COMMENTS, action);
+
+
+    case ActionType.SEND_COMMENT_START:
+      return makeLoading(state, Data.COMMENTS);
+    case ActionType.SEND_COMMENT_SUCCESS:
+      return makeSuccess(state, Data.COMMENTS, action);
+    case ActionType.SEND_COMMENT_FAILURE:
+      return makeFailed(state, Data.COMMENTS, action);
 
     default:
       return state;

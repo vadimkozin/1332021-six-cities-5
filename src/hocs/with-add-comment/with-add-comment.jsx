@@ -17,11 +17,12 @@ const withAddComment = (Component) => (props) => {
     evt.preventDefault();
     // TEST 1234567890 1234567890 1234567890 1234567890 1234567890
 
+    // setDisabledSubmit(true);
+    // dispatch(sendComment({hotelId, comment: text, rating: starsCount})).then(setDisabledSubmit(false));
     dispatch(sendComment({hotelId, comment: text, rating: starsCount}));
 
     setText(``);
     setStarsCount(0);
-    setDisabledSubmit(true);
 
   };
 
