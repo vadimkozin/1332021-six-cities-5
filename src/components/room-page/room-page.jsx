@@ -1,6 +1,6 @@
 import React from 'react';
 import HomeOwner from '../home-owner/home-owner';
-import ReviewList from '../review-list/review-list';
+import ReviewListContainer from '../../containers/review-list-container/review-list-container';
 import RatingStars from '../rating-stars/rating-stars';
 import Map from '../map/map';
 import OfferList from '../offer-list/offer-list';
@@ -10,8 +10,8 @@ import {OFFER_PICTURE_MAX, OfferCardType, MapType} from '../../const';
 import {getHousingView} from '../../utils';
 
 const RoomPage = (props) => {
-  const {offer, offersNearby, reviews} = props;
-  const offersByCity = [...offersNearby, offer];
+  const {offer, offersNearby} = props;
+  const offersAround = [...offersNearby, offer];
 
   const photoList = offer.pictures
     .slice(0, Math.min(offer.pictures.length, OFFER_PICTURE_MAX))
@@ -86,13 +86,13 @@ const RoomPage = (props) => {
               </div>
 
               <HomeOwner owner={offer.owner} description={offer.description}/>
-              <ReviewList reviews={reviews} />
+              <ReviewListContainer offerId={offer.id}/>
 
             </div>
           </div>
           <section className="property__map map">
             <Map
-              offers={offersByCity}
+              offers={offersAround}
               city={offer.city}
               layoutType={MapType.HORIZONTAL}
             />
@@ -104,7 +104,7 @@ const RoomPage = (props) => {
             <div className="near-places__list places__list">
 
               <OfferList
-                offers={offersByCity}
+                offers={offersAround}
                 type={OfferCardType.NEAR_PLACE}
                 isTrackChangeCard={false}
               />

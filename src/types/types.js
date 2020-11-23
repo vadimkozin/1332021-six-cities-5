@@ -105,7 +105,6 @@ export const MAIN_PAGE_TYPE = {
 export const ROOM_PAGE_TYPE = {
   offer: shape(OFFER_CARD).isRequired,
   offersNearby: arrayOf(shape(OFFER_CARD)).isRequired,
-  reviews: arrayOf(shape(REVIEW)).isRequired,
 };
 
 export const RATING_STARS_TYPE = {

@@ -77,7 +77,7 @@ const OfferCard = (props) => {
           <RatingStars rating={offer.rating}/>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
+          <Link key={offer.id} to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.typeHousing}</p>
       </div>

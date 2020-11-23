@@ -31,42 +31,28 @@ export const fetchHotel = (id) => (dispatch, _getState, api) => {
   dispatch(loadHotelStart(id));
 
   api.get(route.get.hotel(id))
-    // .then(({data}) => {console.log(`fetch:`, Offers.adaptToClientOffer(data)); return {data};})
-    .then(({data}) =>
-      dispatch(loadHotelSuccess(Offers.adaptToClientOffer(data)))
-    ).catch((error) => {
-      // console.log(`ОШИБКА:`, error.toString());
-      dispatch(loadHotelFailure(error));
-    });
+    .then(({data}) => dispatch(loadHotelSuccess(Offers.adaptToClientOffer(data))))
+    .catch((error) => dispatch(loadHotelFailure(error)));
 };
 
 export const fetchHotelsNearby = (id) => (dispatch, _getState, api) => {
   dispatch(loadHotelsNearbyStart(id));
 
   api.get(route.get.hotelsNearby(id))
-    // .then(({data}) => {console.log(`Nearby:`, Offers.adaptToClient(data)); return {data};})
-    .then(({data}) =>
-      dispatch(loadHotelsNearbySuccess(Offers.adaptToClient(data)))
-    ).catch((error) => {
-      dispatch(loadHotelsNearbyFailure(error));
-    });
+    .then(({data}) => dispatch(loadHotelsNearbySuccess(Offers.adaptToClient(data))))
+    .catch((error) => dispatch(loadHotelsNearbyFailure(error)));
 };
 
 export const fetchComments = (id) => (dispatch, _getState, api) => {
   dispatch(loadCommentsStart(id));
 
   api.get(route.get.comments(id))
-  // .then(({data}) => {console.log(`Comments:`, Comments.adaptToClient(data)); return {data};})
-    .then(({data}) =>
-      dispatch(loadCommentsSuccess(Comments.adaptToClients(data))))
-    .catch((error) => {
-      dispatch(loadCommentsFailure(error));
-    });
+    .then(({data}) => dispatch(loadCommentsSuccess(Comments.adaptToClients(data))))
+    .catch((error) => dispatch(loadCommentsFailure(error)));
 };
 
 export const sendComment = ({hotelId, comment, rating}) => (dispatch, _getState, api) => {
   dispatch(sendCommentStart(hotelId));
-  // console.log(`hotelId, comment, rating:`, hotelId, comment, rating);
 
   return api.post(route.post.comments(hotelId), {comment, rating})
     .then(({data}) => dispatch(sendCommentSuccess(Comments.adaptToClients(data))))

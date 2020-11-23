@@ -17,7 +17,6 @@ import {getAuthorizationStatus} from '@selectors/user';
 import {AuthorizationStatus, AppRoute} from "@const";
 
 const App = (props) => {
-  const {reviews} = props;
   const offers = useSelector(getOffers);
   const isAuth = useSelector(getAuthorizationStatus) === AuthorizationStatus.AUTH;
 
@@ -48,8 +47,6 @@ const App = (props) => {
           render={({match}) => (
             <RoomPageContainer
               offerId={match.params.id}
-              offers={offers}
-              reviews={reviews}
             />
           )}
         />

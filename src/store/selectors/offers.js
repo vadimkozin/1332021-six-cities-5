@@ -19,4 +19,5 @@ export const getHotelId = (state) => state[NameSpace.PROCESS].hotelGist.data.id 
 export const getHotelsNearbyGist = (state) => state[NameSpace.PROCESS].hotelsNearbyGist || {};
 // export const getReviews = (state) => state[NameSpace.PROCESS].reviews || [];
 export const getCommentsGist = (state) => state[NameSpace.PROCESS].commentsGist || {};
+export const getComments = (state) => state[NameSpace.PROCESS].commentsGist.data || [];
 
