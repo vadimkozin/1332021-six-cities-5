@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import RatingStars from '../rating-stars/rating-stars';
 import {OFFER_CARD_TYPE} from '../../types/types';
-import {OfferCardType} from '../../const';
+import {OfferCardType, AppRoute} from '../../const';
 
 const getOptionsByType = (type) => {
   switch (type) {
@@ -29,6 +29,7 @@ const OfferCard = (props) => {
   const {offer, type, isTrackChangeCard, onOfferChange} = props;
 
   const opts = getOptionsByType(type);
+  const routeOffer = `${AppRoute.OFFER}/${offer.id}`;
 
   const handleCardOver = useCallback((evt) => {
     evt.preventDefault();
@@ -47,8 +48,6 @@ const OfferCard = (props) => {
   return (
     <article
       className={`${opts.classNameMain} place-card`}
-      onMouseEnter={handleCardOver}
-      onMouseLeave={handleCardLeave}
     >
       {offer.isPremium &&
       <div className="place-card__mark">
@@ -56,10 +55,15 @@ const OfferCard = (props) => {
       </div>
       }
       <div className={`${opts.classNameImage} place-card__image-wrapper`}>
-        <a href="#">
-          <img className="place-card__image" {...offer.pictures[0]} width="260" height="200" />
-        </a>
+        <Link
+          to={routeOffer}
+          onMouseEnter={handleCardOver}
+          onMouseLeave={handleCardLeave}
+        >
+          <img className="place-card__image" src={offer.previewImage} width="260" height="200" />
+        </Link>
       </div>
+
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
@@ -77,7 +81,14 @@ const OfferCard = (props) => {
           <RatingStars rating={offer.rating}/>
         </div>
         <h2 className="place-card__name">
-          <Link key={offer.id} to={`/offer/${offer.id}`}>{offer.title}</Link>
+          <Link
+            key={offer.id}
+            to={routeOffer}
+            onMouseEnter={handleCardOver}
+            onMouseLeave={handleCardLeave}
+          >
+            {offer.title}
+          </Link>
         </h2>
         <p className="place-card__type">{offer.typeHousing}</p>
       </div>

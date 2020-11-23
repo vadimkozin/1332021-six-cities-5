@@ -91,11 +91,6 @@ export const REVIEW_LIST_TYPE = {
   reviews: arrayOf(shape(REVIEW)).isRequired,
 };
 
-export const APP_TYPE = {
-  // offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  reviews: arrayOf(shape(REVIEW)).isRequired,
-};
-
 export const MAIN_PAGE_TYPE = {
   city: string.isRequired,
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
@@ -170,4 +165,12 @@ export const SMART_ROUTE_TYPE = {
   render: func.isRequired,
   isRedirect: bool.isRequired,
   redirectTo: string.isRequired,
+};
+
+export const ROOM_PAGE_CONTAINER_TYPE = {
+  offerId: string.isRequired,
+};
+
+export const REVIEW_LIST_CONTAINER_TYPE = {
+  offerId: string.isRequired,
 };

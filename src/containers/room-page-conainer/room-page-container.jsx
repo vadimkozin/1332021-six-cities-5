@@ -1,11 +1,11 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import PropTypes from 'prop-types';
 import RoomPage from '../../components/room-page/room-page';
 import {fetchHotel, fetchHotelsNearby} from '../../store/api-actions';
 import {getHotelGist, getHotelsNearbyGist} from '../../store/selectors/offers';
 import {HOTELS_NEARBY_MAX} from '@const';
 import {isWaitingRequestData, isRequestError} from '@utils';
+import {ROOM_PAGE_CONTAINER_TYPE} from '@types';
 
 const RoomPageContainer = ({offerId}) => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const RoomPageContainer = ({offerId}) => {
   const gists = [hotelGist, nearbyGist];
 
   if (isWaitingRequestData(gists)) {
-    return <h4>LOADING ..................................</h4>;
+    return <h4 style={{textAlign: `center`}}>Loading...</h4>;
   }
   if (isRequestError(gists)) {
     return <h4>Error receiving comments</h4>;
@@ -37,8 +37,6 @@ const RoomPageContainer = ({offerId}) => {
   );
 };
 
-RoomPageContainer.propTypes = {
-  offerId: PropTypes.string.isRequired,
-};
+RoomPageContainer.propTypes = ROOM_PAGE_CONTAINER_TYPE;
 
 export default RoomPageContainer;

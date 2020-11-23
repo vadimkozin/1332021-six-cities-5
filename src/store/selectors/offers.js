@@ -11,13 +11,11 @@ export const getOffersByCity = createSelector(getOffers, getCity, (offers, city)
   offers.filter((offer) => offer.city === city)
 );
 
-
 export const getIsLoading = (state) => state[NameSpace.PROCESS].hotel.isLoading;
 export const getHotelGist = (state) => state[NameSpace.PROCESS].hotelGist || {};
 export const getHotel = (state) => state[NameSpace.PROCESS].hotelGist.data || ``;
-export const getHotelId = (state) => state[NameSpace.PROCESS].hotelGist.data.id || -1;
+export const getHotelId = (state) => state[NameSpace.PROCESS].hotelGist.data.id || 0;
 export const getHotelsNearbyGist = (state) => state[NameSpace.PROCESS].hotelsNearbyGist || {};
-// export const getReviews = (state) => state[NameSpace.PROCESS].reviews || [];
 export const getCommentsGist = (state) => state[NameSpace.PROCESS].commentsGist || {};
 export const getComments = (state) => state[NameSpace.PROCESS].commentsGist.data || [];
 

@@ -26,7 +26,6 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
 );
 
-//
 export const fetchHotel = (id) => (dispatch, _getState, api) => {
   dispatch(loadHotelStart(id));
 

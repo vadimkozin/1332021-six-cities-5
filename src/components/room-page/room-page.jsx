@@ -86,7 +86,7 @@ const RoomPage = (props) => {
               </div>
 
               <HomeOwner owner={offer.owner} description={offer.description}/>
-              <ReviewListContainer offerId={offer.id}/>
+              <ReviewListContainer offerId={String(offer.id)}/>
 
             </div>
           </div>

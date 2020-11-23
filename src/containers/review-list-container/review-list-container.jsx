@@ -1,11 +1,11 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import PropTypes from 'prop-types';
 import ReviewList from '../../components/review-list/review-list';
 import {getIsAuth} from '../../store/selectors/user';
 import {fetchComments} from '../../store/api-actions';
 import {getCommentsGist} from '@selectors/offers';
 import {isWaitingRequestData, isRequestError} from '@utils';
+import {REVIEW_LIST_CONTAINER_TYPE} from '@types';
 
 const ReviewListContainer = ({offerId}) => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const ReviewListContainer = ({offerId}) => {
   const isAuth = useSelector(getIsAuth);
 
   if (isWaitingRequestData([commentsGist])) {
-    return <h4>LOADING ..................................</h4>;
+    return <h4 style={{textAlign: `center`}}>Loading...</h4>;
   }
 
   if (isRequestError([commentsGist])) {
@@ -28,8 +28,6 @@ const ReviewListContainer = ({offerId}) => {
   return <ReviewList reviews={commentsGist.data} isAuth={isAuth}/>;
 };
 
-ReviewListContainer.propTypes = {
-  offerId: PropTypes.number.isRequired,
-};
+ReviewListContainer.propTypes = REVIEW_LIST_CONTAINER_TYPE;
 
 export default ReviewListContainer;

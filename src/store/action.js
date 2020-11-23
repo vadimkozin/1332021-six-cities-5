@@ -9,7 +9,6 @@ export const ActionType = {
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
 
   SET_USER: `SET_USER`,
-  LOAD_OFFER_BY_ID: `LOAD_OFFER_BY_ID`,
 
   LOAD_HOTEL_START: `hotel/load_start`,
   LOAD_HOTEL_SUCCESS: `hotel/load_success`,
@@ -27,7 +26,6 @@ export const ActionType = {
   SEND_COMMENT_SUCCESS: `comment/send_success`,
   SEND_COMMENT_FAILURE: `comment/send_failure`,
 
-
 };
 
 const createAction = (type) => (payload) => ({type, payload});
@@ -43,7 +41,6 @@ export const loadOffers = createAction(ActionType.LOAD_OFFERS);
 export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION);
 export const redirectToRoute = createAction(ActionType.REDIRECT_TO_ROUTE);
 export const setUser = createAction(ActionType.SET_USER);
-export const loadOffer = createAction(ActionType.LOAD_OFFER_BY_ID);
 
 export const setHotelId = createAction(ActionType.SET_HOTEL_ID);
 export const loadHotelStart = createAction(ActionType.LOAD_HOTEL_START);

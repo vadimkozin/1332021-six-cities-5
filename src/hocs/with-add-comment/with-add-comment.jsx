@@ -15,15 +15,9 @@ const withAddComment = (Component) => (props) => {
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    // TEST 1234567890 1234567890 1234567890 1234567890 1234567890
 
-    // setDisabledSubmit(true);
-    // dispatch(sendComment({hotelId, comment: text, rating: starsCount})).then(setDisabledSubmit(false));
+    setDisabledSubmit(true);
     dispatch(sendComment({hotelId, comment: text, rating: starsCount}));
-
-    setText(``);
-    setStarsCount(0);
-
   };
 
   const handleStarChange = (value) => {

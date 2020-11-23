@@ -14,8 +14,7 @@ const ReviewList = (props) => {
 
   const reviewsList = reviews
     .sort(getSorter(`date`, `des`))
-    // .slice(0, Math.min(reviewsCount, REVIEW_OUTPUT_MAX))
-    .slice(0, Math.min(reviewsCount, 2))
+    .slice(0, Math.min(reviewsCount, REVIEW_OUTPUT_MAX))
     .map((review) => <Review key={`${review.id}`} review={review} />);
 
   return (

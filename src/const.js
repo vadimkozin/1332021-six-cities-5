@@ -58,15 +58,9 @@ export const AppRoute = {
   ROOT: `/`,
   LOGIN: `/login`,
   FAVORITES: `/favorites`,
+  OFFER: `/offer`,
   OFFER_ID: `/offer/:id`,
 };
-
-// export const APIRoute = {
-//   OFFERS: `/hotels`,
-//   LOGIN: `/login`,
-//   FAVORITE: `/favorite`,
-//   COMMENTS: `/comments`
-// };
 
 export const StatusType = {
   IDLE: `idle`,

@@ -107,16 +107,3 @@ export const isRequestError = (gistsList) => gistsList.some((gist) => {
   return gist.status === StatusType.FAILED;
 });
 
-// export const getError = (gistsList) => {
-//   const isError = gistsList.some((gist) => gist.error);
-
-//   if (!isError) {
-//     return ``;
-//   }
-
-//   const content = gistsList
-//     .map((gist) => gist.error ? gist.error : ``)
-//     .map((err, i) => <li key={i}>{err}</li>);
-
-//   return <ul>{content}</ul>;
-// };
