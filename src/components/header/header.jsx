@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import {getUser, getAuthorizationStatus} from '@selectors/user';
-import {AppRoute, AuthorizationStatus} from '@const';
+import {getUser, getIsAuth} from '@selectors/user';
+import {AppRoute} from '@const';
 
 const Header = () => {
   const user = useSelector(getUser);
-  const isAuth = useSelector(getAuthorizationStatus) === AuthorizationStatus.AUTH;
+  const isAuth = useSelector(getIsAuth);
 
   const profile = isAuth
     ? <span className="header__user-name user__name">{user.email}</span>
