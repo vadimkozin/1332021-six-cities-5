@@ -62,3 +62,12 @@ export const fetchComments = (id) => (dispatch, _getState, api) => {
     dispatch(loadCommentsFailure(error));
   });
 };
+
+export const sendComment = ({hotelId, comment, rating}) => (dispatch, _getState, api) => {
+  console.log(`hotelId, comment, rating:`, hotelId, comment, rating);
+
+  api.post(route.post.comments(hotelId), {comment, rating})
+    .then(({data}) => console.log(`data:`, data))
+    .catch((error) => console.log(`ошибка:`, error));
+};
+
