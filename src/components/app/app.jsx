@@ -19,14 +19,14 @@ const App = () => {
       <Switch>
         <Route exact path={AppRoute.ROOT} component={MainPage}/>
 
-        <SmartRoute exact path={AppRoute.LOGIN} isRedirect={isAuth} redirectTo={AppRoute.ROOT}
+        <SmartRoute exact path={AppRoute.LOGIN} redirectTo={isAuth && AppRoute.ROOT}
           render={() => (<LoginPage />)}
         />
 
         <Route exact path={AppRoute.FAVORITES} component={FavoritesPageContainer}/>
 
         <Route exact path={AppRoute.OFFER_ID}
-          render={({match}) => (<RoomPageContainer key={match.params.id} offerId={match.params.id}/>)}
+          render={({match}) => (<RoomPageContainer key={match.params.id} offerId={Number(match.params.id)}/>)}
         />
 
         <Route component={NotFound} />

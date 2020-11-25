@@ -163,14 +163,13 @@ export const SMART_ROUTE_TYPE = {
   exact: bool.isRequired,
   path: string.isRequired,
   render: func.isRequired,
-  isRedirect: bool.isRequired,
-  redirectTo: string.isRequired,
+  redirectTo: oneOfType([string, bool]),
 };
 
 export const ROOM_PAGE_CONTAINER_TYPE = {
-  offerId: string.isRequired,
+  offerId: number.isRequired,
 };
 
 export const REVIEW_LIST_CONTAINER_TYPE = {
-  offerId: string.isRequired,
+  offerId: number.isRequired,
 };

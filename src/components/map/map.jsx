@@ -89,9 +89,7 @@ class Map extends PureComponent {
 Map.propTypes = MAP_TYPE;
 
 const mapStateToProps = (state) => ({
-  // offer: getOffer(state),
   offer: getHotel(state),
-
 });
 
 

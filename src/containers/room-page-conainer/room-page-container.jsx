@@ -13,7 +13,7 @@ const RoomPageContainer = ({offerId}) => {
   React.useEffect(() => {
     dispatch(fetchHotel(offerId));
     dispatch(fetchHotelsNearby(offerId));
-  }, []);
+  }, [offerId]);
 
   const hotelGist = useSelector(getHotelGist);
   const nearbyGist = useSelector(getHotelsNearbyGist);
@@ -23,7 +23,7 @@ const RoomPageContainer = ({offerId}) => {
     return <h4 style={{textAlign: `center`}}>Loading...</h4>;
   }
   if (isRequestError(gists)) {
-    return <h4>Error receiving comments</h4>;
+    return <h4>Error receiving hotel information</h4>;
   }
 
   const hotelsNearby = Array.isArray(nearbyGist.data) ? nearbyGist.data.slice(0, HOTELS_NEARBY_MAX) : [];

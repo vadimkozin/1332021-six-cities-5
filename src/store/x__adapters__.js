@@ -1,14 +1,14 @@
-export const offerAdapter = {
-  getKeysOwnerFrom(host) {
+export class Offer {
+  static getKeysOwnerFrom(host) {
     const {id, name, avatar_url: avatar, is_pro: isSuper} = host;
     return {id, name, avatar, isSuper};
-  },
+  }
 
-  adaptToClient(offers) {
-    return offers.map((offer) => this.adaptToClientOffer(offer));
-  },
+  static adaptToClient(offers) {
+    return offers.map((offer) => Offer.adaptToClientOffer(offer));
+  }
 
-  adaptToClientOffer(offer) {
+  static adaptToClientOffer(offer) {
     return {
       id: offer.id,
       title: offer.title,
@@ -24,14 +24,14 @@ export const offerAdapter = {
       price: offer.price,
       position: offer.location,
       previewImage: offer.preview_image,
-      owner: this.getKeysOwnerFrom(offer.host),
+      owner: Offer.getKeysOwnerFrom(offer.host),
       pictures: offer.images.map((img, i) => ({src: img, alt: `${offer.title} photo-${i}`})),
     };
   }
-};
+}
 
-export const userAdapter = {
-  adaptToClient(user) {
+export class User {
+  static adaptToClient(user) {
     return {
       id: user.id,
       name: user.name,
@@ -40,14 +40,14 @@ export const userAdapter = {
       avatarUrl: user.avatar_url,
     };
   }
-};
+}
 
-export const commentAdapter = {
-  adaptToClient(comments) {
-    return comments.map((comment) => this.adaptToClientComment(comment));
-  },
+export class Comment {
+  static adaptToClient(comments) {
+    return comments.map((comment) => Comment.adaptToClientComment(comment));
+  }
 
-  adaptToClientComment(comment) {
+  static adaptToClientComment(comment) {
     return {
       id: comment.id,
       text: comment.comment,
@@ -61,4 +61,4 @@ export const commentAdapter = {
       }
     };
   }
-};
+}

@@ -3,7 +3,7 @@ import {Route, Redirect} from "react-router-dom";
 import {SMART_ROUTE_TYPE} from '@types';
 
 const SmartRoute = (props) => {
-  const {render, path, exact, isRedirect, redirectTo} = props;
+  const {render, path, exact, redirectTo} = props;
 
   return (
     <Route
@@ -11,7 +11,7 @@ const SmartRoute = (props) => {
       exact={exact}
       render={(routeProps) => {
         return (
-          isRedirect
+          redirectTo
             ? <Redirect to={redirectTo} />
             : render(routeProps)
         );

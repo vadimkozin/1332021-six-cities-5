@@ -12,7 +12,7 @@ const ReviewListContainer = ({offerId}) => {
 
   React.useEffect(() => {
     dispatch(fetchComments(offerId));
-  }, []);
+  }, [offerId]);
 
   const commentsGist = useSelector(getCommentsGist);
   const isAuth = useSelector(getIsAuth);

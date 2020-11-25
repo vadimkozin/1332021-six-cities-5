@@ -5,7 +5,6 @@ import {getUUIDGenerator} from '../utils';
 const generator = new AvatarGenerator();
 
 const uuid = getUUIDGenerator();
-const uuid2 = getUUIDGenerator();
 
 const getReviews = (count) => {
   return Array(count).fill().map(() => ({
@@ -14,7 +13,7 @@ const getReviews = (count) => {
     date: getRandomDate(),
     rating: getRandomFloat(1, 5),
     user: {
-      id: uuid2(),
+      id: uuid(),
       avatarUrl: generator.generateRandomAvatar(),
       name: getRandomFrom(NAMES),
       isPro: Boolean(getRandomInteger(0, 1)),
