@@ -58,20 +58,29 @@ const OFFER_CARD = {
 export const OFFER_CARD_TYPE = {
   offer: shape(OFFER_CARD).isRequired,
   type: oneOf([...Object.values(OfferCardType)]),
+  isTrackChangeCard: bool.isRequired,
   onOfferChange: func,
 };
 
 export const OFFER_LIST_TYPE = {
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
   type: oneOf([...Object.values(OfferCardType)]),
+  isTrackChangeCard: bool.isRequired,
+};
+
+const REVIEW_USER = {
+  id: number.isRequired,
+  avatarUrl: isUrl,
+  name: string.isRequired,
+  isPro: bool.isRequired,
 };
 
 const REVIEW = {
-  avatar: isUrl,
-  name: string.isRequired,
-  rating: number.isRequired,
-  date: instanceOf(Date).isRequired,
+  id: number.isRequired,
   text: string.isRequired,
+  date: instanceOf(Date).isRequired,
+  rating: number.isRequired,
+  user: shape(REVIEW_USER).isRequired
 };
 
 export const REVIEW_TYPE = {
@@ -82,11 +91,6 @@ export const REVIEW_LIST_TYPE = {
   reviews: arrayOf(shape(REVIEW)).isRequired,
 };
 
-export const APP_TYPE = {
-  offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  reviews: arrayOf(shape(REVIEW)).isRequired,
-};
-
 export const MAIN_PAGE_TYPE = {
   city: string.isRequired,
   offers: arrayOf(shape(OFFER_CARD)).isRequired,
@@ -94,9 +98,8 @@ export const MAIN_PAGE_TYPE = {
 };
 
 export const ROOM_PAGE_TYPE = {
-  offers: arrayOf(shape(OFFER_CARD)).isRequired,
-  reviews: arrayOf(shape(REVIEW)).isRequired,
-  offerId: string.isRequired,
+  offer: shape(OFFER_CARD).isRequired,
+  offersNearby: arrayOf(shape(OFFER_CARD)).isRequired,
 };
 
 export const RATING_STARS_TYPE = {
@@ -154,4 +157,19 @@ export const PRIVATE_ROUTE_TYPE = {
 
 export const LOGIN_PAGE_TYPE = {
   onSubmit: func.isRequired,
+};
+
+export const SMART_ROUTE_TYPE = {
+  exact: bool.isRequired,
+  path: string.isRequired,
+  render: func.isRequired,
+  redirectTo: oneOfType([string, bool]),
+};
+
+export const ROOM_PAGE_CONTAINER_TYPE = {
+  offerId: number.isRequired,
+};
+
+export const REVIEW_LIST_CONTAINER_TYPE = {
+  offerId: number.isRequired,
 };

@@ -9,12 +9,12 @@ import {getSorter} from '../../utils';
 const AddCommentWrapped = withAddComment(AddComment);
 
 const ReviewList = (props) => {
-  const {reviews} = props;
+  const {reviews, isAuth} = props;
   const reviewsCount = reviews.length;
 
   const reviewsList = reviews
-    .slice(0, Math.min(reviewsCount, REVIEW_OUTPUT_MAX))
     .sort(getSorter(`date`, `des`))
+    .slice(0, Math.min(reviewsCount, REVIEW_OUTPUT_MAX))
     .map((review) => <Review key={`${review.id}`} review={review} />);
 
   return (
@@ -23,7 +23,7 @@ const ReviewList = (props) => {
       <ul className="reviews__list">
         {reviewsList}
       </ul>
-      <AddCommentWrapped />
+      {isAuth && (<AddCommentWrapped />)}
     </section>
   );
 };

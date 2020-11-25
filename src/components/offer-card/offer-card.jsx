@@ -4,7 +4,9 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import RatingStars from '../rating-stars/rating-stars';
 import {OFFER_CARD_TYPE} from '../../types/types';
-import {OfferCardType} from '../../const';
+import {OfferCardType, AppRoute} from '../../const';
+import Bookmark, {BookmarkType} from '../bookmark/bokkmark';
+
 
 const getOptionsByType = (type) => {
   switch (type) {
@@ -26,25 +28,28 @@ const getOptionsByType = (type) => {
 };
 
 const OfferCard = (props) => {
-  const {offer, type, onOfferChange} = props;
+  const {offer, type, isTrackChangeCard, onOfferChange} = props;
 
   const opts = getOptionsByType(type);
+  const routeOffer = `${AppRoute.OFFER}/${offer.id}`;
 
   const handleCardOver = useCallback((evt) => {
     evt.preventDefault();
-    onOfferChange(offer);
+    if (isTrackChangeCard) {
+      onOfferChange(offer);
+    }
   });
 
   const handleCardLeave = useCallback((evt) => {
     evt.preventDefault();
-    onOfferChange(null);
+    if (isTrackChangeCard) {
+      onOfferChange(null);
+    }
   });
 
   return (
     <article
       className={`${opts.classNameMain} place-card`}
-      onMouseEnter={handleCardOver}
-      onMouseLeave={handleCardLeave}
     >
       {offer.isPremium &&
       <div className="place-card__mark">
@@ -52,28 +57,38 @@ const OfferCard = (props) => {
       </div>
       }
       <div className={`${opts.classNameImage} place-card__image-wrapper`}>
-        <a href="#">
-          <img className="place-card__image" {...offer.pictures[0]} width="260" height="200" />
-        </a>
+        <Link
+          to={routeOffer}
+          onMouseEnter={handleCardOver}
+          onMouseLeave={handleCardLeave}
+        >
+          <img className="place-card__image" src={offer.previewImage} width="260" height="200" />
+        </Link>
       </div>
+
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">{opts.nameBookmark}</span>
-          </button>
+          <Bookmark
+            offerId={offer.id}
+            type={BookmarkType.PLACE_CARD}
+          />
         </div>
         <div className="place-card__rating rating">
           <RatingStars rating={offer.rating}/>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
+          <Link
+            key={offer.id}
+            to={routeOffer}
+            onMouseEnter={handleCardOver}
+            onMouseLeave={handleCardLeave}
+          >
+            {offer.title}
+          </Link>
         </h2>
         <p className="place-card__type">{offer.typeHousing}</p>
       </div>

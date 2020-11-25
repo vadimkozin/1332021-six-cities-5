@@ -1,4 +1,4 @@
-import {CITIES, MONTHS, RATING_STARS_MAX, TypesHousing, SortingType} from './const';
+import {CITIES, MONTHS, RATING_STARS_MAX, TypesHousing, SortingType, StatusType} from './const';
 
 // добавляет ведущие нули: ( '2' => '02')
 const addZeros = (number, digitsInNumber = 2) => {
@@ -99,3 +99,12 @@ export const extend = (a, b = {}) => {
 
 export const getCityCenter = (cityName) => CITIES[cityName];
 
+export const isWaitingRequestData = (gistsList) => gistsList.some((gist) => {
+  return gist.status === StatusType.IDLE || gist.status === StatusType.LOADING;
+});
+
+export const isRequestError = (gistsList) => gistsList.some((gist) => {
+  return gist.status === StatusType.FAILED;
+});
+
+export const getOfferById = (offers, id) => offers.find((offer) => offer.id === id);

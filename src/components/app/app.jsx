@@ -1,54 +1,38 @@
 import React from 'react';
 import {Switch, Route, Router as BrowserRouter} from "react-router-dom";
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import MainPage from '../main-page/main-page';
-import FavoritesPage from '../favorites-page/favorites-page';
+import FavoritesPageContainer from '../../containers/favorites-page-container/favorites-page-container';
 import LoginPage from '../login-page/login-page';
-import RoomPage from '../room-page/room-page';
+import RoomPageContainer from '../../containers/room-page-conainer/room-page-container';
 import NotFound from '../not-found/not-found';
-import {APP_TYPE} from '../../types/types';
-import {getOffers} from '@selectors/offers';
 import browserHistory from '../../browser-history';
-import PrivateRoute from '../private-route/private-route';
+import SmartRoute from '../smart-route/smart-route';
+import {getIsAuth} from '@selectors/user';
+import {AppRoute} from "@const";
 
-const App = (props) => {
-  const {offers, reviews} = props;
+const App = () => {
+  const isAuth = useSelector(getIsAuth);
 
   return (
     <BrowserRouter history={browserHistory}>
       <Switch>
-        <Route exact path="/" component={MainPage}/>
-        <Route exact path='/login' component={LoginPage} />
+        <Route exact path={AppRoute.ROOT} component={MainPage}/>
 
-        <PrivateRoute exact path='/favorites'
-          render={() => (<FavoritesPage offers={offers}/>)}
+        <SmartRoute exact path={AppRoute.LOGIN} redirectTo={isAuth && AppRoute.ROOT}
+          render={() => (<LoginPage />)}
         />
 
-        {/* <Route exact path='/favorites'>
-          <FavoritesPage offers={offers}/>
-        </Route> */}
+        <Route exact path={AppRoute.FAVORITES} component={FavoritesPageContainer}/>
 
-        <Route exact path='/offer/:id'
-          render={({match}) => (
-            <RoomPage
-              offerId={match.params.id}
-              offers={offers}
-              reviews={reviews}
-            />
-          )}
+        <Route exact path={AppRoute.OFFER_ID}
+          render={({match}) => (<RoomPageContainer key={match.params.id} offerId={Number(match.params.id)}/>)}
         />
+
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
 };
 
-App.propTypes = APP_TYPE;
-
-const mapStateToProps = (state) => ({
-  offers: getOffers(state),
-});
-
-
-export {App};
-export default connect(mapStateToProps)(App);
+export default App;

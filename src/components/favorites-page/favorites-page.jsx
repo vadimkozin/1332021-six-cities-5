@@ -1,8 +1,10 @@
 import React from 'react';
 import RatingStars from '../rating-stars/rating-stars';
 import Header from '../header/header';
+import Footer from '../footer/footer';
 import {FAVORITES_PAGE_TYPE} from '../../types/types';
 import {uniqArray, getHousingView} from '../../utils';
+import Bookmark, {BookmarkType} from '../bookmark/bokkmark';
 
 const FavoritesPage = (props) => {
   const {offers} = props;
@@ -27,12 +29,10 @@ const FavoritesPage = (props) => {
               <b className="place-card__price-value">&euro;{offer.price}</b>
               <span className="place-card__price-text">&#47;&nbsp;night</span>
             </div>
-            <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
-              <svg className="place-card__bookmark-icon" width="18" height="19">
-                <use xlinkHref="#icon-bookmark"></use>
-              </svg>
-              <span className="visually-hidden">In bookmarks</span>
-            </button>
+            <Bookmark
+              offerId={offer.id}
+              type={BookmarkType.PLACE_CARD}
+            />
           </div>
           <div className="place-card__rating rating">
             <RatingStars rating={offer.rating} />
@@ -76,11 +76,7 @@ const FavoritesPage = (props) => {
           </section>
         </div>
       </main>
-      <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
-          <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 };

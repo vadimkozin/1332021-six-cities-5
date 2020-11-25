@@ -1,23 +1,18 @@
 import React from 'react';
 import HomeOwner from '../home-owner/home-owner';
-import ReviewList from '../review-list/review-list';
+import ReviewListContainer from '../../containers/review-list-container/review-list-container';
 import RatingStars from '../rating-stars/rating-stars';
 import Map from '../map/map';
 import OfferList from '../offer-list/offer-list';
 import Header from '../header/header';
 import {ROOM_PAGE_TYPE} from '../../types/types';
 import {OFFER_PICTURE_MAX, OfferCardType, MapType} from '../../const';
-import {getHousingView, filterBy} from '../../utils';
+import {getHousingView} from '../../utils';
+import Bookmark, {BookmarkType} from '../bookmark/bokkmark';
 
 const RoomPage = (props) => {
-  const {offers, reviews, offerId} = props;
-
-  const offer = offers.find((offerCurrent) => offerCurrent.id === Number(offerId));
-
-  // задание: 12. Личный проект: больше подробностей (часть 2):
-  // "Отрисуйте на карте маркеры 3-х объявлений расположенных неподалёку."
-  // "Функцию поиска объявлений неподалеку реализовывать не нужно. Используйте моки.
-  const offersByCity = filterBy(offers, `city`, offer.city).slice(0, 3);
+  const {offer, offersNearby} = props;
+  const offersAround = [...offersNearby, offer];
 
   const photoList = offer.pictures
     .slice(0, Math.min(offer.pictures.length, OFFER_PICTURE_MAX))
@@ -58,12 +53,10 @@ const RoomPage = (props) => {
                 <h1 className="property__name">
                   {offer.title}
                 </h1>
-                <button className="property__bookmark-button button" type="button">
-                  <svg className="property__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"></use>
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+                <Bookmark
+                  offerId={offer.id}
+                  type={BookmarkType.PROPERTY}
+                />
               </div>
               <div className="property__rating rating">
                 <RatingStars className={`property__stars rating__stars`} rating={offer.rating}/>
@@ -92,13 +85,13 @@ const RoomPage = (props) => {
               </div>
 
               <HomeOwner owner={offer.owner} description={offer.description}/>
-              <ReviewList reviews={reviews} />
+              <ReviewListContainer offerId={offer.id}/>
 
             </div>
           </div>
           <section className="property__map map">
             <Map
-              offers={offersByCity}
+              offers={offersAround}
               city={offer.city}
               layoutType={MapType.HORIZONTAL}
             />
@@ -110,8 +103,9 @@ const RoomPage = (props) => {
             <div className="near-places__list places__list">
 
               <OfferList
-                offers={offersByCity}
+                offers={offersAround}
                 type={OfferCardType.NEAR_PLACE}
+                isTrackChangeCard={false}
               />
 
             </div>
