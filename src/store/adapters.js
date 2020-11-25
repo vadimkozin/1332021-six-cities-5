@@ -42,26 +42,6 @@ export class User {
   }
 }
 
-/*
-    id: uuid(),
-    avatar: generator.generateRandomAvatar(),
-    name: getRandomFrom(NAMES),
-    rating: getRandomFloat(1, 5),
-    date: getRandomDate(),
-    text: getRandomFrom(DESCRIPTIONS),
-
-    id: uuid(),
-    text: getRandomFrom(DESCRIPTIONS),
-    date: getRandomDate(),
-    rating: getRandomFloat(1, 5),
-    user: {
-      id: uuid2(),
-      avatarUrl: generator.generateRandomAvatar(),
-      name: getRandomFrom(NAMES),
-      isPro: Boolean(getRandomInteger(0, 1)),
-    },
-*/
-
 export class Comments {
   static adaptToClients(comments) {
     return comments.map((comment) => Comments.adaptToClientComment(comment));

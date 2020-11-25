@@ -14,6 +14,7 @@ const makeInit = (basic = basicState) => (object = {}) => Object.assign({}, basi
 const init = makeInit();
 
 const Data = {
+  OFFERS: `offersGist`,
   HOTEL: `hotelGist`,
   HOTELS_NEARBY: `hotelsNearbyGist`,
   COMMENTS: `commentsGist`,
@@ -22,6 +23,7 @@ const Data = {
 const initialState = {
   city: initCity,
   sort: SortingType.POPULAR,
+  [Data.OFFERS]: init(),
   [Data.HOTEL]: init({id: 0}),
   [Data.HOTELS_NEARBY]: init(),
   [Data.COMMENTS]: init(),
@@ -47,6 +49,13 @@ const process = (state = initialState, action) => {
 
     case ActionType.CHANGE_OFFER:
       return extend(state, {hotelGist: extend(state.hotelGist, {data: action.payload})});
+
+    case ActionType.LOAD_OFFERS_START:
+      return makeLoading(state, Data.OFFERS);
+    case ActionType.LOAD_OFFERS_SUCCESS:
+      return makeSuccess(state, Data.OFFERS, action);
+    case ActionType.LOAD_OFFERS_FAILURE:
+      return makeFailed(state, Data.OFFERS, action);
 
     case ActionType.LOAD_HOTEL_START:
       return makeLoading(state, Data.HOTEL);
@@ -75,6 +84,13 @@ const process = (state = initialState, action) => {
       return makeSuccess(state, Data.COMMENTS, action);
     case ActionType.SEND_COMMENT_FAILURE:
       return makeFailed(state, Data.COMMENTS, action);
+
+    case ActionType.SET_FAVORITE_START:
+      return makeLoading(state, Data.OFFERS);
+    case ActionType.SET_FAVORITE_SUCCESS:
+      return makeSuccess(state, Data.OFFERS, action);
+    case ActionType.SET_FAVORITE_FAILURE:
+      return makeFailed(state, Data.OFFERS, action);
 
     default:
       return state;

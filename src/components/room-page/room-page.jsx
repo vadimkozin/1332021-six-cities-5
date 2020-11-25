@@ -8,6 +8,7 @@ import Header from '../header/header';
 import {ROOM_PAGE_TYPE} from '../../types/types';
 import {OFFER_PICTURE_MAX, OfferCardType, MapType} from '../../const';
 import {getHousingView} from '../../utils';
+import Bookmark, {BookmarkType} from '../bookmark/bokkmark';
 
 const RoomPage = (props) => {
   const {offer, offersNearby} = props;
@@ -52,12 +53,10 @@ const RoomPage = (props) => {
                 <h1 className="property__name">
                   {offer.title}
                 </h1>
-                <button className="property__bookmark-button button" type="button">
-                  <svg className="property__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"></use>
-                  </svg>
-                  <span className="visually-hidden">To bookmarks</span>
-                </button>
+                <Bookmark
+                  offerId={offer.id}
+                  type={BookmarkType.PROPERTY}
+                />
               </div>
               <div className="property__rating rating">
                 <RatingStars className={`property__stars rating__stars`} rating={offer.rating}/>

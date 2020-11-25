@@ -8,7 +8,7 @@ import {createAPI} from './services/api';
 import App from './components/app/app';
 import rootReducer from './store/reducers/root-reducer';
 import {requireAuthorization} from './store/action';
-import {fetchQffersList, checkAuth} from './store/api-actions';
+import {checkAuth, fetchOffers} from './store/api-actions';
 import {AuthorizationStatus} from './const';
 import {redirect} from "./store/middlewares/redirect";
 
@@ -25,8 +25,8 @@ const store = createStore(
 );
 
 Promise.all([
-  store.dispatch(fetchQffersList()),
-  store.dispatch(checkAuth())
+  store.dispatch(fetchOffers()),
+  store.dispatch(checkAuth()),
 ])
 .then(() => {
   ReactDOM.render(

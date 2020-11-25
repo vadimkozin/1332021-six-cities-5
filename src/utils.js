@@ -107,3 +107,4 @@ export const isRequestError = (gistsList) => gistsList.some((gist) => {
   return gist.status === StatusType.FAILED;
 });
 
+export const getOfferById = (offers, id) => offers.find((offer) => offer.id === id);
