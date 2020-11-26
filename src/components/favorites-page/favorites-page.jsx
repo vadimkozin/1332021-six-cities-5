@@ -1,10 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import RatingStars from '../rating-stars/rating-stars';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import {FAVORITES_PAGE_TYPE} from '../../types/types';
 import {uniqArray, getHousingView} from '../../utils';
 import Bookmark, {BookmarkType} from '../bookmark/bokkmark';
+import {AppRoute} from '@const';
 
 const FavoritesPage = (props) => {
   const {offers} = props;
@@ -19,9 +21,11 @@ const FavoritesPage = (props) => {
     return offersByTown.map((offer) => (
       <article key={`${offer.id}`} className="favorites__card place-card">
         <div className="favorites__image-wrapper place-card__image-wrapper">
-          <a href="#">
-            <img className="place-card__image" {...offer.pictures[0]} width="150" height="110"/>
-          </a>
+          <Link
+            to={`${AppRoute.OFFER}/${offer.id}`}
+          >
+            <img className="place-card__image" src={offer.previewImage} alt="" width="150" height="110"/>
+          </Link>
         </div>
         <div className="favorites__card-info place-card__info">
           <div className="place-card__price-wrapper">
@@ -51,9 +55,12 @@ const FavoritesPage = (props) => {
       <li key={`${i}-${city}`} className="favorites__locations-items">
         <div className="favorites__locations locations locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#">
+            <Link
+              className="locations__item-link"
+              to={AppRoute.ROOT}
+            >
               <span>{city}</span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="favorites__places">
