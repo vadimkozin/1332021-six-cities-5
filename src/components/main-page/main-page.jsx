@@ -6,10 +6,10 @@ import CityList from '../city-list/city-list';
 import Sort from '../sort/sort';
 import Header from '../header/header';
 import CityWithoutOffers from '../city-without-offers/city-without-offers';
-import {MAIN_PAGE_TYPE} from '@types';
-import {OfferCardType, MapType} from '@const';
-import {FROM_SORTINGTYPE_TO_FUNC_MAP} from '@utils';
-import {getCity, getSort, getOffersByCity} from '@selectors/offers';
+import {MAIN_PAGE_TYPE} from '../../types/types';
+import {OfferCardType, MapType} from '../../const';
+import {FROM_SORTINGTYPE_TO_FUNC_MAP} from '../../utils';
+import {getCity, getSort, getOffersByCity} from '../../store/selectors/offers';
 
 const MainPage = ({city, offers, sort}) => {
   const isOffersExist = offers.length > 0;

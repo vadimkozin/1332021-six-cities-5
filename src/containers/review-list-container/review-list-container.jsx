@@ -3,9 +3,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import ReviewList from '../../components/review-list/review-list';
 import {getIsAuth} from '../../store/selectors/user';
 import {fetchComments} from '../../store/api-actions';
-import {getCommentsGist} from '@selectors/offers';
-import {isWaitingRequestData, isRequestError} from '@utils';
-import {REVIEW_LIST_CONTAINER_TYPE} from '@types';
+import {getCommentsGist} from '../../store/selectors/offers';
+import {isWaitingRequestData, isRequestError} from '../../utils';
+import {REVIEW_LIST_CONTAINER_TYPE} from '../../types/types';
 
 const ReviewListContainer = ({offerId}) => {
   const dispatch = useDispatch();

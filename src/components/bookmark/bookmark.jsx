@@ -2,11 +2,11 @@ import React, {useCallback} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import history from '../../browser-history';
 import PropTypes from 'prop-types';
-import {AppRoute} from '@const';
-import {getIsAuth} from '@selectors/user';
+import {AppRoute} from '../../const';
+import {getIsAuth} from '../../store/selectors/user';
 import {setFavorite} from '../../store/api-actions';
-import {getOffers} from '@selectors/offers';
-import {getOfferById} from '@utils';
+import {getOffers} from '../../store/selectors/offers';
+import {getOfferById} from '../../utils';
 
 export const BookmarkType = {
   PROPERTY: `property`,

@@ -1,5 +1,5 @@
-import {extend} from "@utils";
-import {AuthorizationStatus} from "@const";
+import {extend} from '../../../utils';
+import {AuthorizationStatus} from '../../../const';
 import {ActionType} from "../../action";
 
 const initialState = {

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import {getUser, getIsAuth} from '@selectors/user';
-import {AppRoute} from '@const';
+import {getUser, getIsAuth} from '../../store/selectors/user';
+import {AppRoute} from '../../const';
 
 const Header = () => {
   const user = useSelector(getUser);

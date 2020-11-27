@@ -6,7 +6,7 @@ import Footer from '../footer/footer';
 import {FAVORITES_PAGE_TYPE} from '../../types/types';
 import {uniqArray, getHousingView} from '../../utils';
 import Bookmark, {BookmarkType} from '../bookmark/bookmark';
-import {AppRoute} from '@const';
+import {AppRoute} from '../../const';
 
 const FavoritesPage = (props) => {
   const {offers} = props;

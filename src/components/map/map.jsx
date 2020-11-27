@@ -1,10 +1,10 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import leaflet from 'leaflet';
-import {MAP_TYPE} from '@types';
-import {MAP_ZOOM_DEFAULT, MapType} from '@const';
-import {getCityCenter} from '@utils';
-import {getHotel} from '@selectors/offers';
+import {MAP_TYPE} from '../../types/types';
+import {MAP_ZOOM_DEFAULT, MapType} from '../../const';
+import {getCityCenter} from '../../utils';
+import {getHotel} from '../../store/selectors/offers';
 import 'leaflet/dist/leaflet.css';
 import './map.css';
 

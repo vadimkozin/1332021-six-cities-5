@@ -1,6 +1,6 @@
-import {extend} from "@utils";
-import {ActionType} from "../../action";
-import {SortingType, CITIES_NAMES, StatusType} from '@const';
+import {extend} from '../../../utils';
+import {ActionType} from '../../action';
+import {SortingType, CITIES_NAMES, StatusType} from '../../../const';
 
 const initCity = CITIES_NAMES[0];
 
