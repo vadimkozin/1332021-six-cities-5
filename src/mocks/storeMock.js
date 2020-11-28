@@ -7,10 +7,10 @@ import hotelsNearbyJson from './json/hotels-nearby';
 import offersJson from './json/offers';
 import commentsJson from './json/comments';
 
-const hotel = offerAdapter.adaptToClientOffer(hotelJson);
-const hotelsNearby = offerAdapter.adaptToClient(hotelsNearbyJson);
-const offers = offerAdapter.adaptToClient(offersJson);
-const comments = commentAdapter.adaptToClient(commentsJson);
+export const hotel = offerAdapter.adaptToClientOffer(hotelJson);
+export const hotelsNearby = offerAdapter.adaptToClient(hotelsNearbyJson);
+export const offers = offerAdapter.adaptToClient(offersJson);
+export const comments = commentAdapter.adaptToClient(commentsJson);
 
 const initCity = CITIES_NAMES[0];
 
@@ -36,10 +36,10 @@ const init = makeInit();
 const storeConfig = configureStore();
 
 const storeMock = storeConfig({
-  data: {
+  DATA: {
     cities: CITIES_NAMES,
   },
-  process: {
+  PROCESS: {
     [Data.CITY]: initCity,
     [Data.SORT]: SortingType.POPULAR,
     [Data.OFFERS]: init(offers),
@@ -47,7 +47,7 @@ const storeMock = storeConfig({
     [Data.HOTELS_NEARBY]: init(hotelsNearby),
     [Data.COMMENTS]: init(comments),
   },
-  user: {
+  USER: {
     id: 1,
     name: `qwerty`,
     email: `qwerty@mail.ru`,
@@ -57,4 +57,4 @@ const storeMock = storeConfig({
   },
 });
 
-export {storeMock};
+export default storeMock;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RatingStars should render RatingStars component 1`] = `
+<div
+  class="place-card__stars rating__stars"
+>
+  <span
+    style="width:80%"
+  />
+  <span
+    class="visually-hidden"
+  >
+    Rating
+  </span>
+</div>
+`;

@@ -12,7 +12,7 @@ import {checkAuth, fetchOffers} from './store/api-actions';
 import {AuthorizationStatus} from './const';
 import {redirect} from "./store/middlewares/redirect";
 
-import {storeMock} from './mocks/storeMock';
+import storeMock from './mocks/storeMock';
 console.log(`storeMock:`, storeMock.getState());
 
 const api = createAPI(
