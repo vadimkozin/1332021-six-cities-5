@@ -17,18 +17,20 @@ const Sort = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const handleSortChange = (evt) => {
-    evt.preventDefault();
 
-    const newSort = evt.target.dataset.sort;
+    if (evt) {
+      evt.preventDefault();
 
-    if (newSort !== sort) {
-      setSort(newSort);
-      onSortChange(newSort);
+      const newSort = evt.target.dataset.sort;
+
+      if (newSort !== sort) {
+        setSort(newSort);
+        onSortChange(newSort);
+      }
     }
   };
 
-  const handleMenuToggle = useCallback((evt) => {
-    evt.preventDefault();
+  const handleMenuToggle = useCallback(() => {
     setIsMenuOpen(!isMenuOpen);
   }, [isMenuOpen]);
 
