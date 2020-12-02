@@ -1,5 +1,5 @@
-import React, {PureComponent} from 'react';
-import {connect} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import leaflet from 'leaflet';
 import {MAP_TYPE} from '../../types/types';
 import {MAP_ZOOM_DEFAULT, MapType} from '../../const';
@@ -38,15 +38,14 @@ const mapSeed = {
   },
 };
 
-class Map extends PureComponent {
-  constructor(props) {
-    super(props);
+let map = null;
 
-    this.map = null;
-    this.mapSetting = mapSeed.getMapSetting(props);
-  }
+const Map = (props) => {
+  const {layoutType, offers} = props;
+  const mapSetting = mapSeed.getMapSetting(props);
+  const offerActive = useSelector(getHotel);
 
-  addMarkers(map, offerCoords, offerActiveCoords) {
+  const addMarkers = (offerCoords, offerActiveCoords) => {
     offerCoords.forEach((coord) => {
       leaflet.marker(coord, {icon: mapSeed.getIcon()}).addTo(map);
     });
@@ -54,44 +53,36 @@ class Map extends PureComponent {
     if (offerActiveCoords) {
       leaflet.marker(offerActiveCoords, {icon: mapSeed.getIcon(`active`)}).addTo(map);
     }
-  }
+  };
 
-  updateMap(map) {
-    const {offers, offer: offerActive} = this.props;
+  const updateMap = () => {
     const coordinates = offers.map((offer) => mapSeed.getCoordinates(offer));
     const coordinatesActive = mapSeed.getCoordinates(offerActive);
 
-    this.addMarkers(map, coordinates, coordinatesActive);
-  }
+    addMarkers(coordinates, coordinatesActive);
+  };
 
-  componentDidMount() {
-    this.map = leaflet.map(`map`, this.mapSetting)
-      .setView(this.mapSetting.center, this.mapSetting.zoom);
+  useEffect(() => {
+    map = leaflet.map(`map`, mapSetting)
+      .setView(mapSetting.center, mapSetting.zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
-      .addTo(this.map);
+      .addTo(map);
 
-    this.updateMap(this.map);
-  }
+    updateMap();
+  }, []);
 
-  componentDidUpdate() {
-    this.updateMap(this.map);
-  }
+  useEffect(() => {
+    updateMap();
+  }, [offerActive]);
 
-  render() {
-    return <div id="map" className={FROM_MAPTYPE_TO_CLASSNAME[this.props.layoutType]} />;
-  }
-}
+  return <div id="map" className={FROM_MAPTYPE_TO_CLASSNAME[layoutType]} />;
+};
+
 
 Map.propTypes = MAP_TYPE;
 
-const mapStateToProps = (state) => ({
-  offer: getHotel(state),
-});
-
-
-export {Map};
-export default connect(mapStateToProps)(Map);
+export default Map;
