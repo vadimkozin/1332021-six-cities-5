@@ -5,7 +5,7 @@ import {ActionCreator} from '../../store/action';
 import RatingStars from '../rating-stars/rating-stars';
 import {OFFER_CARD_TYPE} from '../../types/types';
 import {OfferCardType, AppRoute} from '../../const';
-import Bookmark, {BookmarkType} from '../bookmark/bokkmark';
+import Bookmark, {BookmarkType} from '../bookmark/bookmark';
 
 
 const getOptionsByType = (type) => {

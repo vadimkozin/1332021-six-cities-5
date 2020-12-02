@@ -1,5 +1,5 @@
 import React from 'react';
-import {CITY_WITHOUT_OFFERS_TYPE} from '@types';
+import {CITY_WITHOUT_OFFERS_TYPE} from '../../types/types';
 
 const CityWithoutOffers = ({city}) => {
   return (

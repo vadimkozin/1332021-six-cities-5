@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import {connect} from 'react-redux';
 import {login} from '../../store/api-actions';
 import Header from '../header/header';
-import {LOGIN_PAGE_TYPE} from '@types';
+import {LOGIN_PAGE_TYPE} from '../../types/types';
 
 const LoginPage = (props) => {
   const {onSubmit} = props;

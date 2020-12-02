@@ -1,12 +1,12 @@
 import React, {useCallback} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {connect} from 'react-redux';
 import history from '../../browser-history';
-import PropTypes from 'prop-types';
-import {AppRoute} from '@const';
-import {getIsAuth} from '@selectors/user';
+import {AppRoute} from '../../const';
+import {getIsAuth} from '../../store/selectors/user';
 import {setFavorite} from '../../store/api-actions';
-import {getOffers} from '@selectors/offers';
-import {getOfferById} from '@utils';
+import {getOffers} from '../../store/selectors/offers';
+import {getOfferById} from '../../utils';
+import {BOOKMARK_TYPE} from '../../types/types';
 
 export const BookmarkType = {
   PROPERTY: `property`,
@@ -32,10 +32,7 @@ const getIconSize = (type) => {
 };
 
 const Bookmark = (props) => {
-  const {offerId, type} = props;
-
-  const offers = useSelector(getOffers);
-  const isAuth = useSelector(getIsAuth);
+  const {offerId, type, isAuth, offers, onSetFavorite} = props;
 
   const offer = getOfferById(offers, offerId);
   const isActive = offer.isFavorite;
@@ -44,15 +41,12 @@ const Bookmark = (props) => {
   const size = getIconSize(type);
   const preposition = getPreposition(isActive);
 
-  const dispatch = useDispatch();
-
-  const handleBookmarkClick = useCallback((evt) => {
-    evt.preventDefault();
+  const handleBookmarkClick = useCallback(() => {
     if (!isAuth) {
       history.push(AppRoute.LOGIN);
     }
 
-    dispatch(setFavorite({hotelId: offerId, isFavorite: !isActive}));
+    onSetFavorite(offerId, !isActive);
   }, [isAuth, offers]);
 
   return (
@@ -69,9 +63,18 @@ const Bookmark = (props) => {
   );
 };
 
-Bookmark.propTypes = {
-  offerId: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-};
+Bookmark.propTypes = BOOKMARK_TYPE;
 
-export default Bookmark;
+const mapStateToProps = (state) => ({
+  isAuth: getIsAuth(state),
+  offers: getOffers(state),
+});
+
+const mapDispatchToPorps = (dispatch) => ({
+  onSetFavorite: (hotelId, isFavorite) => {
+    dispatch(setFavorite({hotelId, isFavorite}));
+  },
+});
+
+export {Bookmark};
+export default connect(mapStateToProps, mapDispatchToPorps)(Bookmark);

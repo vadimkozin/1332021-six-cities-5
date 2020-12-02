@@ -8,7 +8,7 @@ import Header from '../header/header';
 import {ROOM_PAGE_TYPE} from '../../types/types';
 import {OFFER_PICTURE_MAX, OfferCardType, MapType} from '../../const';
 import {getHousingView} from '../../utils';
-import Bookmark, {BookmarkType} from '../bookmark/bokkmark';
+import Bookmark, {BookmarkType} from '../bookmark/bookmark';
 
 const RoomPage = (props) => {
   const {offer, offersNearby} = props;

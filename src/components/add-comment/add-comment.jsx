@@ -1,6 +1,6 @@
 import React from 'react';
-import {CommentSettings} from '@const';
-import {ADD_COMMENT_TYPE} from '@types';
+import {CommentSettings} from '../../const';
+import {ADD_COMMENT_TYPE} from '../../types/types';
 
 const Stars = {
   1: `terribly`,

@@ -2,7 +2,7 @@ import React, {useState, useCallback} from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {SORT_TYPE} from '../../types/types';
-import {SortingType} from '@const';
+import {SortingType} from '../../const';
 
 const sortValues = {
   [SortingType.POPULAR]: `Popular`,
@@ -17,18 +17,20 @@ const Sort = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const handleSortChange = (evt) => {
-    evt.preventDefault();
 
-    const newSort = evt.target.dataset.sort;
+    if (evt) {
+      evt.preventDefault();
 
-    if (newSort !== sort) {
-      setSort(newSort);
-      onSortChange(newSort);
+      const newSort = evt.target.dataset.sort;
+
+      if (newSort !== sort) {
+        setSort(newSort);
+        onSortChange(newSort);
+      }
     }
   };
 
-  const handleMenuToggle = useCallback((evt) => {
-    evt.preventDefault();
+  const handleMenuToggle = useCallback(() => {
     setIsMenuOpen(!isMenuOpen);
   }, [isMenuOpen]);
 

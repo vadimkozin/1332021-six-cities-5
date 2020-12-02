@@ -173,3 +173,11 @@ export const ROOM_PAGE_CONTAINER_TYPE = {
 export const REVIEW_LIST_CONTAINER_TYPE = {
   offerId: number.isRequired,
 };
+
+export const BOOKMARK_TYPE = {
+  offerId: number.isRequired,
+  type: string.isRequired,
+  isAuth: bool.isRequired,
+  offers: arrayOf(shape(OFFER_CARD)).isRequired,
+  onSetFavorite: func.isRequired,
+};

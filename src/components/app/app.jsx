@@ -8,8 +8,8 @@ import RoomPageContainer from '../../containers/room-page-conainer/room-page-con
 import NotFound from '../not-found/not-found';
 import browserHistory from '../../browser-history';
 import SmartRoute from '../smart-route/smart-route';
-import {getIsAuth} from '@selectors/user';
-import {AppRoute} from "@const";
+import {getIsAuth} from '../../store/selectors/user';
+import {AppRoute} from '../../const';
 
 const App = () => {
   const isAuth = useSelector(getIsAuth);

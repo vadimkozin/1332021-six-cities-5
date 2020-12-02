@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {CommentSettings} from '@const';
-import {getHotelId} from '@selectors/offers';
+import {CommentSettings} from '../../const';
+import {getHotelId} from '../../store/selectors/offers';
 import {sendComment} from '../../store/api-actions';
 
 const withAddComment = (Component) => (props) => {

@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
-import withActiveItem from '@hocs/with-active-item/with-active-item';
-import {CITY_LIST_TYPE} from '@types';
-import {getCity, getCities} from '@selectors/offers';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import {CITY_LIST_TYPE} from '../../types/types';
+import {getCity, getCities} from '../../store/selectors/offers';
 
 const CityList = (props) => {
   const {cities, onCityChange, activeItem, onActiveItemChange} = props;

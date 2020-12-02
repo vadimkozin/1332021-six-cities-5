@@ -3,9 +3,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import RoomPage from '../../components/room-page/room-page';
 import {fetchHotel, fetchHotelsNearby} from '../../store/api-actions';
 import {getHotelGist, getHotelsNearbyGist} from '../../store/selectors/offers';
-import {HOTELS_NEARBY_MAX} from '@const';
-import {isWaitingRequestData, isRequestError} from '@utils';
-import {ROOM_PAGE_CONTAINER_TYPE} from '@types';
+import {HOTELS_NEARBY_MAX} from '../../const';
+import {isWaitingRequestData, isRequestError} from '../../utils';
+import {ROOM_PAGE_CONTAINER_TYPE} from '../../types/types';
 
 const RoomPageContainer = ({offerId}) => {
   const dispatch = useDispatch();

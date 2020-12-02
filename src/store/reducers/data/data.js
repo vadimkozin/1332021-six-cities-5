@@ -1,6 +1,6 @@
-import {extend} from "@utils";
-import {ActionType} from "../../action";
-import {CITIES_NAMES} from '@const';
+import {extend} from '../../../utils';
+import {ActionType} from '../../action';
+import {CITIES_NAMES} from '../../../const';
 
 const initialState = {
   cities: CITIES_NAMES,

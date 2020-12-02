@@ -1,6 +1,6 @@
 import React from "react";
 import {Route, Redirect} from "react-router-dom";
-import {SMART_ROUTE_TYPE} from '@types';
+import {SMART_ROUTE_TYPE} from '../../types/types';
 
 const SmartRoute = (props) => {
   const {render, path, exact, redirectTo} = props;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bookmark should render Bookmark component 1`] = `
+<button
+  class="place-card__bookmark-button button place-card__bookmark-button--active"
+  type="button"
+>
+  <svg
+    class="place-card__bookmark-icon"
+    height="19"
+    width="18"
+  >
+    <use
+      href="#icon-bookmark"
+    />
+  </svg>
+  <span
+    class="visually-hidden"
+  >
+    To bookmarks
+  </span>
+</button>
+`;
